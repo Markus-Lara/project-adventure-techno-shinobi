@@ -1,0 +1,56 @@
+/* Starting Screen Stylization */
+body {
+    background-image: url("../images/start-screen.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;    
+}
+
+.title-box {
+    position: relative;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    margin-top: 15vh;
+}
+
+#title {
+    font-size: 6em;
+    font-family: 'inter', sans-serif;
+    color: white;
+    margin-top: 15vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;  
+}
+
+.flower-border {
+    position: relative;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.start-option {
+    position: absolute;
+    top: 50%;
+    background: none;
+    border: none;
+    padding: 0;
+    color: white;
+    font-family: 'inter', sans-serif;
+    font-size: 5vh;
+}
+
+#Continue {
+    margin-top: 5vh;
+}
+
+#New-Game {
+    margin-top: 10vh;
+}
