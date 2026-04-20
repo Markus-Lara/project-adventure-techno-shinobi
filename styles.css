@@ -1,8 +1,19 @@
 /* Starting Screen Stylization */
 body {
-    background-image: url("../images/start-screen.png");
     background-size: cover;
     height: 100vh;    
+}
+
+.title-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../images/start-screen.png");
+}
+
+.start {
+    background-image: url("../images/Augmentation-Revelation.png");
+    height: 120vh;
 }
 
 .title-box {
@@ -14,7 +25,7 @@ body {
 }
 
 #title {
-    font-size: 6em;
+    font-size: 7vh;
     font-family: 'inter', sans-serif;
     color: white;
     position: absolute;
@@ -29,15 +40,14 @@ body {
     display: inline-block;
     display: flex;
     justify-content: center;
+    width: 525px;
 }
 
 .flower-border:hover {
     transform: scale(1.2);
-    
-
 }
 
-.start-option {
+#start-option {
     position: absolute;
     top: 40%;
     background: none;
@@ -46,6 +56,8 @@ body {
     color: white;
     font-family: 'inter', sans-serif;
     font-size: 5vh;
+    cursor: pointer;
+    
 }
 
 #Continue {
@@ -55,3 +67,4 @@ body {
 #New-Game {
     margin-top: 10vh;
 }
+
