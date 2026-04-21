@@ -73,3 +73,19 @@ body {
     justify-content: center;
 }
 
+.start {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#start-expo {
+    color: white;
+    background-image: url(images/blue-textB.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 93px;
+    font-size: large;
+    cursor: pointer;
+}
