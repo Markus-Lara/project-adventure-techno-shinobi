@@ -16,6 +16,12 @@ body {
     height: 120vh;
 }
 
+#Frostveil {
+    background-image: url("../images/Frostveil.png");
+    background-size: auto;
+    height: 50vh;
+}
+
 .title-box {
     position: relative;
     display: inline-block;
@@ -79,7 +85,7 @@ body {
     justify-content: flex-end;
 }
 
-#start-expo {
+#startexpo {
     color: white;
     background-image: url(images/blue-textB.png);
     background-repeat: no-repeat;
