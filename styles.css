@@ -79,7 +79,7 @@ body {
     justify-content: flex-end;
 }
 
-#start-expo {
+#startexpo {
     color: white;
     background-image: url(images/blue-textB.png);
     background-repeat: no-repeat;
@@ -88,4 +88,12 @@ body {
     padding: 93px;
     font-size: large;
     cursor: pointer;
+}
+
+.lambda {
+    background-image:url(images/LambdaCentral.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
 }
