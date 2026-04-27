@@ -4,6 +4,7 @@ body {
     height: 100vh;    
 }
 
+/* To cover the entire screen with background */
 .title-page {
     display: flex;
     flex-direction: column;
@@ -24,7 +25,6 @@ body {
 
 .title-box {
     position: relative;
-    display: inline-block;
     display: flex;
     justify-content: center;
     margin-top: 15vh;
@@ -43,7 +43,6 @@ body {
 
 .flower-border {
     position: relative;
-    display: inline-block;
     display: flex;
     justify-content: center;
     width: 525px;
@@ -94,4 +93,6 @@ body {
     padding: 93px;
     font-size: large;
     cursor: pointer;
+    
+    
 }

@@ -1,8 +1,11 @@
-const intro = document.getElementById("startexpo")
-intro.addEventListener("click", function() {
-intro.innerHTML = "It's the year 2150, and like any other normal day in Japan, I am on my way to my personal augmentation business, Augmentation Revelation. Here in my business, I do my usual: watch over my employees, do personal augmentations for VIPs, and then I head home, let my robot chef cook me some dinner, go to bed and sleep, wake up, repeat.";
-intro.style.color = "red";
-localStorage.setItem(startexpo, true);
-});
+/* Characteristics that will stay fixed for different classes of enemy characters */
+const EnemyTankCharacter = [{health: "150"}, {attack: "8"}]
+const EnemyAttackCharacter = [{health: "50"}, {attack: "12"}]
+const EnemyBalancedCharacter = [{health: "100"}, {attack: "10"}]
 
+const AllCites = [{Boss: "1"}, {Items: "3"}, {MovesRecieved: "1"}]
+const Frostveil = [{Battles: "7"}, {Tank: "Polar Bearer"}, {Attacker: "Penguinja"}, {Balanced: "Sea Lion"}, {Ally: "Hans"}, {BossName: "Kamiron"}]
+const LambdaCentral = [{Battles: "8"}, {Tank: "M.A.B"}, {Attacker: "A.S.R"}, {Balanced: "A.H.G"}, {Ally: "Bridgette"}, {BossName: "Boomera"}]
+const GrumodaJungle = [{Battles: "7"}, {Tank: "Bomber Regy"}, {Attacker: "Attacker Floresta"}, {Balanced: "WeedWhip"}, {Ally: "Clerica"}, {BossName: "Boss Shieva and Brass Knuckles"}]
+var Jason = [{health: "100"}, {Damage: ""}]
 
