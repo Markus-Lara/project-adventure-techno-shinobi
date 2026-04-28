@@ -82,7 +82,8 @@ body {
 
 #startexpo {
     color: white;
-    background-image: url(images/blue-textB.png);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-color: #48A6F3;
     background-repeat: no-repeat;
     background-size: contain;
     height:150px;
@@ -98,4 +99,19 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0px;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-between;
+}
+
+#choice1, #choice2, #choice3 {
+background-color: rgba(0, 0, 0, 0.7);
+width: 400px;
+height: 50px;
+color: white;
+border-color: #48A6F3;
+font-size: x-large;
+display: none;
 }

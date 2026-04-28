@@ -1,4 +1,9 @@
 const storyContainer = document.getElementById("startexpo"); //the text box
+var choice1=document.getElementById("choice1")
+var choice2=document.getElementById("choice2")
+var choice3=document.getElementById("choice3")
+
+
 
 let story = ["intro"]; //sets a value for the whole array
 
@@ -13,7 +18,7 @@ firstchoice: {
     text: 'The three days goes by, and he\'s officially implemented in the job space. Everything was well at first: he\'s getting along with everyone, he is doing a good job managing not only employees but special requests as well, then I notice little inconsistencies. I notice how sometimes he calls off sick for days at a time, or when he thinks he\'s alone I hear him talking to himself. And during one of those sessions I hear the name Wanoba.\n It was the end of the day so I couldn\'t question, and when I got back home I did some research into the name. I couldn\'t find anything, so I had to pick up research tomorrow. Back at the business I\'m in my office, and the lights go out, so I go to investigate. Walking through the hallways, there was some whisperings and mumblings as I walked ot the back to fix the breaker. There was no light, so I had to stumble in the darkness for a second. I find he box, fix it, and head on my way back. I\'m about to leave, then I notice something in the corner of my eye. I look, and there is someone on the ground.\n "BEN!!" Before I can turn, I notice a dark figure shuffling in the dark, then they move in front of the breaker box. What am I gonna do?',
 choices : [
     ["Run", "run"],
-    ["Stand your grond", "hold"], //Array for choices
+    ["Stand your ground", "hold"], //Array for choices
     ["Ask for questions", "investigate"]
     ]
 },
@@ -101,16 +106,19 @@ choices: ["join him","ending1",
 
 
 storyContainer.addEventListener("click", function() {
+    story.indexOf(dialogue.firstChoice)
     let presentStory = story[story.length-1] //presentStory is set to last index of history array
     if (dialogue[presentStory].choices) {
-        let button1 = document.createElement("button")
-        let button2 = document.createElement("button")
-        let button3 = document.createElement("button")
-        button1.innerHTML ="run"
-        button2.innerHTML = "hold"
-        button3.innerHTML = "investigate"
+        choice1.innerHTML= dialogue[presentStory].choices[0][0]
+        choice2.innerHTML= dialogue[presentStory].choices[1][0]
+        choice3.innerHTML= dialogue[presentStory].choices[2][0]
+      choice1.style.display='inline-block'
+       choice2.style.display='inline-block'
+    choice3.style.display='inline-block'
     }
 
+    if (dialogue.[presentStory].intro) {
+        story
+    }
 storyContainer.innerHTML = dialogue[presentStory].text; //sets text to the dialogue array, and looks inside the intro
-story.push("firstchoice")
 });
