@@ -4,7 +4,6 @@ body {
     height: 100vh;    
 }
 
-/* To cover the entire screen with background */
 .title-page {
     display: flex;
     flex-direction: column;
@@ -15,16 +14,12 @@ body {
 .start {
     background-image: url("../images/Augmentation-Revelation.png");
     height: 120vh;
-}
-
-#Frostveil {
-    background-image: url("../images/Frostveil.png");
-    background-size: auto;
-    height: 50vh;
+    background-repeat: no-repeat;
 }
 
 .title-box {
     position: relative;
+    display: inline-block;
     display: flex;
     justify-content: center;
     margin-top: 15vh;
@@ -43,6 +38,7 @@ body {
 
 .flower-border {
     position: relative;
+    display: inline-block;
     display: flex;
     justify-content: center;
     width: 525px;
@@ -86,13 +82,36 @@ body {
 
 #startexpo {
     color: white;
-    background-image: url(images/blue-textB.png);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-color: #48A6F3;
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
-    padding: 93px;
+    height:150px;
+   background-position: center;
     font-size: large;
     cursor: pointer;
-    
-    
+    background-repeat: no-repeat;
+}
+
+.lambda {
+    background-image:url(images/LambdaCentral.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-between;
+}
+
+#choice1, #choice2, #choice3 {
+background-color: rgba(0, 0, 0, 0.7);
+width: 400px;
+height: 50px;
+color: white;
+border-color: #48A6F3;
+font-size: x-large;
+display: none;
 }
