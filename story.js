@@ -2,12 +2,7 @@ const storyContainer = document.getElementById("startexpo"); //the text box
 var choice1=document.getElementById("choice1")
 var choice2=document.getElementById("choice2")
 var choice3=document.getElementById("choice3")
-
-
-
 let story = ["intro"]; //sets a value for the whole array
-
-
 const dialogue = {
 
     intro: {
@@ -24,7 +19,7 @@ choices : [
 },
 
 run : {
-    text: '',
+    text: 'I am running',
 },
 
 run2: {
@@ -36,7 +31,7 @@ run3: {
 },
 
 hold : {
-    text: '',
+    text: 'I am stanging my ground',
 },
 
 hold2 : {
@@ -48,7 +43,7 @@ hold3 : {
 },
 
 investigate : {
-    text: '',
+    text: 'I ask questions',
 },
 
 investigate2 : {
@@ -59,13 +54,29 @@ investigate3: {
     text: '',
 },
 
-citypath: {
+enterfrostveil: {
 text: '',
 choices: ["Go left", "left",
     "Go middle", "middle",
     "Go right", "right"
 ]
 },
+
+enterlambda: {
+    text: '',
+    choices: ["Go left", "left",
+        "Go middle", "middle",
+        "Go right", "right"
+    ]
+    },
+
+    entergrumoda: {
+        text: '',
+        choices: ["Go left", "left",
+            "Go middle", "middle",
+            "Go right", "right"
+        ]
+        },
 
 finishcity1: {
     text: '',
@@ -104,10 +115,11 @@ choices: ["join him","ending1",
 },
 };
 
+var presentStory = story[story.length-1] //presentStory is set to last index of story array
 
 storyContainer.addEventListener("click", function() {
-    story.indexOf(dialogue.firstChoice)
-    let presentStory = story[story.length-1] //presentStory is set to last index of history array
+    presentStory = story[story.length-1]
+    storyContainer.innerHTML = dialogue[presentStory].text; //sets text to the dialogue array, and looks inside the intro
     if (dialogue[presentStory].choices) {
         choice1.innerHTML= dialogue[presentStory].choices[0][0]
         choice2.innerHTML= dialogue[presentStory].choices[1][0]
@@ -116,9 +128,33 @@ storyContainer.addEventListener("click", function() {
        choice2.style.display='inline-block'
     choice3.style.display='inline-block'
     }
-
-    if (dialogue.[presentStory].intro) {
-        story
+    else {
+        choice1.style.display='none'
+        choice2.style.display='none'
+     choice3.style.display='none'
     }
-storyContainer.innerHTML = dialogue[presentStory].text; //sets text to the dialogue array, and looks inside the intro
+   
+    if (presentStory==="intro") 
+        {story.push("firstchoice") }
 });
+
+choice1.addEventListener("click", function() {
+    choice1.style.display='none'
+       choice2.style.display='none'
+    choice3.style.display='none'
+    storyContainer.innerHTML = dialogue[presentStory]
+    });
+
+    choice2.addEventListener("click", function() {
+        choice1.style.display='none'
+       choice2.style.display='none'
+    choice3.style.display='none'
+    storyContainer.innerHTML = dialogue[presentStory]
+    });
+
+    choice3.addEventListener("click", function() {
+        choice1.style.display='none'
+       choice2.style.display='none'
+    choice3.style.display='none'
+    storyContainer.innerHTML = dialogue[presentStory]
+    });
