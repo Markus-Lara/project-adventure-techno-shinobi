@@ -1,8 +1,8 @@
-/* Starting Screen Stylization */
 body {
     background-size: cover;
     height: 100vh;    
 }
+
 
 .title-page {
     display: flex;
@@ -11,11 +11,13 @@ body {
     background-image: url("../images/start-screen.png");
 }
 
+
 .start {
     background-image: url("../images/Augmentation-Revelation.png");
     height: 120vh;
     background-repeat: no-repeat;
 }
+
 
 .title-box {
     position: relative;
@@ -24,6 +26,7 @@ body {
     justify-content: center;
     margin-top: 15vh;
 }
+
 
 #title {
     font-size: 7vh;
@@ -36,6 +39,7 @@ body {
     margin: 0;  
 }
 
+
 .flower-border {
     position: relative;
     display: inline-block;
@@ -44,9 +48,11 @@ body {
     width: 525px;
 }
 
+
 .flower-border:hover {
     transform: scale(1.2);
 }
+
 
 #start-option {
     position: absolute;
@@ -58,27 +64,32 @@ body {
     font-family: 'inter', sans-serif;
     font-size: 5vh;
     cursor: pointer;
-    
+   
 }
+
 
 #Continue {
     margin-top: 5vh;
 }
 
+
 #New-Game {
     margin-top: 10vh;
 }
+
 
 .placement {
     display: flex;
     justify-content: center;
 }
 
+
 .start {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
+
 
 #startexpo {
     color: white;
@@ -93,6 +104,7 @@ body {
     background-repeat: no-repeat;
 }
 
+
 .lambda {
     background-image:url(images/LambdaCentral.png);
     background-position: center;
@@ -101,10 +113,13 @@ body {
     margin: 0px;
 }
 
+
 .choices {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-bottom: 50px;
 }
+
 
 #choice1, #choice2, #choice3 {
 background-color: rgba(0, 0, 0, 0.7);
@@ -114,4 +129,39 @@ color: white;
 border-color: #48A6F3;
 font-size: x-large;
 display: none;
+}
+
+
+.items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+}
+
+
+#item1, #item2, #item3 {
+background-color: rgba(0, 0, 0, 0.0);
+width: 95px;
+height: 95px;
+background-image: url(images/item.png);
+background-position: center;
+background-repeat: no-repeat;
+border: 0px;
+cursor: pointer;
+display: none
+    }
+
+
+#item1 {
+margin-left: 300px
+}
+
+
+#item2 {
+align-self: center;
+}
+
+
+#item3 {
+align-self: flex-end;
 }
