@@ -1,22 +1,42 @@
 body {
     background-size: cover;
-    height: 100vh;    
+    height: 100%;    
 }
+
+
+
+
+
+
 
 
 .title-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("../images/start-screen.png");
+    background-image: url("images/start-screen.png");
 }
+
+
+
+
+
+
 
 
 .start {
-    background-image: url("../images/Augmentation-Revelation.png");
-    height: 120vh;
+     background-image: url("images/augmentationrevelation.png");
+    height: 100vh;
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
+
+
+
+
+
+
 
 
 .title-box {
@@ -26,6 +46,12 @@ body {
     justify-content: center;
     margin-top: 15vh;
 }
+
+
+
+
+
+
 
 
 #title {
@@ -40,6 +66,12 @@ body {
 }
 
 
+
+
+
+
+
+
 .flower-border {
     position: relative;
     display: inline-block;
@@ -49,9 +81,21 @@ body {
 }
 
 
+
+
+
+
+
+
 .flower-border:hover {
     transform: scale(1.2);
 }
+
+
+
+
+
+
 
 
 #start-option {
@@ -68,14 +112,32 @@ body {
 }
 
 
+
+
+
+
+
+
 #Continue {
     margin-top: 5vh;
 }
 
 
+
+
+
+
+
+
 #New-Game {
     margin-top: 10vh;
 }
+
+
+
+
+
+
 
 
 .placement {
@@ -84,25 +146,45 @@ body {
 }
 
 
+
+
+
+
+
+
 .start {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
+
+
+
+
+
+
 
 
 #startexpo {
     color: white;
     background-color: rgba(0, 0, 0, 0.7);
     border-color: #48A6F3;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height:150px;
-   background-position: center;
+    height:180px;
     font-size: large;
     cursor: pointer;
     background-repeat: no-repeat;
+    width: 1300px;
+    margin-bottom: 50px;
 }
+
+
+
+
+
+
 
 
 .lambda {
@@ -114,16 +196,29 @@ body {
 }
 
 
+
+
+
+
+
+
 .choices {
     display: flex;
     justify-content: space-around;
     margin-bottom: 50px;
+    width: 100%
 }
+
+
+
+
+
+
 
 
 #choice1, #choice2, #choice3 {
 background-color: rgba(0, 0, 0, 0.7);
-width: 400px;
+width: 250px;
 height: 50px;
 color: white;
 border-color: #48A6F3;
@@ -132,36 +227,253 @@ display: none;
 }
 
 
-.items {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around
-}
+
+
+
+
 
 
 #item1, #item2, #item3 {
-background-color: rgba(0, 0, 0, 0.0);
 width: 95px;
 height: 95px;
+background-color: rgba(0, 0, 0, 0.0);
 background-image: url(images/item.png);
 background-position: center;
 background-repeat: no-repeat;
 border: 0px;
+visibility: hidden;
 cursor: pointer;
-display: none
-    }
+}
+
+
+
+
+
+
 
 
 #item1 {
-margin-left: 300px
+position: absolute;
+top: 74vh;
+left: 27vw;
 }
+
+
+
+
+
+
 
 
 #item2 {
-align-self: center;
+    position: absolute;
+top: 75vh;
+left: 44vw;
 }
 
 
+
+
+
+
+
+
 #item3 {
-align-self: flex-end;
+    position: absolute;
+   top: 75vh;
+left: 81vw;
+}
+
+
+
+
+.battles {
+    display: flex;
+    justify-content: space-between;  
+}
+
+
+
+
+.battle {
+width: 200px;
+height: 95px;
+background-position: center;
+background-repeat: no-repeat;
+border: 0px;
+cursor: pointer;
+margin-right: 10vh;
+margin-left: 10vh;
+margin-bottom: 10vh;
+display: none;
+}
+
+
+
+
+#slash {
+    background-image: url(images/slash.png);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#inventory {
+    background-image: url(images/inventory.png);
+    background-color: rgba(0, 0, 0, 0.7)
+}
+#skills {
+    background-image: url(images/skills.png);
+    background-color: rgba(0, 0, 0, 0.7)
+}
+#fabricator {
+    background-image: url(images/fabricator.png);
+    background-color: rgba(0, 0, 0, 0.7)
+}
+
+
+
+
+@media (max-width: 430px) {
+
+
+
+
+
+
+
+
+#item1 {
+position: absolute;
+top: 70vh;
+left: 14vw;
+}
+
+
+
+
+
+
+
+
+#item2 {
+    position: absolute;
+top: 70vh;
+left: 40vw;
+}
+
+
+
+
+
+
+
+
+#item3 {
+    position: absolute;
+   top: 70vh;
+left: 85vw;
+}
+}
+
+
+
+
+
+
+
+
+@media (max-width: 430px) {
+#item1 {
+position: absolute;
+top: 70vh;
+left: 14vw;
+}
+
+
+
+
+
+
+
+
+#item2 {
+    position: absolute;
+top: 70vh;
+left: 40vw;
+}
+
+
+
+
+
+
+
+
+#item3 {
+    position: absolute;
+   top: 70vh;
+left: 85vw;
+}
+}
+
+
+
+
+@media (max-width: 430px) and (max-height: 932px) {
+    .start {
+        background-image: url("images/Augmentation-Revelation.png");
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        overflow-x: scroll;
+    overflow-y: hidden;
+    }
+
+
+
+
+    #startexpo {
+        width: 360px;
+        font-size: 11.5px;
+    }
+   
+    .battle {
+        width: 100px;
+        margin-right: 2vh;
+        margin-left: 2vh;
+    }
+
+
+
+
+    #inventory {
+        background-size: 45px;
+        width: 55px;
+        height: 45px;
+    }
+
+
+
+
+    #slash {
+        background-size: 45px;
+        width: 55px;
+        height: 45px;
+    }
+
+
+
+
+    #skills {
+        background-size: 45px;
+        width: 55px;
+        height: 45px;
+    }
+
+
+
+
+    #fabricator {
+        background-size: 45px;
+        width: 55px;
+        height: 45px;
+    }
 }
