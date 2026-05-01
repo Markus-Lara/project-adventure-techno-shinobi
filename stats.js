@@ -30,7 +30,7 @@ export const dialogue = {
     },
 
     hold: {
-        text: 'I spot a fully covered figure with a sword and immediately run. The figure chases me while everyone else keeps going about their work. I reach the exit, hear a shing, and sprint outside. When I look back, the attacker is gone—but my right arm is missing, leaving only a bloody wound. I keep running until I collapse.',
+        text: 'Searing with rage, I charge at the figure, fists raised and in a defensive stance. The first swing almost connects, but he still dodges with speed I have never before seen in a human or cyborg. I quickly close the distance again, taking a mean uppercut. Again, he dodges, but something felt off. MY ARM! The arm is cleanly cut, right from the shoulder, and the shock of truth caused me to stumble. I notice him slowly walkign towards me, but the sounds of approaching people seemed to scare him off, as he dissappeared into a vent.The assassin vanishes into the ductwork, leaving only the sound of approaching boots. I felt my body become lighter, and I could hear my coworkers yelling encouragement for em to continue pushing. I finally reach outside the building, but when I do, my eyes become too heavy and I am knocked out.',
     },
 
     hold2: {
@@ -141,7 +141,7 @@ export const dialogue = {
     },
 
     ahg: {
-        text: 'getting better'
+        text: 'maybe better'
     },
 
     entergrumoda: {
