@@ -1,51 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techno Shinobi | Game</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="start" id="prologue">
+    <section id=body-poster>
+        <button id="item1"></button>
+        <button id="item2"></button>
+        <button id="item3"></button>
 
-<button id="item1"></button>
-<button id="item2"></button>
-<button id="item3"></button>
+        <section id=enemies>
+            <span class="enemysingle">
+                <h2 id="enemy1hp"></h2>
+                <img id="enemy1">
+            </span>
 
-<section class="enemyhp">
-<p id = "enemey1hp"></p>
-<p id = "enemy2hp"></p>
-<p id = "enemy2hp"></p>
-</section>
+            <span class="enemydouble">
+                <h2 id="enemy2hp"></h2>
+                <img id="enemy2">
+            </span>
 
-<section class="enemies">
-<img id="enemy1">
-<img id="enemy2">
-<img id="enemy3">
-</section>
+            <span class="enemytriple">
+                <h2 id="enemy3hp"></h2>
+                <img id="enemy3">
+            </span>
+        </section>
 
-    <section class="choices">
-    <button id="choice1">Choice1</button>
-    <button id="choice2">Choice2</button>
-    <button id="choice3">Choice3</button>
+        <section class="choices">
+            <button id="choice1">Choice1</button>
+            <button id="choice2">Choice2</button>
+            <button id="choice3">Choice3</button>
+        </section>
+
+        <section class="protagonisthp">
+            <h2 id="jasonhp"></h2>
+            <h2 id="hanshp"></h2>
+            <h2 id="bridgettehp"></h2>
+            <h2 id="clericahp"></h2>
+        </section>
+
+        <button id="healing"></button>
+        <button id="damage"></button>
+
+        <button id="startexpo">It's the year 2150, and like any other normal day in Japan, I am on my way to my personal
+            augmentation business, Augmentation Revelation. Here in my business, I do my usual: watch over my employees,
+            do
+            personal augmentations for VIPs, and then I head home, let my robot chef cook me some dinner, go to bed and
+            sleep, wake up, repeat. But today is a different day than usual. I've had this business for 5 years, and
+            it's
+            significant growth has pushed me to focus ideas such as expansion an other business ideas since I have
+            gotten so
+            many personal request over the past few months, and I just can't handle them all.</button>
+        <section id="battles">
+            <button id="slash" class="battle"></button>
+            <button id="inventory" class="battle"></button>
+            <button id="skills" class="battle"></button>
+            <button id="fabricator" class="battle"></button>
+        </section>
     </section>
-
-<section class="protagonisthp">
-<p id ="jasonhp"></p>
-<p id ="hanshp"></p>
-<p id ="bridgettehp"></p>
-<p id ="clericahp"></p>
-</section>
-
-    <button id="startexpo">It's the year 2150, and like any other normal day in Japan, I am on my way to my personal augmentation business, Augmentation Revelation. Here in my business, I do my usual: watch over my employees, do personal augmentations for VIPs, and then I head home, let my robot chef cook me some dinner, go to bed and sleep, wake up, repeat. But today is a different day than usual. I've had this business for 5 years, and it's significant growth has pushed me to focus ideas such as expansion an other business ideas since I have gotten so many personal request over the past few months, and I just can't handle them all.</button>
-    <section id="battles">
-        <button id="slash" class="battle"></button>
-    <button id="inventory" class="battle"></button>
-    <button id="skills" class="battle"></button>
-    <button id="fabricator" class="battle"></button>
-    </section>
-
-<script type = "module" src="story.js"></script>
-<script type = "module" src="game.js"></script>
+    <script type="module" src="story.js"></script>
+    <script type="module" src="stats.js"></script>
 </body>
+
 </html>
