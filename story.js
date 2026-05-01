@@ -239,6 +239,115 @@ storyContainer.addEventListener("click", function () {
         enemy1.style.height = "300px"
     }
 
+    if (presentStory === "mab") {                               ///start battles
+        story.push("battlestart")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        enemy1hp.style.display = 'inline-block'
+        jasonhp.style.display = 'inline-block'
+        slash.style.display = 'inline-block'
+        inventory.style.display = 'inline-block'
+        skills.style.display = 'inline-block'
+        if (hasfabricator === false)
+            fabricator.style.display = 'none'
+        else {
+            fabricator.style.display = 'inline-block'
+        }
+        enemy1.src = "images/mab.png"
+        enemy1.style.height = "300px"
+    }
+
+    else if (presentStory === "asr") {
+        story.push("battlestart")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        enemy1hp.style.display = 'inline-block'
+        jasonhp.style.display = 'inline-block'
+        slash.style.display = 'inline-block'
+        inventory.style.display = 'inline-block'
+        skills.style.display = 'inline-block'
+        if (hasfabricator == false)
+            fabricator.style.display = 'none'
+        else {
+            fabricator.style.display = 'inline-block'
+        }
+        enemy1.src = "images/asr.png"
+        enemy1.style.height = "300px"
+    }
+
+    else if (presentStory === "ahg") {
+        story.push("battlestart")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        enemy1hp.style.display = 'inline-block'
+        jasonhp.style.display = 'inline-block'
+        slash.style.display = 'inline-block'
+        inventory.style.display = 'inline-block'
+        skills.style.display = 'inline-block'
+        if (hasfabricator === false)
+            fabricator.style.display = 'none'
+        else {
+            fabricator.style.display = 'inline-block'
+        }
+        enemy1.src = "images/ahg.png"
+        enemy1.style.height = "300px"
+    }
+
+
+    else if (presentStory === "weedwhip") {
+        story.push("battlestart")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        enemy1hp.style.display = 'inline-block'
+        jasonhp.style.display = 'inline-block'
+        slash.style.display = 'inline-block'
+        inventory.style.display = 'inline-block'
+        skills.style.display = 'inline-block'
+        if (hasfabricator === false)
+            fabricator.style.display = 'none'
+        else {
+            fabricator.style.display = 'inline-block'
+        }
+        enemy1.src = "images/weedwhip.png"
+        enemy1.style.height = "300px"
+    }
+
+    else if (presentStory === "attackerfloresta") {
+        story.push("battlestart")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        enemy1hp.style.display = 'inline-block'
+        jasonhp.style.display = 'inline-block'
+        slash.style.display = 'inline-block'
+        inventory.style.display = 'inline-block'
+        skills.style.display = 'inline-block'
+        if (hasfabricator === false)
+            fabricator.style.display = 'none'
+        else {
+            fabricator.style.display = 'inline-block'
+        }
+        enemy1.src = "images/attackerfloresta.png"
+        enemy1.style.height = "300px"
+    }
+
+    else if (presentStory === "bomberreggy") {
+        story.push("battlestart")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        enemy1hp.style.display = 'inline-block'
+        jasonhp.style.display = 'inline-block'
+        slash.style.display = 'inline-block'
+        inventory.style.display = 'inline-block'
+        skills.style.display = 'inline-block'
+        if (hasfabricator === false)
+            fabricator.style.display = 'none'
+        else {
+            fabricator.style.display = 'inline-block'
+        }
+        enemy1.src = "images/bombereggy.png"
+        enemy1.style.height = "300px"
+    }
+
     else if (presentStory === "juniornice") {                               //junior nice
         if (playerpath === "run") {
             story.push("items")
@@ -381,9 +490,34 @@ choice1.addEventListener("click", function () {       //choice 1 function
         localStorage.setItem("bookmark", presentStory)
         storyContainer.innerHTML = dialogue[presentStory].text
         choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
         beginbattle()
+        return
+    }
+
+    else if (presentStory === "enterlambda") {
+        story.push("mab")
+        presentStory = story[story.length - 1]
+        localStorage.setItem("bookmark", presentStory)
+        storyContainer.innerHTML = dialogue[presentStory].text
+        choice1.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
+        beginbattle()
+        return
+    }
+
+    else if (presentStory === "entergrumoda") {
+        story.push("weedwhip")
+        presentStory = story[story.length - 1]
+        localStorage.setItem("bookmark", presentStory)
+        storyContainer.innerHTML = dialogue[presentStory].text
+        choice1.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
+        beginbattle()
+        return
     }
 
     presentStory = story[story.length - 1]
@@ -410,29 +544,53 @@ choice2.addEventListener("click", function () { //choice 2 function
         console.log("You made Junior angry")
     }
 
-    else if (playerpath === "hold") {                                //checks playerpath based on previous choices
-        story.push("enterlambda")
-        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
-        presentStory = story[story.length - 1]
-
-        storyContainer.innerHTML = dialogue[presentStory].text
-    }
-
     else if (presentStory === "enterfrostveil") {
         story.push("polarbearer")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
         storyContainer.innerHTML = dialogue[presentStory].text
         choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
         beginbattle()
+return
     }
+
+    else if (presentStory === "enterlambda") {
+        story.push("ahg")
+        presentStory = story[story.length - 1]
+        localStorage.setItem("bookmark", presentStory)
+        storyContainer.innerHTML = dialogue[presentStory].text
+        choice1.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
+        beginbattle()
+        return
+    }
+
+    else if (presentStory === "entergrumoda") {
+        story.push("attackerfloresta")
+        presentStory = story[story.length - 1]
+        localStorage.setItem("bookmark", presentStory)
+        storyContainer.innerHTML = dialogue[presentStory].text
+        choice1.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
+        beginbattle()
+        return
+    }
+
+    else if (playerpath === "hold") {                                //checks playerpath based on previous choices
+        story.push("enterlambda")
+        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
     presentStory = story[story.length - 1]
     choice1.style.display = 'none'
     choice2.style.display = 'none'
     choice3.style.display = 'none'
-
     storyContainer.innerHTML = dialogue[presentStory].text
 });
 
@@ -445,12 +603,23 @@ choice3.addEventListener("click", function () {          //choice 3 function
         console.log("Investigate path chosen")
     }
 
+    else if (presentStory === "entergrumoda") {
+        story.push("bomberregy")
+        presentStory = story[story.length - 1]
+        localStorage.setItem("bookmark", presentStory)
+        storyContainer.innerHTML = dialogue[presentStory].text
+        choice1.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
+        beginbattle()
+        return
+    }
+
     else if (playerpath === "investigate") {                    //checks playerpath based on previous choices
 
         story.push("entergrumoda")
         scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 
@@ -458,18 +627,29 @@ choice3.addEventListener("click", function () {          //choice 3 function
         story.push("sealion")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
+        choice1.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
+        beginbattle()
+        return
+    }
+
+    else if (presentStory === "enterlambda") {
+        story.push("asr")
+        presentStory = story[story.length - 1]
+        localStorage.setItem("bookmark", presentStory)
         storyContainer.innerHTML = dialogue[presentStory].text
         choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
         beginbattle()
+        return
     }
 
     presentStory = story[story.length - 1]
     choice1.style.display = 'none'
     choice2.style.display = 'none'
     choice3.style.display = 'none'
-
     storyContainer.innerHTML = dialogue[presentStory].text
 });
 
