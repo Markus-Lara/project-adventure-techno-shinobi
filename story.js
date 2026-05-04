@@ -1,4 +1,4 @@
-import { dialogue, protagonist, enemies, items } from "./stats.js"
+import { dialogue, protagonist, enemies, items} from "./stats.js"
 const storyContainer = document.getElementById("startexpo"); //the text box
 
 var choice1 = document.getElementById("choice1")
@@ -51,11 +51,15 @@ var playerpath = ""
 
 var juniorpath = ""
 
+var newenemy = ""
+
 var healingpotioncount = 0
 
 var dmgpotioncount = 0
 
 var gathereditems = 0
+
+var battlecount = 0
 
 var hasfabricator = false
 
@@ -64,6 +68,8 @@ var battleactive = false
 var dmgmodifier = false
 
 var playerturn = true
+
+var victory= false
 
 var enemytype;
 
@@ -406,10 +412,12 @@ storyContainer.addEventListener("click", function () {
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 
-    if (battleactive) {
-        storyContainer.disabled
+    else if (victory === true) {
+        victory = false
+    story.push("cityprogression")
+    presentStory = story[story.length - 1]
+    storyContainer.innerHTML = dialogue[presentStory].text
     }
-
 
     if (gathereditems === 3) {
         if (playerpath === "run") {
@@ -439,7 +447,6 @@ storyContainer.addEventListener("click", function () {
             item3.style.visibility = 'visible'
         }
 
-
     if (dialogue[presentStory].choices) { //checks current array index for choices
         if (dialogue[presentStory].choices.length === 3) {
             choice1.innerHTML = dialogue[presentStory].choices[0][0]
@@ -468,7 +475,6 @@ storyContainer.addEventListener("click", function () {
         choice3.style.display = 'none'
     }
 });
-
 
 
 choice1.addEventListener("click", function () {       //choice 1 function
@@ -603,6 +609,14 @@ choice3.addEventListener("click", function () {          //choice 3 function
         console.log("Investigate path chosen")
     }
 
+    else if(battlecount > 0) {
+        newenemy = Math.floor(Math.random() * frostveilenemies.length)
+         presentStory = newenemy
+         localStorage.setItem ("bookmark", presentStory)
+        beginbattle()
+        return
+    }
+
     else if (presentStory === "entergrumoda") {
         story.push("bomberregy")
         presentStory = story[story.length - 1]
@@ -654,7 +668,6 @@ choice3.addEventListener("click", function () {          //choice 3 function
 });
 
 
-
 item1.addEventListener("click", function () {             //item functions here
     story.push("gothealingitem")
     healingpotioncount++
@@ -700,12 +713,15 @@ function beginbattle() {                            ///battle logic
         enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
         jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
         battleactive = true
+        console.log('battlecount: ' + battlecount)
     }
 };
 
 slash.addEventListener("click", function () {
     let attack = protagonist["jason"].attacks[0]
-
+    storyContainer.disabled = true
+    healitembutton.style.display = 'none'
+    damageitembutton.style.display = 'none'
     let standardattack = attack.damage
     if (playerturn) {
         if (dmgmodifier === true) {
@@ -722,6 +738,7 @@ slash.addEventListener("click", function () {
         }
 
         else {
+
             enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
             storyContainer.innerHTML = attack.text
             playerturn = false
@@ -732,6 +749,7 @@ slash.addEventListener("click", function () {
 
 inventory.addEventListener("click", function() {
 storyContainer.innerHTML = ""
+storyContainer.disabled = true
 healitembutton.style.display = 'inline-block'
 damageitembutton.style.display = 'inline-block'
     healitembutton.innerHTML = 'Healing Potions: ' + healingpotioncount
@@ -741,12 +759,14 @@ damageitembutton.style.display = 'inline-block'
 healitembutton.addEventListener ("click", function () {
      healitembutton.style.display = 'none'
         damageitembutton.style.display = 'none'
+        storyContainer.disabled = true
     healing()
 });
 
 damageitembutton.addEventListener ("click", function () {
      healitembutton.style.display = 'none'
         damageitembutton.style.display = 'none'
+        storyContainer.disabled = true
     dmgmodify()
 });
 
@@ -756,6 +776,7 @@ function enemyattack() {
         let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
         let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
         jasonhealth = jasonhealth - chosenAttack.damage
+        storyContainer.disabled = true
         if (jasonhealth <= 0) {
             scene.style.display = 'none'
             scene.style.backgroundColor = 'rgba(0, 0, 0)'
@@ -769,6 +790,7 @@ function enemyattack() {
 }
 
 function healing() {
+    storyContainer.disabled = true
     if (playerturn) {
     if (healingpotioncount != 0) {
     healingpotioncount = healingpotioncount - 1
@@ -783,6 +805,7 @@ function healing() {
     enemyattack()
 }
  else {
+    storyContainer.disabled = true
         storyContainer.innerHTML = 'You don\' have enough of this item!'
         playerturn = true
  }}
@@ -790,6 +813,7 @@ function healing() {
 
 
 function dmgmodify() {
+    storyContainer.disabled = true
     if (playerturn) {
 if (dmgpotioncount != 0) {
     dmgpotioncount = dmgpotioncount - 1
@@ -816,14 +840,18 @@ function winBattle() {
     inventory.style.display = 'none'
     skills.style.display = 'none'
     fabricator.style.display = 'none'
+    jasonhp.style.display = 'none'
     battleactive = false
+    storyContainer.disabled = false
     playerturn = true
+    victory = true
+    battlecount++
     if (juniorpath === "nice") {
         jasonhealth = jasonhealth + 30
         if (jasonhealth > protagonist["jason"].maxhealth) {
             jasonhealth = protagonist["jason"].maxhealth;
         }
-        storyContainer.innerHTML = 'You have defeated ' + enemies[enemytype].name + '!' + 'And since you were nice to Junior he heals you 30 hp!'
+        storyContainer.innerHTML = 'You have defeated ' + enemies[enemytype].name + '!' + ' And since you were nice to Junior he heals you 30 hp!'
         console.log(jasonhealth)
     }
 };

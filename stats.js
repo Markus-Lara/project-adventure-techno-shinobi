@@ -193,6 +193,15 @@ export const dialogue = {
         text: 'What will you do now?',
     },
 
+cityprogression: {
+    text: 'I continue through the area, looking for the end of this labryinth. Where will I continue now?',
+choices: [
+    ["Go Left", "left"],
+    ["Go Middle", "middle"],
+    ["Go Right", "right"]
+]
+},
+
     finishcity1: {                      //end city objects
         text: '',
         choices: [
@@ -397,6 +406,11 @@ export const enemies = {
         ]
     }
 };
+
+console.log(
+    enemies[Object.keys(enemies)[Math.floor(Math.random()*Object.keys(enemies).length)]]
+)
+
 
 export const items = {
 
