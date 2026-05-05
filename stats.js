@@ -30,7 +30,7 @@ export const dialogue = {
     },
 
     hold: {
-        text: 'I spot a fully covered figure with a sword and immediately run. The figure chases me while everyone else keeps going about their work. I reach the exit, hear a shing, and sprint outside. When I look back, the attacker is gone—but my right arm is missing, leaving only a bloody wound. I keep running until I collapse.',
+        text: 'I noticed the figure had a sword and immediately run. The figure chases me while everyone else keeps going about their work. I reach the exit, hear a shing, and sprint outside. When I look back, the attacker is gone—but my right arm is missing, leaving only a bloody wound. I keep running until I collapse.',
     },
 
     hold2: {
