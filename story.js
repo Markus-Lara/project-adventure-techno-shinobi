@@ -83,7 +83,7 @@ var grumoda = false
 
 var victory= false
 
-var hans = false
+var hans = true
 
 var bridgette = false
 
@@ -512,6 +512,8 @@ storyContainer.addEventListener("click", function () {
      if (battlecount === 4 && frostveil) {
         story.push("hans")
         presentStory = story[story.length - 1]
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+            choice2.innerHTML = dialogue[presentStory].choices[1][0]
         choice1.style.display = 'inline-block'
         choice2.style.display = 'inline-block'
         choice3.style.display = 'none'
@@ -529,6 +531,10 @@ choice1.addEventListener("click", function () {       //choice 1 function
         choice2.style.display = 'none'
         choice3.style.display = 'none'
         console.log("run path chosen")
+    }
+
+    else if(presentStory === "hans") {
+        story.push()
     }
 
     else if (battlecount === 1 && presentStory === "cityprogression" && frostveil) {
@@ -967,6 +973,11 @@ slash.addEventListener("click", function () {
         else {
             remainingenemyhp = remainingenemyhp - standardattack
         }
+
+        if (hans === true) {
+            hansattack()
+        }
+        
         if (remainingenemyhp <= 0) {
             remainingenemyhp = 0;
             enemy1.style.display = 'none'
@@ -1008,6 +1019,25 @@ damageitembutton.addEventListener("click", function () {
 
 
 function enemyattack() {
+
+     if (hans === true) {
+        setTimeout(function () {
+            let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
+            let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
+            jasonhealth = jasonhealth - chosenAttack.damage
+            storyContainer.disabled = true
+            if (jasonhealth <= 0) {
+                scene.style.display = 'none'
+                scene.style.backgroundColor = 'rgba(0, 0, 0)'
+            }
+    
+            jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
+            storyContainer.innerHTML = chosenAttack.text
+            playerturn = true;
+        }, 3500);
+    }
+    
+   else if(allycount === 1) {
     setTimeout(function () {
         let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
         let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
@@ -1021,8 +1051,42 @@ function enemyattack() {
         jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
         storyContainer.innerHTML = chosenAttack.text
         playerturn = true;
-    }, 1750);
+    }, 3500);
+    }
 
+    else if (allycount === 2) {
+        setTimeout(function () {
+            let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
+            let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
+            jasonhealth = jasonhealth - chosenAttack.damage
+            storyContainer.disabled = true
+            if (jasonhealth <= 0) {
+                scene.style.display = 'none'
+                scene.style.backgroundColor = 'rgba(0, 0, 0)'
+            }
+    
+            jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
+            storyContainer.innerHTML = chosenAttack.text
+            playerturn = true;
+        }, 5250);
+        }
+
+        else if (allycount === 3) {
+            setTimeout(function () {
+                let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
+                let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
+                jasonhealth = jasonhealth - chosenAttack.damage
+                storyContainer.disabled = true
+                if (jasonhealth <= 0) {
+                    scene.style.display = 'none'
+                    scene.style.backgroundColor = 'rgba(0, 0, 0)'
+                }
+        
+                jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
+                storyContainer.innerHTML = chosenAttack.text
+                playerturn = true;
+            }, 7000);
+            }
 }
 
 function healing() {
@@ -1119,13 +1183,19 @@ function battledisplay() {
 }
 
 function hansattack () {
+    console.log("beforetimeout")
     setTimeout(function () {
-        let hansAttack = Math.floor(Math.random() * protagonist[hans].attacks.length)
-        let chosenAttack = protagonist[hans].attacks[protagonistAttacks]
+        let hansAttacks = Math.floor(Math.random() * protagonist.hans.attacks.length)
+        let chosenAttack = protagonist.hans.attacks[hansAttacks]
         remainingenemyhp = remainingenemyhp - chosenAttack.damage
         storyContainer.disabled = true
-
+        console.log(hansAttacks, chosenAttack, chosenAttack.damage)
+if (remainingenemyhp <= 0) {
+    winBattle()
+}
+else {
+    enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
         storyContainer.innerHTML = chosenAttack.text
         enemyattack();
-    }, 1750);
+    }}, 1750);
 }
