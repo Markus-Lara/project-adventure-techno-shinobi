@@ -30,7 +30,7 @@ export const dialogue = {
     },
 
     hold: {
-        text: 'I noticed the figure had a sword and immediately run. The figure chases me while everyone else keeps going about their work. I reach the exit, hear a shing, and sprint outside. When I look back, the attacker is gone—but my right arm is missing, leaving only a bloody wound. I keep running until I collapse.',
+        text: 'Searing with rage, I charge at the figure, fists raised and in a defensive stance. The first swing almost connects, but he still dodges with speed I have never before seen in a human or cyborg. I quickly close the distance again, taking a mean uppercut. Again, he dodges, but something felt off. MY ARM! The arm is cleanly cut, right from the shoulder, and the shock of truth caused me to stumble. I notice him slowly walkign towards me, but the sounds of approaching people seemed to scare him off, as he dissappeared into a vent.The assassin vanishes into the ductwork, leaving only the sound of approaching boots. I felt my body become lighter, and I could hear my coworkers yelling encouragement for em to continue pushing. I finally reach outside the building, but when I do, my eyes become too heavy and I am knocked out.',
     },
 
     hold2: {
@@ -70,15 +70,7 @@ export const dialogue = {
     },
 
     items: {
-        text: 'Hey! There\'s some shiny things here!'
-    },
-
-    gothealingitem: {
-        text: 'I got a healing potion!'
-    },
-
-    gotdmgitem: {
-        text: 'I got a damage potion!'
+        text: 'Hey! There\'s some shiny things here! I should go get those real quick! (0/5)'
     },
 
     enterfrostveil: {                   //city and their enemy objects
@@ -141,7 +133,7 @@ export const dialogue = {
     },
 
     ahg: {
-        text: 'getting better'
+        text: 'maybe better'
     },
 
     entergrumoda: {
@@ -192,6 +184,15 @@ export const dialogue = {
     battlestart: {
         text: 'What will you do now?',
     },
+
+cityprogression: {
+    text: 'I continue through the area, looking for the end of this labryinth. Where will I continue now?',
+choices: [
+    ["Go Left", "left"],
+    ["Go Middle", "middle"],
+    ["Go Right", "right"]
+]
+},
 
     finishcity1: {                      //end city objects
         text: '',
@@ -283,7 +284,7 @@ export const enemies = {
 
     polarbearer: {
         name: 'polarbearer',
-        maxhealth: 125,
+        maxhealth: 120,
         attacks: [
             { text: 'Polarbearer slammed his shield and did 8 damage!', damage: 8 }
         ]
@@ -308,7 +309,7 @@ export const enemies = {
 
     mab: {
         name: 'M.A.B',
-        maxhealth: 125,
+        maxhealth: 120,
         attacks: [
             { text: 'M.A.B swings his arm and deals 8 damage!', damage: 8 }
         ]
@@ -357,7 +358,7 @@ export const enemies = {
 
     bomberregy: {
         name: 'Bomber Regy',
-        maxhealth: 125,
+        maxhealth: 120,
         attacks: [
             { text: 'Bomber Regy fires his cannon and does 8 damage!', damage: 8 }]
     },
@@ -397,6 +398,11 @@ export const enemies = {
         ]
     }
 };
+
+console.log(
+    enemies[Object.keys(enemies)[Math.floor(Math.random()*Object.keys(enemies).length)]]
+)
+
 
 export const items = {
 

@@ -195,7 +195,9 @@ body {
 
 #item1,
 #item2,
-#item3 {
+#item3,
+#item4,
+#item5 {
     width: 95px;
     height: 95px;
     background-color: rgba(0, 0, 0, 0.0);
@@ -212,12 +214,9 @@ body {
 
 #item1 {
     position: absolute;
-    top: 68.5vh;
-    left: 12vw;
+    top: 57vh;
+    left: 40vw;
 }
-
-
-
 
 #item2 {
     position: absolute;
@@ -225,15 +224,23 @@ body {
     left: 44vw;
 }
 
-
-
-
 #item3 {
     position: absolute;
     top: 52vh;
     left: 64vw;
 }
 
+#item4 {
+    position: absolute;
+    top: 35vh;
+    left: 56vw;
+}
+
+#item5 {
+    position: absolute;
+    top: 54vh;
+    left: 50vw;
+}
 
 .battles {
     display: flex;
