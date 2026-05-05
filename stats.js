@@ -262,14 +262,15 @@ export const protagonist = {
         maxhealth: 75,
         attacks: [
             { text: 'Hans pummelled his opponent for 20 damage!', damage: 20 },
-            { text: 'Hans bicycle kicks the opponent for 30 damage!', damage: 30 },
+            { text: 'Hans bicycle kicks the opponent for 30 damage!', damage: 30 }
         ]
     },
 
     clerica: {
         maxhealth: 100,
-        heal: 20
-    }
+        attacks: [
+            {text: 'Clerica heals the party for 20 hp!', heal: 20}
+    ]}
 };
 
 export const enemies = {
