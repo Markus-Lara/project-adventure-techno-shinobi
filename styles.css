@@ -103,6 +103,13 @@ body {
     align-items: center;
 }
 
+
+
+
+
+
+
+
 #Continue {
     margin-top: 5vh;
 }
@@ -260,17 +267,14 @@ body {
     background-image: url(images/slash.png);
     background-color: rgba(0, 0, 0, 0.7);
 }
-
 #inventory {
     background-image: url(images/inventory.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
-
 #skills {
     background-image: url(images/skills.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
-
 #fabricator {
     background-image: url(images/fabricator.png);
     background-color: rgba(0, 0, 0, 0.7)
@@ -381,7 +385,6 @@ body {
         width: 360px;
         font-size: 11.5px;
     }
-
     .battle {
         width: 100px;
         margin-right: 2vh;
