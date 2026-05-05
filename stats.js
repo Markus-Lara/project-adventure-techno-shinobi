@@ -70,15 +70,7 @@ export const dialogue = {
     },
 
     items: {
-        text: 'Hey! There\'s some shiny things here!'
-    },
-
-    gothealingitem: {
-        text: 'I got a healing potion!'
-    },
-
-    gotdmgitem: {
-        text: 'I got a damage potion!'
+        text: 'Hey! There\'s some shiny things here! I should go get those real quick! (0/5)'
     },
 
     enterfrostveil: {                   //city and their enemy objects
@@ -292,7 +284,7 @@ export const enemies = {
 
     polarbearer: {
         name: 'polarbearer',
-        maxhealth: 125,
+        maxhealth: 120,
         attacks: [
             { text: 'Polarbearer slammed his shield and did 8 damage!', damage: 8 }
         ]
@@ -317,7 +309,7 @@ export const enemies = {
 
     mab: {
         name: 'M.A.B',
-        maxhealth: 125,
+        maxhealth: 120,
         attacks: [
             { text: 'M.A.B swings his arm and deals 8 damage!', damage: 8 }
         ]
@@ -366,7 +358,7 @@ export const enemies = {
 
     bomberregy: {
         name: 'Bomber Regy',
-        maxhealth: 125,
+        maxhealth: 120,
         attacks: [
             { text: 'Bomber Regy fires his cannon and does 8 damage!', damage: 8 }]
     },
