@@ -39,7 +39,7 @@ const hanshp = document.getElementById("hanshp")
 
 const bridgettehp = document.getElementById("bridgettehp")
 
-const clerica = document.getElementById("clericahp")
+const clericahp = document.getElementById("clericahp")
 
 const enemy1hp = document.getElementById("enemy1hp")
 
@@ -82,6 +82,12 @@ var lambda = false
 var grumoda = false
 
 var victory= false
+
+var hans = false
+
+var bridgette = false
+
+var clerica = false
 
 var enemytype;
 
@@ -529,24 +535,8 @@ choice1.addEventListener("click", function () {       //choice 1 function
         story.push("sealion")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -554,24 +544,8 @@ choice1.addEventListener("click", function () {       //choice 1 function
         story.push("sealion")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -579,99 +553,8 @@ choice1.addEventListener("click", function () {       //choice 1 function
         story.push("polarbearer")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
-        beginbattle()
-    }
-
-    else if (battlecount === 4 && presentStory === "cityprogression" && frostveil) {
-        story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
-        beginbattle()
-    }
-
-    else if (battlecount === 5 && presentStory === "cityprogression" && frostveil) {
-        story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
-        beginbattle()
-    }
-
-    else if (battlecount === 6 && presentStory === "cityprogression" && frostveil) {
-        story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -679,24 +562,8 @@ choice1.addEventListener("click", function () {       //choice 1 function
         story.push("penguinja")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -767,24 +634,8 @@ choice2.addEventListener("click", function () { //choice 2 function
         story.push("polarbearer")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -792,24 +643,8 @@ choice2.addEventListener("click", function () { //choice 2 function
         story.push("penguinja")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -817,24 +652,8 @@ choice2.addEventListener("click", function () { //choice 2 function
         story.push("sealion")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -842,24 +661,8 @@ choice2.addEventListener("click", function () { //choice 2 function
         story.push("penguinja")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -867,24 +670,8 @@ choice2.addEventListener("click", function () { //choice 2 function
         story.push("sealion")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -892,24 +679,8 @@ choice2.addEventListener("click", function () { //choice 2 function
         story.push("polarbearer")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -917,24 +688,8 @@ choice2.addEventListener("click", function () { //choice 2 function
         story.push("sealion")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -1013,24 +768,8 @@ choice3.addEventListener("click", function () {          //choice 3 function
         story.push("penguinja")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -1038,24 +777,8 @@ choice3.addEventListener("click", function () {          //choice 3 function
         story.push("polarbearer")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -1063,24 +786,8 @@ choice3.addEventListener("click", function () {          //choice 3 function
         story.push("penguinja")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -1088,24 +795,8 @@ choice3.addEventListener("click", function () {          //choice 3 function
         story.push("sealion")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -1113,24 +804,8 @@ choice3.addEventListener("click", function () {          //choice 3 function
         story.push("polarbearer")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -1138,24 +813,8 @@ choice3.addEventListener("click", function () {          //choice 3 function
         story.push("penguinja")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -1163,24 +822,8 @@ choice3.addEventListener("click", function () {          //choice 3 function
         story.push("polarbearer")
         presentStory = story[story.length - 1]
         localStorage.setItem("bookmark", presentStory)
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemytype = localStorage.getItem("bookmark")
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-        storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        enemydisplay()
+        battledisplay()
         beginbattle()
     }
 
@@ -1450,3 +1093,39 @@ function winBattle() {
         console.log('battlecount: ' + battlecount)
     }
 };
+
+function enemydisplay() {
+    enemytype = localStorage.getItem("bookmark")
+    enemy1.src = "images/" + enemytype + ".png"
+    enemy1.style.height = "300px"
+    storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
+}
+
+function battledisplay() {
+    enemy1hp.style.display = 'inline-block'
+    enemy1.style.display = 'inline-block'
+    jasonhp.style.display = 'inline-block'
+    slash.style.display = 'inline-block'
+    inventory.style.display = 'inline-block'
+    skills.style.display = 'inline-block'
+    if (hasfabricator == false)
+        fabricator.style.display = 'none'
+    else {
+        fabricator.style.display = 'inline-block'
+    }
+    choice1.style.display = 'none'
+    choice2.style.display = 'none'
+    choice3.style.display = 'none'
+}
+
+function hansattack () {
+    setTimeout(function () {
+        let hansAttack = Math.floor(Math.random() * protagonist[hans].attacks.length)
+        let chosenAttack = protagonist[hans].attacks[protagonistAttacks]
+        remainingenemyhp = remainingenemyhp - chosenAttack.damage
+        storyContainer.disabled = true
+
+        storyContainer.innerHTML = chosenAttack.text
+        enemyattack();
+    }, 1750);
+}
