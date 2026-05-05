@@ -103,6 +103,13 @@ body {
     align-items: center;
 }
 
+
+
+
+
+
+
+
 #Continue {
     margin-top: 5vh;
 }
@@ -191,12 +198,13 @@ body {
 #item3,
 #item4,
 #item5 {
-    width: 95px;
-    height: 95px;
+    width: 120px;
+    height: 120px;
     background-color: rgba(0, 0, 0, 0.0);
-    background-image: url(images/item.png);
+    background-image: url(images/item.gif);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
     border: 0px;
     visibility: hidden;
     cursor: pointer;
@@ -259,17 +267,14 @@ body {
     background-image: url(images/slash.png);
     background-color: rgba(0, 0, 0, 0.7);
 }
-
 #inventory {
     background-image: url(images/inventory.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
-
 #skills {
     background-image: url(images/skills.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
-
 #fabricator {
     background-image: url(images/fabricator.png);
     background-color: rgba(0, 0, 0, 0.7)
@@ -380,7 +385,6 @@ body {
         width: 360px;
         font-size: 11.5px;
     }
-
     .battle {
         width: 100px;
         margin-right: 2vh;

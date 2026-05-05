@@ -481,6 +481,232 @@ storyContainer.addEventListener("click", function () {
             storyContainer.disabled = true
         }
 
+
+
+else if(presentStory==="hold") {                                //Prologue Wanabo encounter scene
+        story.push("hold2")
+        scene.style.backgroundImage = 'url(images/normalmentor.png)'
+        presentStory = story[story.length-1]
+
+
+storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
+
+    else if(presentStory==="hold2") {
+        story.push("hold3")
+        scene.style.backgroundImage = 'url(images/normalmentor.png)'
+        presentStory = story[story.length-1]
+
+
+        storyContainer.innerHTML = dialogue[presentStory].text
+     }
+
+
+    else if(presentStory==="hold3") {
+        story.push("junior")
+        scene.style.backgroundImage = 'url(images/junior.png)'
+        presentStory = story[story.length-1]
+
+
+storyContainer.innerHTML = dialogue[presentStory].text
+}
+
+
+    else if(presentStory==="investigate") {                       //investigate scene
+        story.push("investigate2")
+        scene.style.backgroundImage = 'url(images/normalmentor.png)'
+        presentStory = story[story.length-1]
+
+
+storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
+
+    else if(presentStory==="investigate2"){
+        story.push("investigate3")
+        scene.style.backgroundImage = 'url(images/normalmentor.png)'
+        presentStory = story[story.length-1]
+       
+        storyContainer.innerHTML = dialogue[presentStory].text
+     }
+
+
+    else if(presentStory==="investigate3") {
+         story.push("junior")
+        scene.style.backgroundImage = 'url(images/junior.png)'
+    presentStory = story[story.length-1]
+
+
+storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
+
+    else if(presentStory === "junior") {                        //junior scene
+        scene.style.backgroundImage = 'url(images/junior.png)'
+        presentStory = story[story.length-1]
+
+
+    storyContainer.innerHTML = dialogue[presentStory].text
+}
+
+
+if (presentStory === "sealion") {                               ///start battles
+    story.push("battlestart")
+    presentStory = story[story.length-1]
+    storyContainer.innerHTML = dialogue[presentStory].text
+    slash.style.display = 'inline-block'
+    inventory.style.display = 'inline-block'
+    skills.style.display = 'inline-block'
+    if (hasfabricator === false)
+        fabricator.style.display = 'none'
+    else {
+        fabricator.style.display = 'inline-block'
+    }
+enemy1.src = "images/sealion.png"
+enemy1.style.height = "300px"
+}
+
+
+ else if (presentStory === "polarbearer") {
+    story.push("battlestart")
+    presentStory = story[story.length-1]
+    storyContainer.innerHTML = dialogue[presentStory].text
+    slash.style.display = 'inline-block'
+    inventory.style.display = 'inline-block'
+    skills.style.display = 'inline-block'
+    if (hasfabricator === false)
+        fabricator.style.display = 'none'
+    else {
+        fabricator.style.display = 'inline-block'
+    }
+    enemy1.src = "images/polarbearer.png"
+enemy1.style.height = "300px"
+}
+
+
+ else if (presentStory === "penguinja") {
+story.push("battlestart")
+    presentStory = story[story.length-1]
+    storyContainer.innerHTML = dialogue[presentStory].text
+    slash.style.display = 'inline-block'
+    inventory.style.display = 'inline-block'
+    skills.style.display = 'inline-block'
+    if (hasfabricator === false)
+        fabricator.style.display = 'none'
+    else {
+        fabricator.style.display = 'inline-block'
+    }
+enemy1.src = "images/penguinja.png"
+enemy1.style.height = "300px"
+}
+
+
+else if (presentStory === "juniornice") {                               //junior nice
+    if (playerpath === "run") {
+    story.push("items")
+    scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
+    presentStory = story[story.length-1]
+
+
+storyContainer.innerHTML = dialogue[presentStory].text
+}
+
+
+else if(playerpath === "hold") {
+    story.push("items")
+    scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
+    presentStory = story[story.length-1]
+
+
+storyContainer.innerHTML = dialogue[presentStory].text
+}
+
+
+else if(playerpath === "investigate"){
+    story.push("items")
+    scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
+    presentStory = story[story.length-1]
+
+
+storyContainer.innerHTML = dialogue[presentStory].text
+}
+presentStory = story[story.length-1]
+storyContainer.innerHTML = dialogue[presentStory].text
+}
+
+
+if (presentStory === "juniormean") {                            //junior mean
+    if (playerpath === "run") {
+        story.push("items")
+        scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
+        presentStory = story[story.length-1]
+
+
+    storyContainer.innerHTML = dialogue[presentStory].text
+}
+
+
+    else if(playerpath === "hold") {
+        story.push("items")
+        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
+        presentStory = story[story.length-1]
+
+
+    storyContainer.innerHTML = dialogue[presentStory].text
+}
+
+
+
+
+else if(playerpath === "investigate"){
+        story.push("items")
+        scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
+        presentStory = story[story.length-1]
+
+
+    storyContainer.innerHTML = dialogue[presentStory].text
+}
+presentStory = story[story.length-1]
+
+
+storyContainer.innerHTML = dialogue[presentStory].text
+}
+
+
+if (gathereditems === 3) {
+    if (playerpath === "run") {
+        story.push("enterfrostveil")
+        presentStory = story[story.length-1]
+    storyContainer.innerHTML = dialogue[presentStory].text
+    }
+    else if (playerpath === "hold") {
+        story.push("enterlambda")
+        presentStory = story[story.length-1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+    else if (playerpath === "investigate") {
+        story.push("entergrumoda")
+        presentStory = story[story.length-1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+    gathereditems = 0
+    console.log("gathereditems", gathereditems)
+}
+
+
+else if(presentStory === "items")
+
+
+if (presentStory === "items") {                              //items function
+item1.style.visibility = 'visible'
+item2.style.visibility = 'visible'
+item3.style.visibility = 'visible'
+}
+
+
+
+
     if (dialogue[presentStory].choices) { //checks current array index for choices
         if (dialogue[presentStory].choices.length === 3) {
             choice1.innerHTML = dialogue[presentStory].choices[0][0]
