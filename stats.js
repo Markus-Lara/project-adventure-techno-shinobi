@@ -399,6 +399,11 @@ export const enemies = {
     }
 };
 
+console.log(
+    enemies[Object.keys(enemies)[Math.floor(Math.random()*Object.keys(enemies).length)]]
+)
+
+
 export const items = {
 
     heal: {

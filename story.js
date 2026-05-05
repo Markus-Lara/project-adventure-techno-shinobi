@@ -1,4 +1,4 @@
-import { dialogue, protagonist, enemies, items } from "./stats.js"
+import { dialogue, protagonist, enemies, items} from "./stats.js"
 const storyContainer = document.getElementById("startexpo"); //the text box
 
 var choice1 = document.getElementById("choice1")
@@ -55,6 +55,8 @@ var playerpath = ""
 
 var juniorpath = ""
 
+var newenemy = ""
+
 var healingpotioncount = 0
 
 var dmgpotioncount = 0
@@ -78,6 +80,8 @@ var frostveil = false
 var lambda = false
 
 var grumoda = false
+
+var victory= false
 
 var enemytype;
 
@@ -508,7 +512,6 @@ storyContainer.addEventListener("click", function () {
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 });
-
 
 choice1.addEventListener("click", function () {       //choice 1 function
     if (presentStory === "firstchoice") {
