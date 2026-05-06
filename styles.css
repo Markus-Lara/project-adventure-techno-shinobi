@@ -19,7 +19,6 @@ body {
 
 
 
-
 .start {
     background-image: url("images/augmentationrevelation.png");
     height: 100vh;
@@ -27,7 +26,6 @@ body {
     background-position: center;
     background-size: cover;
 }
-
 
 
 
@@ -82,7 +80,6 @@ body {
     font-family: 'inter', sans-serif;
     font-size: 5vh;
     cursor: pointer;
-
 }
 
 #enemy1hp,
@@ -103,19 +100,9 @@ body {
     align-items: center;
 }
 
-
-
-
-
-
-
-
 #Continue {
     margin-top: 5vh;
 }
-
-
-
 
 #New-Game {
     margin-top: 10vh;
@@ -154,9 +141,6 @@ body {
     width: 1300px;
     margin-bottom: 50px;
 }
-
-
-
 
 .lambda {
     background-image: url(images/LambdaCentral.png);
@@ -209,9 +193,6 @@ body {
     visibility: hidden;
     cursor: pointer;
 }
-
-
-
 
 #item1 {
     position: absolute;
@@ -308,6 +289,46 @@ body {
     background-position: left;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.skillgrouping {
+    position: absolute;
+    height: 180px;
+    width: 1300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    display: none;
+}
+
+.skillset {
+    height: 80px;
+    background: black;
+    font-size: large;
+    border-color: #48A6F3;
+    color:white;
+    font-family: 'inter', sans-serif;
+    margin: 0px;
+}
+
+#skillone {
+    display: none;
+}
+
+#skilltwo {
+    display: none;
+}
+
+#skillthree {
+    display: none;
+}
+
+#skillfour {
+    display: none;
+}
+
+#skillfive {
+    display: none;
 }
 
 @media (max-width: 430px) {
