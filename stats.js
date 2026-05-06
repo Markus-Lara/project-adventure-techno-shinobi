@@ -97,8 +97,8 @@ export const dialogue = {
     hans: {
         text: 'Jason pushes through the freezing city, but he notices another figure in the distance, and they seem human. Jason cautiously approaches, but he gets a sense that they are not hostile, judging by their hurt posture and slow movements. He greets the human-figure, and he realizes that the person seems hurt. What will you do?',
         choices: [
-            ["Help Hans", "Ally"],
-            ["Don\'t help Hans", "No Ally"]
+            ["Help the figure", "Ally"],
+            ["Don\'t help the figure", "No Ally"]
         ]
     },
 
@@ -111,8 +111,7 @@ export const dialogue = {
     },
 
     kamiron: {
-        description: 'Jason is pondering where the map piece is, when he is pushed back by some…force. He lands on his foot and knee, stabbing his blade into the ground. The fog clears, and Jason notices a lumbering figure, standing there with two axes made of ice. His hands have a ventilation system, which seems to be how he creates his twin axes, and he looks human, but is clearly a robot.',
-        text: '“I hoped my augmented animals may stop or slow you down, but I have to do the job myself! Have at you!”'
+        text: 'I ponder where the map piece is, when I am pushed back by some…force. I land on my foot and knee, stabbing my blade into the ground. The fog clears, and I notice a lumbering figure, standing there with two axes made of ice. His hands have a ventilation system, which seems to be how he creates his twin axes, and he looks human, but is clearly a robot. “I hoped my augmented animals may stop or slow you down, but I have to do the job myself! Have at you!”'
     },
 
     enterlambda: {
@@ -174,10 +173,7 @@ export const dialogue = {
     },
 
     shievaandbrassknuckles: {
-        description: 'As Jason progresses through the jungle, he makes it to this beautiful area filled with a dynamic range of flowers and multiple crystal clear lakes with the only waterfall in the jungle. This also seems to be the end of the path of the jungle. However, as he walks towards the end of the path, a war fan with sharp blades seems to charge at him quickly, it grazes his skin, making him slightly bleed.',
-        text: '"Hmph...I could have easily gotten your head...the amount of luck you must have."',
-        description: 'The figure appears to be a woman, covering the bottom of her face with a teal mask. She wears a flexible body suit, fit for assassinating. Her war fan comes back to her, only for it to be revealed that she has two war fans. Another figure with a low and husky voice says back,',
-        text: ''
+        text: 'As Jason progresses through the jungle, he makes it to this beautiful area filled with a dynamic range of flowers and multiple crystal clear lakes with the only waterfall in the jungle. This also seems to be the end of the path of the jungle. However, as he walks towards the end of the path, a war fan with sharp blades seems to charge at him quickly, it grazes his skin, making him slightly bleed. "Hmph...I could have easily gotten your head...the amount of luck you must have." The figure appears to be a woman, covering the bottom of her face with a teal mask. She wears a flexible body suit, fit for assassinating. Her war fan comes back to her, only for it to be revealed that she has two war fans. Another figure with a low and husky voice says back, "He won\'t be so lucky when I smash his skull! It seems I have no other way around, I must fight!',
     },
     //city and their enemy objects end
 
@@ -194,23 +190,23 @@ choices: [
 ]
 },
 
-    finishcity1: {                      //end city objects
-        text: '',
+    finishfrostveil: {                      //end city objects
+        text: '"Phew, that was an intense fight" says I as I go to inspect the now deactivated cyborg body, but as I head over to grab what seems to be a disk in his chest compartment, the ice ends up cracking. I hurredly move past the gates, but I am reminded that I need that map piece to find the fabricator! I am ready to dive back in there, but Junior stops me, saying that he downloaded the copy of the disk, and we can continue on',
         choices: [
             ["Lamba Central", "city2"],
             ["Grumoda Jungle", "city3"]
         ]
     },
 
-    finishcity2: {
-        text: '',
+    finishlambda: {
+        text: 'The cyborg falls, and I go over to collect',
         choices: [
             ["Frostveil City", "city1"],
             ["Grumoda Jungle", "city3"]
         ]
     },
 
-    finishcity3: {
+    finishgrumoda: {
         text: '',
         choices: [
             ["Frostveil City", "city1"],
@@ -240,7 +236,7 @@ export const protagonist = {
         maxhealth: 100,
         doubledamage: 'Jason does double damage this turn!',
         attacks: [
-            { text: 'Jason slashed his opponent for 15 damage!', damage: 15 },
+            { text: 'Jason slashed his opponent for 15 damage!', damage: 120 },
             { text: 'Jason slashes twice and does 30 damage!', damage: 30 },
             { text: 'Jason uses the combined move: Fan Knuckles and does 35 damage!', damage: 35 },
             { text: 'Jason uses Frost Axe Throw and does 35 damage!', damage: 35 },
