@@ -1,7 +1,7 @@
 export const dialogue = {
 
     intro: {
-        text: 'So today, I opened a new manager position to work with Benjamin, since he has to watch over so much already. I put up some signs around the city looking for a new manager position, and just as I had hoped, three candidates came into the business. There\'s one Jessie Pinkman, who was so nervous I could see her shaking so much, which wasn\'t a great quality for the job here. There was one Rowan Todd, who seemed great at the inteerview but looking at his previous applications they usually ended on a sour note, which isn\'t good either. The the last participant James Loplin, however, seemed perfect. He answered every question about the job perfectly, and his qualifications and previous work places spoke highly of him. I decided that he would be the perfect candidate.',
+        text: 'So today, I opened a new manager position to work with Benjamin, since he has to watch over so much already. I put up some signs around the city looking for a new manager position, and just as I had hoped, three candidates came into the business. There\'s one Jessie Pinkman, who was so nervous I she was shaking like an active jackhammer, which wasn\'t a great quality for the job here. There was one Rowan Todd, who seemed great at the interview, but looking at his previous applications they usually ended on a sour note, which isn\'t good either. The the last participant James Loplin, however, seemed perfect. He answered every question about the job perfectly, and his qualifications and previous work places spoke highly of him. I decided that he would be the perfect candidate.',
     },
 
     hiring: {
@@ -135,6 +135,26 @@ export const dialogue = {
         text: 'maybe better'
     },
 
+    bridgette: {
+        text: 'Continuing through this desert, I spot a massive figure standing over a pile of other broken robots. Her presence alone is intimidating, and alarms are blaring in my head. What do I do?',
+        choices: [
+            ["Approach the pile", "Ally"],
+            ["Play it safe", "No Ally"]
+        ]
+    },
+
+    bridgettejoin: {
+text: 'Despite what my senses tell me, I approach the giant pile of broken parts, curious yet fearful of what may occur now. The huge figure turns her head and notices me, then she slides down. "Hey there! Didn\'t know there was anyone else out here! I\'m Bridgette, always looking for the next battle! From what it looks like, you seems liek you are on a journey. Do tell me, what is it?" I tell Bridgette my story, and who I\'m after, and her face darkens a bit. "Wanoba, huh? I\'ve got some history with him too. I\'ll join you." (New Member Acquired)'
+    },
+
+bridgettenojoin: {
+text: '"Something tells me that whoever that is, they are dangerous. I should go before they notice me. With that, I push on.'
+},
+
+boomera: {
+    text: 'I approach what seems to be the end of the ruined city, and as I approach the gate, I notice a figure walking in from the right side of the street in front of the gate. "Halt, who goes there!" says the figure. I  notice that the figure is feminine, and she looks damaged, so maybe if I just pass bye without saying anything..."Hey, you aren\t getting past this point, and for trying to do so you will face my wrath!"'
+},
+
     entergrumoda: {
         text: 'As he travels through this path, he ends up in this serene atmosphere, surrounded by organized plant colonies and beautiful lakes. It\'s almost peaceful…a strikingly different contrast from the previous places. Jason is now in the Grumoda Jungle. Despite the peaceful scenery, it is filled with deadly plant cyborg fighters, willing to defend their colonies to the death! Within this jungle Jason has three paths to choose from, which will he choose?',
         choices: [
@@ -236,7 +256,7 @@ export const protagonist = {
         maxhealth: 100,
         doubledamage: 'Jason does double damage this turn!',
         attacks: [
-            { text: 'Jason slashed his opponent for 15 damage!', damage: 120 },
+            { text: 'Jason slashed his opponent for 15 damage!', damage: 150 },
             { text: 'Jason slashes twice and does 30 damage!', damage: 30 },
             { text: 'Jason uses the combined move: Fan Knuckles and does 35 damage!', damage: 35 },
             { text: 'Jason uses Frost Axe Throw and does 35 damage!', damage: 35 },
@@ -247,7 +267,6 @@ export const protagonist = {
     },
 
     bridgette: {
-        maxhealth: 150,
         attacks: [
             { text: 'Bridgette hammered into the opponent for 10 damage!', damage: 10 },
             { text: 'Bridgette spiral spins into the opponent for 20 damage!', damage: 20 }
@@ -255,7 +274,6 @@ export const protagonist = {
     },
 
     hans: {
-        maxhealth: 75,
         attacks: [
             { text: 'Hans pummelled his opponent for 20 damage!', damage: 20 },
             { text: 'Hans bicycle kicks the opponent for 30 damage!', damage: 30 }
@@ -263,7 +281,6 @@ export const protagonist = {
     },
 
     clerica: {
-        maxhealth: 100,
         attacks: [
             {text: 'Clerica heals the party for 20 hp!', heal: 20}
     ]}
