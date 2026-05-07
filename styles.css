@@ -2,10 +2,15 @@
     color: white;
 }
 
+
 body {
     background-size: cover;
     height: 100%;
 }
+
+
+
+
 
 
 
@@ -16,6 +21,8 @@ body {
     align-items: center;
     background-image: url("images/start-screen.png");
 }
+
+
 
 
 
@@ -31,6 +38,8 @@ body {
 
 
 
+
+
 .title-box {
     position: relative;
     display: inline-block;
@@ -38,6 +47,10 @@ body {
     justify-content: center;
     margin-top: 15vh;
 }
+
+
+
+
 
 
 
@@ -55,6 +68,10 @@ body {
 
 
 
+
+
+
+
 .flower-border {
     position: relative;
     display: inline-block;
@@ -66,9 +83,17 @@ body {
 
 
 
+
+
+
+
 .flower-border:hover {
     transform: scale(1.2);
 }
+
+
+
+
 
 
 
@@ -82,8 +107,8 @@ body {
     font-family: 'inter', sans-serif;
     font-size: 5vh;
     cursor: pointer;
-
 }
+
 
 #enemy1hp,
 #enemy2hp,
@@ -95,6 +120,7 @@ body {
     display: none;
 }
 
+
 .enemysingle,
 .enemydouble,
 .enemytriple {
@@ -104,17 +130,9 @@ body {
 }
 
 
-
-
-
-
-
-
 #Continue {
     margin-top: 5vh;
 }
-
-
 
 
 #New-Game {
@@ -124,10 +142,18 @@ body {
 
 
 
+
+
+
+
 .placement {
     display: flex;
     justify-content: center;
 }
+
+
+
+
 
 
 
@@ -144,6 +170,10 @@ body {
 
 
 
+
+
+
+
 #startexpo {
     background-color: rgba(0, 0, 0, 0.7);
     border-color: #48A6F3;
@@ -156,8 +186,6 @@ body {
 }
 
 
-
-
 .lambda {
     background-image: url(images/LambdaCentral.png);
     background-position: center;
@@ -165,6 +193,10 @@ body {
     background-repeat: no-repeat;
     margin: 0px;
 }
+
+
+
+
 
 
 
@@ -179,6 +211,10 @@ body {
 
 
 
+
+
+
+
 #choice1,
 #choice2,
 #choice3 {
@@ -189,6 +225,10 @@ body {
     font-size: x-large;
     display: none;
 }
+
+
+
+
 
 
 
@@ -211,13 +251,12 @@ body {
 }
 
 
-
-
 #item1 {
     position: absolute;
     top: 57vh;
     left: 40vw;
 }
+
 
 #item2 {
     position: absolute;
@@ -225,11 +264,13 @@ body {
     left: 44vw;
 }
 
+
 #item3 {
     position: absolute;
     top: 52vh;
     left: 64vw;
 }
+
 
 #item4 {
     position: absolute;
@@ -237,16 +278,20 @@ body {
     left: 56vw;
 }
 
+
 #item5 {
     position: absolute;
     top: 54vh;
     left: 50vw;
 }
 
+
 .battles {
     display: flex;
     justify-content: space-between;
 }
+
+
 
 
 .battle {
@@ -263,6 +308,8 @@ body {
 }
 
 
+
+
 #slash {
     background-image: url(images/slash.png);
     background-color: rgba(0, 0, 0, 0.7);
@@ -272,13 +319,14 @@ body {
     background-color: rgba(0, 0, 0, 0.7)
 }
 #skills {
-    background-image: url(images/technique.png);
+    background-image: url(images/skills.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
 #fabricator {
     background-image: url(images/fabricator.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
+
 
 #healing,
 #damage {
@@ -292,6 +340,7 @@ body {
     z-index: 1;
 }
 
+
 #healing {
     bottom: 312px;
     left: 585px;
@@ -300,6 +349,7 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
 }
+
 
 #damage {
     bottom: 312px;
@@ -310,7 +360,59 @@ body {
     background-size: contain;
 }
 
+
+.skillgrouping {
+    position: absolute;
+    height: 180px;
+    width: 1300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    display: none;
+}
+
+
+.skillset {
+    height: 80px;
+    background: black;
+    font-size: large;
+    border-color: #48A6F3;
+    color:white;
+    font-family: 'inter', sans-serif;
+    margin: 0px;
+}
+
+
+#skillone {
+    display: none;
+}
+
+
+#skilltwo {
+    display: none;
+}
+
+
+#skillthree {
+    display: none;
+}
+
+
+#skillfour {
+    display: none;
+}
+
+
+#skillfive {
+    display: none;
+}
+
+
 @media (max-width: 430px) {
+
+
+
+
 
 
 
@@ -324,11 +426,19 @@ body {
 
 
 
+
+
+
+
     #item2 {
         position: absolute;
         top: 70vh;
         left: 40vw;
     }
+
+
+
+
 
 
 
@@ -343,12 +453,20 @@ body {
 
 
 
+
+
+
+
 @media (max-width: 430px) {
     #item1 {
         position: absolute;
         top: 70vh;
         left: 14vw;
     }
+
+
+
+
 
 
 
@@ -362,12 +480,18 @@ body {
 
 
 
+
+
+
+
     #item3 {
         position: absolute;
         top: 70vh;
         left: 85vw;
     }
 }
+
+
 
 
 @media (max-width: 430px) and (max-height: 932px) {
@@ -381,6 +505,8 @@ body {
     }
 
 
+
+
     #startexpo {
         width: 360px;
         font-size: 11.5px;
@@ -392,11 +518,15 @@ body {
     }
 
 
+
+
     #inventory {
         background-size: 45px;
         width: 55px;
         height: 45px;
     }
+
+
 
 
     #slash {
@@ -406,11 +536,15 @@ body {
     }
 
 
+
+
     #skills {
         background-size: 45px;
         width: 55px;
         height: 45px;
     }
+
+
 
 
     #fabricator {
