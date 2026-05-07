@@ -47,15 +47,6 @@ const scene = document.getElementById("prologue")
 const jasonhp = document.getElementById("jasonhp")
 
 
-const hanshp = document.getElementById("hanshp")
-
-
-const bridgettehp = document.getElementById("bridgettehp")
-
-
-const clericahp = document.getElementById("clericahp")
-
-
 const enemy1hp = document.getElementById("enemy1hp")
 
 
@@ -87,6 +78,9 @@ var playerpath = ""
 
 
 var juniorpath = ""
+
+
+var chapterprogression = 0
 
 
 var healingpotioncount = 0
@@ -128,6 +122,8 @@ var lambda = false
 var grumoda = false
 
 
+
+
 var victory = false
 
 
@@ -150,15 +146,6 @@ var boomerthrowskill = false
 
 
 var toothnailingskill = false
-
-
-var finishfrostveil = false
-
-
-var finishgrumoda = false
-
-
-var finishlambda = false
 
 
 var enemytype;
@@ -345,9 +332,7 @@ storyContainer.addEventListener("click", function () {
         story.push("cityprogression")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'inline-block'
+        displaythreechoices()
         enemy1hp.style.display = 'none'
         enemy1.style.display = 'none'
         slash.style.display = 'none'
@@ -421,52 +406,35 @@ storyContainer.addEventListener("click", function () {
             choice1.innerHTML = dialogue[presentStory].choices[0][0]
             choice2.innerHTML = dialogue[presentStory].choices[1][0]
             choice3.innerHTML = dialogue[presentStory].choices[2][0]
-            choice1.style.display = 'inline-block'
-            choice2.style.display = 'inline-block'
-            choice3.style.display = 'inline-block'
+            displaythreechoices()
         }
 
 
         else if (dialogue[presentStory].choices.length === 2) {
             choice1.innerHTML = dialogue[presentStory].choices[0][0]
             choice2.innerHTML = dialogue[presentStory].choices[1][0]
-            choice1.style.display = 'inline-block'
-            choice2.style.display = 'inline-block'
-            choice3.style.display = 'none'
+            displaytwochoices()
         }
     }
 
 
     else {
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
-    }
-
-
-    if (presentStory === "bridgettejoin" || presentStory === "bridgettenojoin") {
-        story.push("cityprogression")
-        presentStory = story[story.length - 1]
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-        choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice3.innerHTML = dialogue[presentStory].choices[2][0]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'inline-block'
+        hidechoices()
     }
 
 
     if (presentStory === "hanshelp" || presentStory === "hansnohelp") {
-        story.push("cityprogression")
-        presentStory = story[story.length - 1]
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-        choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice3.innerHTML = dialogue[presentStory].choices[2][0]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'inline-block'
+        levelcontinue()
+    }
+
+
+    if (presentStory === "bridgettejoin" || presentStory === "bridgettenojoin") {
+        levelcontinue()
+    }
+
+
+    if (presentStory === "clericatalk" || presentStory === "clericanotalk") {
+        levelcontinue()
     }
 
 
@@ -475,9 +443,7 @@ storyContainer.addEventListener("click", function () {
         presentStory = story[story.length - 1]
         choice1.innerHTML = dialogue[presentStory].choices[0][0]
         choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'none'
+        displaytwochoices()
         storyContainer.innerHTML = dialogue[presentStory].text
         battlecount++
         enemy1.style.display = 'inline-block'
@@ -491,9 +457,7 @@ storyContainer.addEventListener("click", function () {
         presentStory = story[story.length - 1]
         choice1.innerHTML = dialogue[presentStory].choices[0][0]
         choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'none'
+        displaytwochoices()
         storyContainer.innerHTML = dialogue[presentStory].text
         battlecount++
         enemy1.style.display = 'inline-block'
@@ -507,13 +471,25 @@ storyContainer.addEventListener("click", function () {
         presentStory = story[story.length - 1]
         choice1.innerHTML = dialogue[presentStory].choices[0][0]
         choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'none'
+        displaytwochoices()
         storyContainer.innerHTML = dialogue[presentStory].text
         battlecount++
         enemy1.style.display = 'inline-block'
         enemy1.src = "images/bridgette.png"
+        console.log("battlecount: " + battlecount)
+    }
+
+
+    if (battlecount === 4 && grumoda) {
+        story.push("clerica")
+        presentStory = story[story.length - 1]
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        displaytwochoices()
+        storyContainer.innerHTML = dialogue[presentStory].text
+        battlecount++
+        enemy1.style.display = 'inline-block'
+        enemy1.src = "images/clerica.png"
         console.log("battlecount: " + battlecount)
     }
 
@@ -530,27 +506,15 @@ storyContainer.addEventListener("click", function () {
         story.push("kamiron")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
     }
 
 
-    else if (battlecount === 9 && frostveil) {
-        battlecount = 0
-        frostveil = false
-        frostaxeskill = true
-        finishfrostveil = true
-        story.push("finishfrostveil")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-        choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'none'
-        console.log("finished frostveil: " + finishfrostveil)
-        console.log("battlecount: " + battlecount)
+else if (presentStory === "boomera") {
+        localStorage.setItem("bookmark", presentStory)
+        enemydisplay()
+        battledisplay()
+        beginbattle()
     }
 
 
@@ -558,27 +522,17 @@ storyContainer.addEventListener("click", function () {
         story.push("boomera")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
+        enemy1.src = "images/boomera.png"
+        enemy1.style.display = "inline-block"
     }
 
 
-    else if (battlecount === 9 && lambda) {
-        battlecount = 0
-        lambda = false
-        boomerthrowskill = true
-        finishlambda = true
-        story.push("finishfrostveil")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-        choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'none'
-        console.log("finished lambda: " + finishlambda)
-        console.log("battlecount: " + battlecount)
+else if (presentStory === "knucklesandshieva") {
+        localStorage.setItem("bookmark", presentStory)
+        enemydisplay()
+        battledisplay()
+        beginbattle()
     }
 
 
@@ -586,26 +540,47 @@ storyContainer.addEventListener("click", function () {
         story.push("knucklesandshieva")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
+        enemy1.src = "images/knucklesandshieva.png"
+        enemy1.style.display = "inline-block"
     }
 
 
-    else if (battlecount === 9 && grumoda) {
+    else if (battlecount === 9 && grumoda && chapterprogression === 0) {
         battlecount = 0
         grumoda = false
         fanknucklesskill = true
-        finishgrumoda = true
-        story.push("finishfrostveil")
+        chapterprogression++
+        story.push("finishgrumoda")
+        
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-        choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'none'
-        console.log("finished lambda: " + finishlambda)
+        console.log("battlecount: " + battlecount)
+    }
+
+
+    else if (battlecount === 9 && lambda && chapterprogression === 0) {
+        battlecount = 0
+        lambda = false
+        boomerthrowskill = true
+        chapterprogression++
+        story.push("finishlambda")
+        
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        console.log("battlecount: " + battlecount)
+    }
+
+
+else if (battlecount === 9 && frostveil && chapterprogression === 0) {
+        battlecount = 0
+        frostveil = false
+        frostaxeskill = true
+        chapterprogression++
+        story.push("finishfrostveil")
+        
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
         console.log("battlecount: " + battlecount)
     }
 
@@ -657,7 +632,7 @@ storyContainer.addEventListener("click", function () {
     }
 
 
-    else if (presentStory === "bomberreggy") {
+    else if (presentStory === "bomberregy") {
         localStorage.setItem("bookmark", presentStory)
         battledisplay()
         enemydisplay()
@@ -679,7 +654,39 @@ storyContainer.addEventListener("click", function () {
         enemydisplay()
         beginbattle()
     }
+
+    else if (presentStory === "finishfrostveil") {
+        story.push("finishfrostveil")
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        displaytwochoices()
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
+
+    else if (presentStory === "finishgrumoda") {
+        story.push("finishgrumoda")
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        displaytwochoices()
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
+
+    else if (presentStory === "finishlambda") {
+        story.push("finishlambda")
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        displaytwochoices()
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
+   
 });
+
 
 
 choice1.addEventListener("click", function () {       //choice 1 function
@@ -688,10 +695,40 @@ choice1.addEventListener("click", function () {       //choice 1 function
         playerpath = "run"
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         console.log("run path chosen")
+    }
+
+    else if (presentStory === "finishfrostveil") {
+        playerpath = "hold"
+        chapterprogression++
+         story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
+    }
+
+
+    else if (presentStory === "finishlambda") {
+        playerpath = "run"
+        chapterprogression++
+         story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
+    }
+
+
+    else if (presentStory === "finishgrumoda") {
+        playerpath = "run"
+        chapterprogression++
+         story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
     }
 
 
@@ -699,8 +736,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         story.push("hanshelp")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
+       hidechoices()
         hans = true
         allycount++
         enemy1.style.display = 'none'
@@ -712,9 +748,8 @@ choice1.addEventListener("click", function () {       //choice 1 function
         story.push("clericatalk")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        hans = true
+        hidechoices()
+        clerica = true
         allycount++
         enemy1.style.display = 'none'
         console.log("New ally acquired!")
@@ -725,9 +760,8 @@ choice1.addEventListener("click", function () {       //choice 1 function
         story.push("bridgettejoin")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        hans = true
+        hidechoices()
+        bridgette = true
         allycount++
         enemy1.style.display = 'none'
         console.log("New ally acquired!")
@@ -736,8 +770,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 1 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -746,8 +779,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 2 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -756,8 +788,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 3 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -766,8 +797,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 5 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -776,8 +806,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 6 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -786,8 +815,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 7 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -796,8 +824,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 8 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -806,8 +833,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 1 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -816,8 +842,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 2 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -826,8 +851,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 3 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -836,8 +860,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 5 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -846,8 +869,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 6 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -856,8 +878,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 7 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -866,8 +887,70 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (battlecount === 8 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 1 && presentStory === "cityprogression" && grumoda) {
+        story.push("weedwhip")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 2 && presentStory === "cityprogression" && grumoda) {
+        story.push("bomberregy")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 3 && presentStory === "cityprogression" && grumoda) {
+        story.push("bomberregy")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 5 && presentStory === "cityprogression" && grumoda) {
+        story.push("attackerfloresta")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 6 && presentStory === "cityprogression" && grumoda) {
+        story.push("bomberregy")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 7 && presentStory === "cityprogression" && grumoda) {
+        story.push("weedwhip")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 8 && presentStory === "cityprogression" && grumoda) {
+        story.push("attackerfloresta")
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -879,32 +962,25 @@ choice1.addEventListener("click", function () {       //choice 1 function
         juniorpath = "nice"
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
+        hidechoices()
         console.log("Junior will remember this")
     }
 
 
     if (presentStory === "enterfrostveil") {
         story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         beginbattle()
     }
 
 
     else if (presentStory === "enterlambda") {
         story.push("mab")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         enemy1.style.display = 'inline-block'
         enemy1.src = 'images/mab.png'
         enemy1.style.height = "300px"
@@ -914,29 +990,13 @@ choice1.addEventListener("click", function () {       //choice 1 function
 
     else if (presentStory === "entergrumoda") {
         story.push("weedwhip")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         enemy1.src = 'images/weedwhip.png'
         enemy1.style.height = '300px'
     }
 
-
-    else if (presentStory === "finishfrostveil") {
-        story.push("enterlambda")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-        choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice3.innerHTML = dialogue[presentStory].choices[2][0]
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'inline-block'
-    }
 });
 
 
@@ -946,10 +1006,37 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         playerpath = "hold"
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         console.log("Fight path chosen")
+    }
+
+    else if (presentStory === "finishfrostveil") {
+        playerpath = "investigate"
+        story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
+    }
+
+
+    else if (presentStory === "finishlambda") {
+        playerpath = "investigate"
+        story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
+    }
+
+
+    else if (presentStory === "finishgrumoda") {
+        playerpath = "hold"
+        story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
     }
 
 
@@ -957,8 +1044,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         story.push("hansnohelp")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
+        hidechoices()
         hans = false
         enemy1.style.display = 'none'
         console.log("Can never be too safe!")
@@ -969,8 +1055,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         story.push("clericanotalk")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
+        hidechoices()
         hans = true
         allycount++
         enemy1.style.display = 'none'
@@ -982,8 +1067,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         story.push("bridgettenojoin")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
+        hidechoices()
         hans = true
         allycount++
         enemy1.style.display = 'none'
@@ -993,8 +1077,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 1 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1003,8 +1086,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 2 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1013,8 +1095,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 3 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1023,8 +1104,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 5 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1033,8 +1113,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 6 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1043,8 +1122,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 7 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1053,8 +1131,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 8 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1063,8 +1140,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 1 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1073,8 +1149,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 2 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1083,8 +1158,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 3 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1093,8 +1167,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 5 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1103,8 +1176,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 6 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1113,8 +1185,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 7 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1123,8 +1194,70 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (battlecount === 8 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+else if (battlecount === 1 && presentStory === "cityprogression" && grumoda) {
+        story.push("bomberregy")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 2 && presentStory === "cityprogression" && grumoda) {
+        story.push("attackerfloresta")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 3 && presentStory === "cityprogression" && grumoda) {
+        story.push("weedwhip")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 5 && presentStory === "cityprogression" && grumoda) {
+        story.push("bomberregy")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 6 && presentStory === "cityprogression" && grumoda) {
+        story.push("weedwhip")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 7 && presentStory === "cityprogression" && grumoda) {
+        story.push("attackerfloresta")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 8 && presentStory === "cityprogression" && grumoda) {
+        story.push("bomberregy")
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1136,20 +1269,16 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         juniorpath = "mean"
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
+        hidechoices()
         console.log("You made Junior angry")
     }
 
 
     else if (presentStory === "enterfrostveil") {
         story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         beginbattle()
         return
     }
@@ -1157,12 +1286,9 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (presentStory === "enterlambda") {
         story.push("ahg")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         enemy1.style.display = 'inline-block'
         enemy1.src = 'images/ahg.png'
         beginbattle()
@@ -1171,41 +1297,25 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
 
     else if (presentStory === "entergrumoda") {
         story.push("attackerfloresta")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         enemy1.style.display = 'inline-block'
         enemy1.src = 'images/attackerfloresta.png'
         enemy1.style.height = '300px'
+        beginbattle()
     }
+
     else if (playerpath === "hold") {                                //checks playerpath based on previous choices
         story.push("enterlambda")
         lambda = true
         scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 
-
-    else if (presentStory === "finishfrostveil") {
-        story.push("entergrumoda")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
-        choice1.style.display = 'inline-block'
-        choice2.style.display = 'inline-block'
-        choice3.style.display = 'inline-block'
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-        choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        choice3.innerHTML = dialogue[presentStory].choices[2][0]
-    }
 });
 
 
@@ -1215,17 +1325,14 @@ choice3.addEventListener("click", function () {          //choice 3 function
         playerpath = "investigate"
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         console.log("Investigate path chosen")
     }
 
 
     else if (battlecount === 1 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1234,8 +1341,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 2 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1244,8 +1350,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 3 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1254,8 +1359,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 5 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1264,8 +1368,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 6 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1274,8 +1377,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 7 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1284,8 +1386,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 8 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1294,8 +1395,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 1 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1304,8 +1404,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 2 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1314,8 +1413,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 3 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1324,8 +1422,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 5 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1334,8 +1431,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 6 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1344,8 +1440,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 7 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
@@ -1354,26 +1449,85 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (battlecount === 8 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         enemydisplay()
         battledisplay()
         beginbattle()
     }
 
 
-    else if (presentStory === "entergrumoda") {
+    else if (battlecount === 1 && presentStory === "cityprogression" && grumoda) {
+        story.push("attackerfloresta")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 2 && presentStory === "cityprogression" && grumoda) {
+        story.push("weedwhip")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 3 && presentStory === "cityprogression" && grumoda) {
         story.push("bomberregy")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 5 && presentStory === "cityprogression" && grumoda) {
+        story.push("weedwhip")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 6 && presentStory === "cityprogression" && grumoda) {
+        story.push("attackerfloresta")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 7 && presentStory === "cityprogression" && grumoda) {
+        story.push("bomberregy")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+    else if (battlecount === 8 && presentStory === "cityprogression" && grumoda) {
+        story.push("weedwhip")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+
+else if (presentStory === "entergrumoda") {
+         story.push("bomberregy")
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
-        enemy1.src = 'images/bomberregy.png'
+        hidechoices()
         enemy1.style.display = 'inline-block'
-        enemy1.style.height = '300px'
-        console.log(presentStory)
+        enemy1.src = 'images/bomberregy.png'
+        beginbattle()
+        return
     }
 
 
@@ -1388,12 +1542,9 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (presentStory === "enterfrostveil") {
         story.push("sealion")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         beginbattle()
         return
     }
@@ -1401,15 +1552,13 @@ choice3.addEventListener("click", function () {          //choice 3 function
 
     else if (presentStory === "enterlambda") {
         story.push("asr")
-        presentStory = story[story.length - 1]
-        localStorage.setItem("bookmark", presentStory)
+        updatesaveenemy()
         storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.style.display = 'none'
-        choice2.style.display = 'none'
-        choice3.style.display = 'none'
+        hidechoices()
         enemy1.style.display = 'inline-block'
         enemy1.src = 'images/asr.png'
         beginbattle()
+        return
     }
 });
 
@@ -1423,7 +1572,7 @@ item1.addEventListener("click", function () {             //item functions here
 
 
 
-    storyContainer.innerHTML = 'I got a damage potion! ' + '(' + gathereditems + '/' + '5' + ')'
+    storyContainer.innerHTML = 'I got a healing potion! ' + '(' + gathereditems + '/' + '5' + ')'
     if (gathereditems === 5) {
         storyContainer.disabled = false;
     }
@@ -1437,7 +1586,7 @@ item2.addEventListener("click", function () { //item functions here
     gathereditems++
     presentStory = story[story.length - 1]
     item2.style.visibility = 'hidden'
-    storyContainer.innerHTML = 'I got a damage potion! ' + '(' + gathereditems + '/' + '5' + ')'
+    storyContainer.innerHTML = 'I got a healing potion! ' + '(' + gathereditems + '/' + '5' + ')'
     if (gathereditems === 5) {
         storyContainer.disabled = false;
     }
@@ -1479,7 +1628,7 @@ item5.addEventListener("click", function () { //item functions here
     gathereditems++
     presentStory = story[story.length - 1]
     item5.style.visibility = 'hidden'
-    storyContainer.innerHTML = 'I got a damage potion! ' + '(' + gathereditems + '/' + '5' + ')'
+    storyContainer.innerHTML = 'I got a healing potion! ' + '(' + gathereditems + '/' + '5' + ')'
     if (gathereditems === 5) {
         storyContainer.disabled = false;
     }
@@ -2007,15 +2156,16 @@ function bridgetteattack() {
             storyContainer.innerHTML = chosenAttack.text
             enemyattack();
         }
-    }, 1750);
+    }, 3500);
 }
 
 
 function clericaheal() {
     setTimeout(function () {
-        let clericaAttacks = Math.floor(Math.random() * protagonist.clerica.attacks.length)
-        let chosenAttack = protagonist.clerica.attacks[clericaAttacks]
-        jasonhealth = jasonhealth + chosenAttack.heal
+        jasonhealth = jasonhealth + 20
+        if (jasonhealth > protagonist["jason"].maxhealth) {
+            jasonhealth = protagonist["jason"].maxhealth;
+        }
         storyContainer.disabled = true
         slash.disabled = true
         inventory.disabled = true
@@ -2025,11 +2175,52 @@ function clericaheal() {
         }
         else {
             enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
-            storyContainer.innerHTML = chosenAttack.text
+            storyContainer.innerHTML = 'Clerica heals Jason for 20 hp!'
+            jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
             enemyattack();
         }
-    }, 1750);
+   
+    }, 5250);
 }
+
+
+function levelcontinue() {
+    story.push("cityprogression")
+        presentStory = story[story.length - 1]
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        choice3.innerHTML = dialogue[presentStory].choices[2][0]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        displaythreechoices()
+}
+
+
+function hidechoices() {
+    choice1.style.display = 'none'
+        choice2.style.display = 'none'
+        choice3.style.display = 'none'
+}
+
+
+function displaythreechoices() {
+    choice1.style.display = 'inline-block'
+        choice2.style.display = 'inline-block'
+        choice3.style.display = 'inline-block'
+}
+
+
+function updatesaveenemy() {
+    presentStory = story[story.length - 1]
+        localStorage.setItem("bookmark", presentStory)
+}
+
+
+function displaytwochoices() {
+choice1.style.display = 'inline-block'
+            choice2.style.display = 'inline-block'
+            choice3.style.display = 'none'
+}
+
 
 
 

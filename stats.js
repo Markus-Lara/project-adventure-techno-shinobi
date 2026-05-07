@@ -232,7 +232,7 @@ boomera: {
     },
 
 
-    shievaandbrassknuckles: {
+    knucklesandshieva: {
         text: 'As I continue through the jungle, I arrive at a breathtaking area filled with vibrant flowers, crystal-clear lakes, and the only waterfall I\'ve seen here. It feels like the end of this path. But as I move forward, a sharp war fan suddenly flies toward me. I barely react in time—it grazes my skin, leaving a thin cut. "Hmph… I could have easily taken your head. You\'re luckier than you think." A woman steps forward, the lower half of her face covered by a teal mask, her body suited for swift, precise movement. The war fan returns to her hand—and I realize she has two. Then another voice cuts in, low and husky: "He won\'t be so lucky when I smash his skull!" Looks like I don\'t have a choice—I have to fight',
     },
     //city and their enemy objects end
