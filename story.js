@@ -1,133 +1,182 @@
 import { dialogue, protagonist, enemies, items } from "./stats.js"
 const storyContainer = document.getElementById("startexpo"); //the text box
 
+
 var choice1 = document.getElementById("choice1")
+
 
 var choice2 = document.getElementById("choice2")
 
+
 var choice3 = document.getElementById("choice3")
+
 
 var item1 = document.getElementById("item1")
 
+
 var item2 = document.getElementById("item2")
+
 
 var item3 = document.getElementById("item3")
 
+
 var item4 = document.getElementById("item4")
+
 
 var item5 = document.getElementById("item5")
 
+
 var enemy1 = document.getElementById("enemy1")
 
-var enemy2 = document.getElementById("enemy2")
-
-var enemy3 = document.getElementById("enemy3")
 
 const slash = document.getElementById("slash")
 
+
 const inventory = document.getElementById("inventory")
+
 
 const skills = document.getElementById("skills")
 
+
 const fabricator = document.getElementById("fabricator")
+
 
 const scene = document.getElementById("prologue")
 
+
 const jasonhp = document.getElementById("jasonhp")
+
 
 const hanshp = document.getElementById("hanshp")
 
+
 const bridgettehp = document.getElementById("bridgettehp")
+
 
 const clericahp = document.getElementById("clericahp")
 
+
 const enemy1hp = document.getElementById("enemy1hp")
 
-const enemy2hp = document.getElementById("enemy2hp")
-
-const enemy3hp = document.getElementById("enemy3hp")
 
 const healitembutton = document.getElementById("healing")
 
+
 const damageitembutton = document.getElementById("damage")
+
 
 const skillgroup = document.getElementById("skillgrouping")
 
+
 const doubleslash = document.getElementById("skillone")
+
 
 const frostaxethrow = document.getElementById("skilltwo")
 
+
 const fanknuckles = document.getElementById("skillthree")
+
 
 const boomerthrow = document.getElementById("skillfour")
 
+
 const toothnailing = document.getElementById("skillfive")
+
 
 var playerpath = ""
 
+
 var juniorpath = ""
+
 
 var healingpotioncount = 0
 
+
 var dmgpotioncount = 0
+
 
 var gathereditems = 0
 
+
 var battlecount = 0
+
 
 var allycount = 0
 
+
 var playerturn = true
 
-var hasfabricator = true
+
+var hasfabricator = false
+
 
 var battleactive = false
 
+
 var dmgmodifier = false
 
+
 var victory = false
+
 
 var frostveil = false
 
+
 var lambda = false
+
 
 var grumoda = false
 
+
 var victory = false
+
 
 var hans = false
 
+
 var bridgette = false
+
 
 var clerica = false
 
+
 var frostaxeskill = false
+
 
 var fanknucklesskill = false
 
+
 var boomerthrowskill = false
+
 
 var toothnailingskill = false
 
+
 var finishfrostveil = false
+
 
 var finishgrumoda = false
 
+
 var finishlambda = false
+
 
 var enemytype;
 
+
 var remainingenemyhp;
 
+
 var jasonspa;
+
 
 var jasonhealth = protagonist["jason"].maxhealth
 
 
 let story = ["intro"]; //sets a value for the whole array
 
-var presentStory = story[story.length - 1] //presentStory is set to last index of story array
 
+var presentStory = story[story.length - 1] //presentStory is set to last index of story array
 
 
 storyContainer.addEventListener("click", function () {
@@ -140,6 +189,7 @@ storyContainer.addEventListener("click", function () {
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 
+
     else if (presentStory === "hiring") {
         story.push("firstchoice")
         presentStory = story[story.length - 1]
@@ -147,282 +197,134 @@ storyContainer.addEventListener("click", function () {
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 
+
     else if (presentStory === "firstchoice") {
         scene.style.backgroundImage = 'url(images/wanobaprologue.png)'
     }
+
 
     else if (presentStory === "run") {                                 //run scene
         story.push("run2")
         scene.style.backgroundImage = 'url(images/runmentor.png)'
         scene.style.backgroundPosition = 'center'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
-
     else if (presentStory === "run2") {
         story.push("run3")
-        presentStory = story[story.ength - 1]
-
+        presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "run3") {
         story.push("junior")
         scene.style.backgroundImage = 'url(images/junior.png)'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "hold") {                                //Prologue Wanabo encounter scene
         story.push("hold2")
         scene.style.backgroundImage = 'url(images/normalmentor.png)'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "hold2") {
         story.push("hold3")
         scene.style.backgroundImage = 'url(images/normalmentor.png)'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "hold3") {
         story.push("junior")
         scene.style.backgroundImage = 'url(images/junior.png)'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "investigate") {                       //investigate scene
         story.push("investigate2")
         scene.style.backgroundImage = 'url(images/normalmentor.png)'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "investigate2") {
         story.push("investigate3")
         scene.style.backgroundImage = 'url(images/normalmentor.png)'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "investigate3") {
         story.push("junior")
         scene.style.backgroundImage = 'url(images/junior.png)'
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "junior") {                        //junior scene
         scene.style.backgroundImage = 'url(images/junior.png)'
         presentStory = story[story.length - 1]
 
+
+
+
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 
-    if (presentStory === "sealion") {                               ///start battles
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        enemy1hp.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/sealion.png"
-        enemy1.style.height = "300px"
-    }
-
-    else if (presentStory === "polarbearer") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        enemy1hp.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/polarbearer.png"
-        enemy1.style.height = "300px"
-    }
-
-    else if (presentStory === "penguinja") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        enemy1hp.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-    }
-
-    if (presentStory === "mab") {                               ///start battles
-        battledisplay()
-        enemydisplay()
-        beginbattle()
-    }
-
-    else if (presentStory === "asr") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        enemy1hp.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator == false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/asr.png"
-        enemy1.style.height = "300px"
-    }
-
-    else if (presentStory === "ahg") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        enemy1hp.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/ahg.png"
-        enemy1.style.height = "300px"
-    }
-
-
-    else if (presentStory === "weedwhip") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        enemy1hp.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/weedwhip.png"
-        enemy1.style.height = "300px"
-    }
-
-    else if (presentStory === "attackerfloresta") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        enemy1hp.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/attackerfloresta.png"
-        enemy1.style.height = "300px"
-    }
-
-    else if (presentStory === "bomberreggy") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        enemy1hp.style.display = 'inline-block'
-        jasonhp.style.display = 'inline-block'
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/bombereggy.png"
-        enemy1.style.height = "300px"
-    }
 
     else if (presentStory === "juniornice") {                               //junior nice
         if (playerpath === "run") {
             story.push("items")
             scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
             presentStory = story[story.length - 1]
-
             storyContainer.innerHTML = dialogue[presentStory].text
         }
+
 
         else if (playerpath === "hold") {
             story.push("items")
             scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
             presentStory = story[story.length - 1]
-
             storyContainer.innerHTML = dialogue[presentStory].text
         }
+
 
         else if (playerpath === "investigate") {
             story.push("items")
             scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
             presentStory = story[story.length - 1]
-
             storyContainer.innerHTML = dialogue[presentStory].text
         }
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     if (presentStory === "juniormean") {                            //junior mean
         if (playerpath === "run") {
             story.push("items")
             scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
             presentStory = story[story.length - 1]
-
             storyContainer.innerHTML = dialogue[presentStory].text
         }
+
 
         else if (playerpath === "hold") {
             story.push("items")
             scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
             presentStory = story[story.length - 1]
-
             storyContainer.innerHTML = dialogue[presentStory].text
         }
 
@@ -431,13 +333,12 @@ storyContainer.addEventListener("click", function () {
             story.push("items")
             scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
             presentStory = story[story.length - 1]
-
             storyContainer.innerHTML = dialogue[presentStory].text
         }
         presentStory = story[story.length - 1]
-
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (victory === true) {
         victory = false
@@ -455,6 +356,7 @@ storyContainer.addEventListener("click", function () {
         fabricator.style.display = 'none'
         jasonhp.style.display = 'none'
     }
+
 
     if (gathereditems === 5) {
         if (playerpath === "run") {
@@ -479,7 +381,9 @@ storyContainer.addEventListener("click", function () {
         console.log("gathereditems", gathereditems)
     }
 
+
     else if (presentStory === "items")
+
 
         if (presentStory === "items") {                              //items function
             item1.style.visibility = 'visible'
@@ -489,196 +393,6 @@ storyContainer.addEventListener("click", function () {
             item5.style.visibility = 'visible'
             storyContainer.disabled = true
         }
-
-
-
-        else if (presentStory === "hold") {                                //Prologue Wanabo encounter scene
-            story.push("hold2")
-            scene.style.backgroundImage = 'url(images/normalmentor.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-        else if (presentStory === "hold2") {
-            story.push("hold3")
-            scene.style.backgroundImage = 'url(images/normalmentor.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-        else if (presentStory === "hold3") {
-            story.push("junior")
-            scene.style.backgroundImage = 'url(images/junior.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-        else if (presentStory === "investigate") {                       //investigate scene
-            story.push("investigate2")
-            scene.style.backgroundImage = 'url(images/normalmentor.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-        else if (presentStory === "investigate2") {
-            story.push("investigate3")
-            scene.style.backgroundImage = 'url(images/normalmentor.png)'
-            presentStory = story[story.length - 1]
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-        else if (presentStory === "investigate3") {
-            story.push("junior")
-            scene.style.backgroundImage = 'url(images/junior.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-        else if (presentStory === "junior") {                        //junior scene
-            scene.style.backgroundImage = 'url(images/junior.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-    if (presentStory === "sealion") {                               ///start battles
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/sealion.png"
-        enemy1.style.height = "300px"
-    }
-
-
-    else if (presentStory === "polarbearer") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/polarbearer.png"
-        enemy1.style.height = "300px"
-    }
-
-
-    else if (presentStory === "penguinja") {
-        story.push("battlestart")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        slash.style.display = 'inline-block'
-        inventory.style.display = 'inline-block'
-        skills.style.display = 'inline-block'
-        if (hasfabricator === false)
-            fabricator.style.display = 'none'
-        else {
-            fabricator.style.display = 'inline-block'
-        }
-        enemy1.src = "images/penguinja.png"
-        enemy1.style.height = "300px"
-    }
-
-    else if (presentStory === "juniornice") {                               //junior nice
-        if (playerpath === "run") {
-            story.push("items")
-            scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-        else if (playerpath === "hold") {
-            story.push("items")
-            scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-        else if (playerpath === "investigate") {
-            story.push("items")
-            scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-    }
-
-
-    if (presentStory === "juniormean") {                            //junior mean
-        if (playerpath === "run") {
-            story.push("items")
-            scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-        else if (playerpath === "hold") {
-            story.push("items")
-            scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-
-
-
-
-        else if (playerpath === "investigate") {
-            story.push("items")
-            scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
-            presentStory = story[story.length - 1]
-
-
-            storyContainer.innerHTML = dialogue[presentStory].text
-        }
-        presentStory = story[story.length - 1]
-
-
-        storyContainer.innerHTML = dialogue[presentStory].text
-    }
 
 
     if (gathereditems === 3) {
@@ -702,43 +416,46 @@ storyContainer.addEventListener("click", function () {
     }
 
 
-    else if (presentStory === "items")
-
-
-        if (presentStory === "items") {                              //items function
-            item1.style.visibility = 'visible'
-            item2.style.visibility = 'visible'
-            item3.style.visibility = 'visible'
-        }
-
-
     if (dialogue[presentStory].choices) { //checks current array index for choices
         if (dialogue[presentStory].choices.length === 3) {
             choice1.innerHTML = dialogue[presentStory].choices[0][0]
             choice2.innerHTML = dialogue[presentStory].choices[1][0]
             choice3.innerHTML = dialogue[presentStory].choices[2][0]
-
             choice1.style.display = 'inline-block'
             choice2.style.display = 'inline-block'
             choice3.style.display = 'inline-block'
         }
 
-        else if (dialogue[presentStory].choices.length === 2) {
 
+        else if (dialogue[presentStory].choices.length === 2) {
             choice1.innerHTML = dialogue[presentStory].choices[0][0]
             choice2.innerHTML = dialogue[presentStory].choices[1][0]
-
             choice1.style.display = 'inline-block'
             choice2.style.display = 'inline-block'
             choice3.style.display = 'none'
         }
     }
 
+
     else {
         choice1.style.display = 'none'
         choice2.style.display = 'none'
         choice3.style.display = 'none'
     }
+
+
+    if (presentStory === "bridgettejoin" || presentStory === "bridgettenojoin") {
+        story.push("cityprogression")
+        presentStory = story[story.length - 1]
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        choice3.innerHTML = dialogue[presentStory].choices[2][0]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        choice1.style.display = 'inline-block'
+        choice2.style.display = 'inline-block'
+        choice3.style.display = 'inline-block'
+    }
+
 
     if (presentStory === "hanshelp" || presentStory === "hansnohelp") {
         story.push("cityprogression")
@@ -751,6 +468,7 @@ storyContainer.addEventListener("click", function () {
         choice2.style.display = 'inline-block'
         choice3.style.display = 'inline-block'
     }
+
 
     if (battlecount === 4 && frostveil) {
         story.push("hans")
@@ -767,6 +485,7 @@ storyContainer.addEventListener("click", function () {
         console.log("battlecount: " + battlecount)
     }
 
+
     if (battlecount === 4 && grumoda) {
         story.push("clerica")
         presentStory = story[story.length - 1]
@@ -781,6 +500,7 @@ storyContainer.addEventListener("click", function () {
         enemy1.src = "images/clerica.png"
         console.log("battlecount: " + battlecount)
     }
+
 
     if (battlecount === 4 && lambda) {
         story.push("bridgette")
@@ -797,12 +517,14 @@ storyContainer.addEventListener("click", function () {
         console.log("battlecount: " + battlecount)
     }
 
+
     else if (presentStory === "kamiron") {
         localStorage.setItem("bookmark", presentStory)
         enemydisplay()
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 8 && presentStory === "cityprogression" && frostveil) {
         story.push("kamiron")
@@ -812,6 +534,7 @@ storyContainer.addEventListener("click", function () {
         choice2.style.display = 'none'
         choice3.style.display = 'none'
     }
+
 
     else if (battlecount === 9 && frostveil) {
         battlecount = 0
@@ -830,6 +553,7 @@ storyContainer.addEventListener("click", function () {
         console.log("battlecount: " + battlecount)
     }
 
+
     else if (battlecount === 8 && presentStory === "cityprogression" && lambda) {
         story.push("boomera")
         presentStory = story[story.length - 1]
@@ -838,6 +562,7 @@ storyContainer.addEventListener("click", function () {
         choice2.style.display = 'none'
         choice3.style.display = 'none'
     }
+
 
     else if (battlecount === 9 && lambda) {
         battlecount = 0
@@ -856,6 +581,7 @@ storyContainer.addEventListener("click", function () {
         console.log("battlecount: " + battlecount)
     }
 
+
     else if (battlecount === 8 && presentStory === "cityprogression" && grumoda) {
         story.push("knucklesandshieva")
         presentStory = story[story.length - 1]
@@ -864,6 +590,7 @@ storyContainer.addEventListener("click", function () {
         choice2.style.display = 'none'
         choice3.style.display = 'none'
     }
+
 
     else if (battlecount === 9 && grumoda) {
         battlecount = 0
@@ -881,7 +608,79 @@ storyContainer.addEventListener("click", function () {
         console.log("finished lambda: " + finishlambda)
         console.log("battlecount: " + battlecount)
     }
+
+
+    else if (presentStory === "sealion") {                               ///first battles
+        localStorage.setItem("bookmark", presentStory)
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
+
+
+    else if (presentStory === "polarbearer") {
+        localStorage.setItem("bookmark", presentStory)
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
+
+
+    else if (presentStory === "penguinja") {
+        localStorage.setItem("bookmark", presentStory)
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
+
+
+    if (presentStory === "mab") {                      
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
+
+
+    else if (presentStory === "asr") {
+        localStorage.setItem("bookmark", presentStory)
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
+
+
+    else if (presentStory === "ahg") {
+       localStorage.setItem("bookmark", presentStory)
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
+
+
+    else if (presentStory === "bomberreggy") {
+        localStorage.setItem("bookmark", presentStory)
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
+
+
+    else if (presentStory === "weedwhip") {
+        localStorage.setItem ("bookmark", presentStory)
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
+
+
+    else if (presentStory === "attackerfloresta") {
+        localStorage.setItem("bookmark", presentStory)
+        battledisplay()
+        enemydisplay()
+        beginbattle()
+    }
 });
+
 
 choice1.addEventListener("click", function () {       //choice 1 function
     if (presentStory === "firstchoice") {
@@ -895,6 +694,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         console.log("run path chosen")
     }
 
+
     else if (presentStory === "hans") {
         story.push("hanshelp")
         presentStory = story[story.length - 1]
@@ -906,6 +706,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         enemy1.style.display = 'none'
         console.log("New ally acquired!")
     }
+
 
     else if (presentStory === "clerica") {
         story.push("clericatalk")
@@ -919,6 +720,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         console.log("New ally acquired!")
     }
 
+
     else if (presentStory === "bridgette") {
         story.push("bridgettejoin")
         presentStory = story[story.length - 1]
@@ -931,6 +733,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         console.log("New ally acquired!")
     }
 
+
     else if (battlecount === 1 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
         presentStory = story[story.length - 1]
@@ -939,6 +742,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 2 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
@@ -949,6 +753,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
+
     else if (battlecount === 3 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
         presentStory = story[story.length - 1]
@@ -957,6 +762,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 5 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
@@ -967,6 +773,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
+
     else if (battlecount === 6 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
         presentStory = story[story.length - 1]
@@ -975,6 +782,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 7 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
@@ -985,6 +793,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
+
     else if (battlecount === 8 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
         presentStory = story[story.length - 1]
@@ -993,6 +802,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 1 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
@@ -1003,6 +813,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
+
     else if (battlecount === 2 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
         presentStory = story[story.length - 1]
@@ -1011,6 +822,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 3 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
@@ -1021,6 +833,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
+
     else if (battlecount === 5 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
         presentStory = story[story.length - 1]
@@ -1029,6 +842,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 6 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
@@ -1039,6 +853,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
+
     else if (battlecount === 7 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
         presentStory = story[story.length - 1]
@@ -1047,6 +862,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 8 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
@@ -1057,16 +873,17 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
+
     else if (presentStory === "junior") {
         story.push("juniornice")
         juniorpath = "nice"
-
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
         choice1.style.display = 'none'
         choice2.style.display = 'none'
         console.log("Junior will remember this")
     }
+
 
     if (presentStory === "enterfrostveil") {
         story.push("penguinja")
@@ -1077,8 +894,8 @@ choice1.addEventListener("click", function () {       //choice 1 function
         choice2.style.display = 'none'
         choice3.style.display = 'none'
         beginbattle()
-        return
     }
+
 
     else if (presentStory === "enterlambda") {
         story.push("mab")
@@ -1094,6 +911,7 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
+
     else if (presentStory === "entergrumoda") {
         story.push("weedwhip")
         presentStory = story[story.length - 1]
@@ -1102,9 +920,8 @@ choice1.addEventListener("click", function () {       //choice 1 function
         choice1.style.display = 'none'
         choice2.style.display = 'none'
         choice3.style.display = 'none'
-        enemy1.style.display = 'inline-block'
         enemy1.src = 'images/weedwhip.png'
-        beginbattle()
+        enemy1.style.height = '300px'
     }
 
 
@@ -1123,7 +940,6 @@ choice1.addEventListener("click", function () {       //choice 1 function
 });
 
 
-
 choice2.addEventListener("click", function () {                 //choice 2 function
     if (presentStory === "firstchoice") {
         story.push("hold")
@@ -1136,6 +952,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         console.log("Fight path chosen")
     }
 
+
     else if (presentStory === "hans") {
         story.push("hansnohelp")
         presentStory = story[story.length - 1]
@@ -1146,6 +963,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         enemy1.style.display = 'none'
         console.log("Can never be too safe!")
     }
+
 
     else if (presentStory === "clerica") {
         story.push("clericanotalk")
@@ -1159,6 +977,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         console.log("New ally acquired!")
     }
 
+
     else if (presentStory === "bridgette") {
         story.push("bridgettenojoin")
         presentStory = story[story.length - 1]
@@ -1171,6 +990,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         console.log("New ally acquired!")
     }
 
+
     else if (battlecount === 1 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
         presentStory = story[story.length - 1]
@@ -1179,6 +999,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 2 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
@@ -1189,6 +1010,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         beginbattle()
     }
 
+
     else if (battlecount === 3 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
         presentStory = story[story.length - 1]
@@ -1197,6 +1019,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 5 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
@@ -1207,6 +1030,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         beginbattle()
     }
 
+
     else if (battlecount === 6 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
         presentStory = story[story.length - 1]
@@ -1215,6 +1039,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 7 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
@@ -1225,6 +1050,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         beginbattle()
     }
 
+
     else if (battlecount === 8 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
         presentStory = story[story.length - 1]
@@ -1233,6 +1059,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 1 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
@@ -1243,6 +1070,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         beginbattle()
     }
 
+
     else if (battlecount === 2 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
         presentStory = story[story.length - 1]
@@ -1251,6 +1079,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 3 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
@@ -1261,6 +1090,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         beginbattle()
     }
 
+
     else if (battlecount === 5 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
         presentStory = story[story.length - 1]
@@ -1269,6 +1099,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 6 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
@@ -1279,6 +1110,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         beginbattle()
     }
 
+
     else if (battlecount === 7 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
         presentStory = story[story.length - 1]
@@ -1287,6 +1119,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 8 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
@@ -1308,7 +1141,6 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         console.log("You made Junior angry")
     }
 
-    
 
     else if (presentStory === "enterfrostveil") {
         story.push("polarbearer")
@@ -1321,6 +1153,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         beginbattle()
         return
     }
+
 
     else if (presentStory === "enterlambda") {
         story.push("ahg")
@@ -1335,6 +1168,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         beginbattle()
     }
 
+
     else if (presentStory === "entergrumoda") {
         story.push("attackerfloresta")
         presentStory = story[story.length - 1]
@@ -1343,11 +1177,9 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         choice1.style.display = 'none'
         choice2.style.display = 'none'
         choice3.style.display = 'none'
-        enemy1hp.style.display = 'inline-block'
         enemy1.style.display = 'inline-block'
         enemy1.src = 'images/attackerfloresta.png'
-        beginbattle()
-        return
+        enemy1.style.height = '300px'
     }
     else if (playerpath === "hold") {                                //checks playerpath based on previous choices
         story.push("enterlambda")
@@ -1361,6 +1193,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 
+
     else if (presentStory === "finishfrostveil") {
         story.push("entergrumoda")
         presentStory = story[story.length - 1]
@@ -1373,9 +1206,7 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         choice2.innerHTML = dialogue[presentStory].choices[1][0]
         choice3.innerHTML = dialogue[presentStory].choices[2][0]
     }
-
 });
-
 
 
 choice3.addEventListener("click", function () {          //choice 3 function
@@ -1390,6 +1221,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         console.log("Investigate path chosen")
     }
 
+
     else if (battlecount === 1 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
         presentStory = story[story.length - 1]
@@ -1398,6 +1230,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 2 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
@@ -1408,6 +1241,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         beginbattle()
     }
 
+
     else if (battlecount === 3 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
         presentStory = story[story.length - 1]
@@ -1416,6 +1250,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 5 && presentStory === "cityprogression" && frostveil) {
         story.push("sealion")
@@ -1426,6 +1261,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         beginbattle()
     }
 
+
     else if (battlecount === 6 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
         presentStory = story[story.length - 1]
@@ -1434,6 +1270,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 7 && presentStory === "cityprogression" && frostveil) {
         story.push("penguinja")
@@ -1444,6 +1281,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         beginbattle()
     }
 
+
     else if (battlecount === 8 && presentStory === "cityprogression" && frostveil) {
         story.push("polarbearer")
         presentStory = story[story.length - 1]
@@ -1452,6 +1290,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 1 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
@@ -1462,6 +1301,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         beginbattle()
     }
 
+
     else if (battlecount === 2 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
         presentStory = story[story.length - 1]
@@ -1470,6 +1310,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 3 && presentStory === "cityprogression" && lambda) {
         story.push("ahg")
@@ -1480,6 +1321,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         beginbattle()
     }
 
+
     else if (battlecount === 5 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
         presentStory = story[story.length - 1]
@@ -1488,6 +1330,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 6 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
@@ -1498,6 +1341,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         beginbattle()
     }
 
+
     else if (battlecount === 7 && presentStory === "cityprogression" && lambda) {
         story.push("asr")
         presentStory = story[story.length - 1]
@@ -1506,6 +1350,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         battledisplay()
         beginbattle()
     }
+
 
     else if (battlecount === 8 && presentStory === "cityprogression" && lambda) {
         story.push("mab")
@@ -1516,6 +1361,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         beginbattle()
     }
 
+
     else if (presentStory === "entergrumoda") {
         story.push("bomberregy")
         presentStory = story[story.length - 1]
@@ -1524,11 +1370,12 @@ choice3.addEventListener("click", function () {          //choice 3 function
         choice1.style.display = 'none'
         choice2.style.display = 'none'
         choice3.style.display = 'none'
-        enemy1hp.style.display = 'inline-block'
-        enemy1.style.display = 'inline-block'
         enemy1.src = 'images/bomberregy.png'
-        beginbattle()
+        enemy1.style.display = 'inline-block'
+        enemy1.style.height = '300px'
+        console.log(presentStory)
     }
+
 
     else if (playerpath === "investigate") {                    //checks playerpath based on previous choices
         story.push("entergrumoda")
@@ -1537,6 +1384,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
     }
+
 
     else if (presentStory === "enterfrostveil") {
         story.push("sealion")
@@ -1550,6 +1398,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         return
     }
 
+
     else if (presentStory === "enterlambda") {
         story.push("asr")
         presentStory = story[story.length - 1]
@@ -1559,7 +1408,7 @@ choice3.addEventListener("click", function () {          //choice 3 function
         choice2.style.display = 'none'
         choice3.style.display = 'none'
         enemy1.style.display = 'inline-block'
-        enemy1.src = 'url(images/asr.png)'
+        enemy1.src = 'images/asr.png'
         beginbattle()
     }
 });
@@ -1571,6 +1420,9 @@ item1.addEventListener("click", function () {             //item functions here
     presentStory = story[story.length - 1]
     item1.style.visibility = 'hidden'
 
+
+
+
     storyContainer.innerHTML = 'I got a damage potion! ' + '(' + gathereditems + '/' + '5' + ')'
     if (gathereditems === 5) {
         storyContainer.disabled = false;
@@ -1578,7 +1430,6 @@ item1.addEventListener("click", function () {             //item functions here
     console.log('healing potions:', healingpotioncount)
     console.log('gathered items:', gathereditems)
 });
-
 
 
 item2.addEventListener("click", function () { //item functions here
@@ -1594,6 +1445,7 @@ item2.addEventListener("click", function () { //item functions here
     console.log('gathered items:', gathereditems)
 });
 
+
 item3.addEventListener("click", function () { //item functions here
     dmgpotioncount++
     gathereditems++
@@ -1606,6 +1458,7 @@ item3.addEventListener("click", function () { //item functions here
     console.log('dmg potions:', dmgpotioncount)
     console.log('gathered items:', gathereditems)
 });
+
 
 item4.addEventListener("click", function () { //item functions here
     dmgpotioncount++
@@ -1620,6 +1473,7 @@ item4.addEventListener("click", function () { //item functions here
     console.log('gathered items:', gathereditems)
 });
 
+
 item5.addEventListener("click", function () { //item functions here
     healingpotioncount++
     gathereditems++
@@ -1632,6 +1486,7 @@ item5.addEventListener("click", function () { //item functions here
     console.log('healingotions:', healingpotioncount)
     console.log('gathered items:', gathereditems)
 });
+
 
 function beginbattle() {                            ///battle logic
     if (localStorage.getItem("bookmark") !== null) {
@@ -1646,6 +1501,7 @@ function beginbattle() {                            ///battle logic
         enemy1.style.height = "300px"
     }
 };
+
 
 slash.addEventListener("click", function () {
     let attack = protagonist["jason"].attacks[0]
@@ -1664,14 +1520,17 @@ slash.addEventListener("click", function () {
             remainingenemyhp = remainingenemyhp - standardattack
         }
 
+
         enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
         storyContainer.innerHTML = attack.text
+
 
         if (remainingenemyhp <= 0) {
             remainingenemyhp = 0;
             enemy1.style.display = 'none'
             winBattle()
         }
+
 
         else {
             if (hans && clerica && bridgette) {
@@ -1680,32 +1539,39 @@ slash.addEventListener("click", function () {
                 clericaheal()
             }
 
+
             else if (hans && clerica) {
                 hansattack()
                 clericaheal()
             }
+
 
             else if (hans && bridgette) {
                 hansattack()
                 bridgetteattack()
             }
 
+
             else if (bridgette && clerica) {
                 bridgetteattack()
                 clericaheal()
             }
 
+
             else if (hans) {
                 hansattack()
             }
+
 
             else if (clerica) {
                 clericaheal()
             }
 
+
             else if (bridgette) {
                 bridgetteattack()
             }
+
 
             else {
                 enemyattack()
@@ -1713,6 +1579,85 @@ slash.addEventListener("click", function () {
         }
     }
 });
+
+
+fabricator.addEventListener("click", function () {
+    let attack = protagonist["jason"].attacks[6]
+    storyContainer.disabled = true
+    slash.disabled = true
+    inventory.disabled = true
+    healitembutton.style.display = 'none'
+    damageitembutton.style.display = 'none'
+    let standardattack = attack.damage
+    if (playerturn) {
+        if (dmgmodifier === true) {
+            remainingenemyhp = remainingenemyhp - (standardattack * 2)
+            dmgmodifier = false
+        }
+        else {
+            remainingenemyhp = remainingenemyhp - standardattack
+        }
+
+
+        enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
+        storyContainer.innerHTML = attack.text
+
+
+        if (remainingenemyhp <= 0) {
+            remainingenemyhp = 0;
+            enemy1.style.display = 'none'
+            winBattle()
+        }
+
+
+        else {
+            if (hans && clerica && bridgette) {
+                hansattack()
+                bridgetteattack()
+                clericaheal()
+            }
+
+
+            else if (hans && clerica) {
+                hansattack()
+                clericaheal()
+            }
+
+
+            else if (hans && bridgette) {
+                hansattack()
+                bridgetteattack()
+            }
+
+
+            else if (bridgette && clerica) {
+                bridgetteattack()
+                clericaheal()
+            }
+
+
+            else if (hans) {
+                hansattack()
+            }
+
+
+            else if (clerica) {
+                clericaheal()
+            }
+
+
+            else if (bridgette) {
+                bridgetteattack()
+            }
+
+
+            else {
+                enemyattack()
+            }
+        }
+    }
+});
+
 
 inventory.addEventListener("click", function () {
     storyContainer.innerHTML = ""
@@ -1723,6 +1668,7 @@ inventory.addEventListener("click", function () {
     damageitembutton.innerHTML = 'Damage Potions: ' + dmgpotioncount
 });
 
+
 healitembutton.addEventListener("click", function () {
     healitembutton.style.display = 'none'
     damageitembutton.style.display = 'none'
@@ -1732,6 +1678,7 @@ healitembutton.addEventListener("click", function () {
     skills.disabled = true
     healing()
 });
+
 
 damageitembutton.addEventListener("click", function () {
     healitembutton.style.display = 'none'
@@ -1753,6 +1700,7 @@ function enemyattack() {
                 scene.style.backgroundColor = 'rgba(0, 0, 0)'
             }
 
+
             jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
             storyContainer.innerHTML = chosenAttack.text
             slash.disabled = false
@@ -1761,6 +1709,7 @@ function enemyattack() {
             playerturn = true;
         }, 1750);
     }
+
 
     else if (allycount === 1) {
         setTimeout(function () {
@@ -1773,6 +1722,7 @@ function enemyattack() {
                 scene.style.backgroundColor = 'rgba(0, 0, 0)'
             }
 
+
             jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
             storyContainer.innerHTML = chosenAttack.text
             slash.disabled = false
@@ -1780,6 +1730,7 @@ function enemyattack() {
             playerturn = true;
         }, 1750);
     }
+
 
     else if (allycount === 2) {
         setTimeout(function () {
@@ -1792,6 +1743,7 @@ function enemyattack() {
                 scene.style.backgroundColor = 'rgba(0, 0, 0)'
             }
 
+
             jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
             storyContainer.innerHTML = chosenAttack.text
             slash.disabled = false
@@ -1799,6 +1751,7 @@ function enemyattack() {
             playerturn = true;
         }, 3500);
     }
+
 
     else if (allycount === 3) {
         setTimeout(function () {
@@ -1811,6 +1764,7 @@ function enemyattack() {
                 scene.style.backgroundColor = 'rgba(0, 0, 0)'
             }
 
+
             jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
             storyContainer.innerHTML = chosenAttack.text
             slash.disabled = false
@@ -1819,6 +1773,9 @@ function enemyattack() {
         }, 5250);
     }
 }
+
+
+
 
 function healing() {
     storyContainer.disabled = true
@@ -1843,38 +1800,46 @@ function healing() {
             playerturn = true
         }
 
+
         if (hans && clerica && bridgette) {
             hansattack()
             bridgetteattack()
             clericaheal()
         }
 
+
         else if (hans && clerica) {
             hansattack()
             clericaheal()
         }
+
 
         else if (hans && bridgette) {
             hansattack()
             bridgetteattack()
         }
 
+
         else if (bridgette && clerica) {
             bridgetteattack()
             clericaheal()
         }
 
+
         else if (hans) {
             hansattack()
         }
+
 
         else if (clerica) {
             clericaheal()
         }
 
+
         else if (bridgette) {
             bridgetteattack()
         }
+
 
         else {
             enemyattack()
@@ -1896,10 +1861,12 @@ function dmgmodify() {
             playerturn = false
         }
 
+
         else {
             storyContainer.innerHTML = 'You don\' have enough of this item!'
             playerturn = true
         }
+
 
         if (hans && clerica && bridgette) {
             hansattack()
@@ -1907,32 +1874,41 @@ function dmgmodify() {
             clericaheal()
         }
 
+
         else if (hans && clerica) {
             hansattack()
             clericaheal()
         }
+
 
         else if (hans && bridgette) {
             hansattack()
             bridgetteattack()
         }
 
+
         else if (bridgette && clerica) {
             bridgetteattack()
             clericaheal()
         }
 
+
         else if (hans) {
             hansattack()
         }
+
 
         else if (clerica) {
             clericaheal()
         }
 
+
+
+
         else if (bridgette) {
             bridgetteattack()
         }
+
 
         else {
             enemyattack()
@@ -1966,12 +1942,14 @@ function winBattle() {
     }
 };
 
+
 function enemydisplay() {
     enemytype = localStorage.getItem("bookmark")
     enemy1.src = "images/" + enemytype + ".png"
     enemy1.style.height = "300px"
     storyContainer.innerHTML = "I am now fighting " + enemytype + "!"
 }
+
 
 function battledisplay() {
     enemy1hp.style.display = 'inline-block'
@@ -1991,6 +1969,7 @@ function battledisplay() {
     choice3.style.display = 'none'
 }
 
+
 function hansattack() {
     setTimeout(function () {
         let hansAttacks = Math.floor(Math.random() * protagonist.hans.attacks.length)
@@ -2009,6 +1988,7 @@ function hansattack() {
         }
     }, 1750);
 }
+
 
 function bridgetteattack() {
     setTimeout(function () {
@@ -2030,6 +2010,7 @@ function bridgetteattack() {
     }, 1750);
 }
 
+
 function clericaheal() {
     setTimeout(function () {
         let clericaAttacks = Math.floor(Math.random() * protagonist.clerica.attacks.length)
@@ -2049,6 +2030,8 @@ function clericaheal() {
         }
     }, 1750);
 }
+
+
 
 
 
