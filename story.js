@@ -31,12 +31,6 @@ const scene = document.getElementById("prologue")
 
 const jasonhp = document.getElementById("jasonhp")
 
-const hanshp = document.getElementById("hanshp")
-
-const bridgettehp = document.getElementById("bridgettehp")
-
-const clericahp = document.getElementById("clericahp")
-
 const enemy1hp = document.getElementById("enemy1hp")
 
 const healitembutton = document.getElementById("healing")
@@ -86,7 +80,6 @@ var frostveil = false
 var lambda = false
 
 var grumoda = false
-
 
 var victory = false
 
@@ -228,6 +221,7 @@ storyContainer.addEventListener("click", function () {
             presentStory = story[story.length - 1]
             storyContainer.innerHTML = dialogue[presentStory].text
         }
+
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
     }
@@ -257,21 +251,6 @@ storyContainer.addEventListener("click", function () {
         storyContainer.innerHTML = dialogue[presentStory].text
     }
 
-    else if (victory === true) {
-        victory = false
-        story.push("cityprogression")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        displaythreechoices()
-        enemy1hp.style.display = 'none'
-        enemy1.style.display = 'none'
-        slash.style.display = 'none'
-        inventory.style.display = 'none'
-        skills.style.display = 'none'
-        fabricator.style.display = 'none'
-        jasonhp.style.display = 'none'
-    }
-
     if (gathereditems === 5) {
         if (playerpath === "run") {
             story.push("enterfrostveil")
@@ -294,8 +273,6 @@ storyContainer.addEventListener("click", function () {
         gathereditems = 0
         console.log("gathereditems", gathereditems)
     }
-
-    else if (presentStory === "items")
 
         if (presentStory === "items") {                              //items function
             item1.style.visibility = 'visible'
@@ -367,19 +344,6 @@ storyContainer.addEventListener("click", function () {
         battlecount++
         enemy1.style.display = 'inline-block'
         enemy1.src = "images/hans.png"
-        console.log("battlecount: " + battlecount)
-    }
-
-    if (battlecount === 4 && grumoda) {
-        story.push("clerica")
-        presentStory = story[story.length - 1]
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-        choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        displaytwochoices()
-        storyContainer.innerHTML = dialogue[presentStory].text
-        battlecount++
-        enemy1.style.display = 'inline-block'
-        enemy1.src = "images/clerica.png"
         console.log("battlecount: " + battlecount)
     }
 
@@ -463,6 +427,7 @@ else if (presentStory === "knucklesandshieva") {
         story.push("finishgrumoda")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
+        chapterprogression++
         console.log("battlecount: " + battlecount)
     }
 
@@ -474,6 +439,7 @@ else if (presentStory === "knucklesandshieva") {
         story.push("finishlambda")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
+        chapterprogression++
         console.log("battlecount: " + battlecount)
     }
 
@@ -485,7 +451,23 @@ else if (battlecount === 9 && frostveil && chapterprogression === 0) {
         story.push("finishfrostveil")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
+        chapterprogression++
         console.log("battlecount: " + battlecount)
+    }
+
+else if (victory === true) {
+        victory = false
+        story.push("cityprogression")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        displaythreechoices()
+        enemy1hp.style.display = 'none'
+        enemy1.style.display = 'none'
+        slash.style.display = 'none'
+        inventory.style.display = 'none'
+        skills.style.display = 'none'
+        fabricator.style.display = 'none'
+        jasonhp.style.display = 'none'
     }
 
     else if (presentStory === "sealion") {                               ///first battles
@@ -549,6 +531,34 @@ else if (battlecount === 9 && frostveil && chapterprogression === 0) {
         enemydisplay()
         beginbattle()
     }
+
+    else if (presentStory === "finishfrostveil") {
+        story.push("finishfrostveil")
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        displaytwochoices()
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
+    else if (presentStory === "finishgrumoda") {
+        story.push("finishgrumoda")
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        displaytwochoices()
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
+    else if (presentStory === "finishlambda") {
+        story.push("finishlambda")
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+        choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        displaytwochoices()
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+    }
+
 });
 
 choice1.addEventListener("click", function () {       //choice 1 function
@@ -559,6 +569,33 @@ choice1.addEventListener("click", function () {       //choice 1 function
         storyContainer.innerHTML = dialogue[presentStory].text
         hidechoices()
         console.log("run path chosen")
+    }
+
+    else if (presentStory === "finishfrostveil") {
+        playerpath = "hold"
+         story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
+    }
+
+    else if (presentStory === "finishlambda") {
+        playerpath = "run"
+         story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
+    }
+
+    else if (presentStory === "finishgrumoda") {
+        playerpath = "run"
+         story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
     }
 
     else if (presentStory === "hans") {
@@ -798,36 +835,6 @@ choice1.addEventListener("click", function () {       //choice 1 function
         enemy1.src = 'images/weedwhip.png'
         enemy1.style.height = '300px'
     }
-
-    else if (presentStory === "finishfrostveil") {
-        playerpath = "hold"
-        chapterprogression++
-         story.push("items")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
-        hidechoices()
-        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
-    }
-
-    else if (presentStory === "finishlambda") {
-        playerpath = "run"
-        chapterprogression++
-         story.push("items")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
-        hidechoices()
-        scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
-    }
-
-    else if (presentStory === "finishgrumoda") {
-        playerpath = "run"
-        chapterprogression++
-         story.push("items")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
-        hidechoices()
-        scene.style.backgroundImage = 'url(images/FrostveilCity.png)'
-    }
 });
 
 choice2.addEventListener("click", function () {                 //choice 2 function
@@ -838,6 +845,34 @@ choice2.addEventListener("click", function () {                 //choice 2 funct
         storyContainer.innerHTML = dialogue[presentStory].text
         hidechoices()
         console.log("Fight path chosen")
+    }
+
+    else if (presentStory === "finishlambda") {
+        playerpath = "investigate"
+        story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
+        console.log(playerpath)
+    }
+
+
+    else if (presentStory === "finishfrostveil") {
+        playerpath = "investigate"
+        story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
+    }
+    else if (presentStory === "finishgrumoda") {
+        playerpath = "hold"
+        story.push("items")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
+        hidechoices()
+        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
     }
 
     else if (presentStory === "hans") {
@@ -1086,36 +1121,6 @@ else if (battlecount === 1 && presentStory === "cityprogression" && grumoda) {
         storyContainer.innerHTML = dialogue[presentStory].text
         hidechoices()
         storyContainer.innerHTML = dialogue[presentStory].text
-    }
-
-    else if (presentStory === "finishfrostveil") {
-        playerpath = "investigate"
-        chapterprogression++
-        story.push("items")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
-        hidechoices()
-        scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
-    }
-
-    else if (presentStory === "finishlambda") {
-        playerpath = "investigate"
-        chapterprogression++
-        story.push("items")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
-        hidechoices()
-        scene.style.backgroundImage = 'url(images/GrumodaJungle.png)'
-    }
-
-    else if (presentStory === "finishgrumoda") {
-        playerpath = "hold"
-        chapterprogression++
-        story.push("items")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text + " (Click Again)"
-        hidechoices()
-        scene.style.backgroundImage = 'url(images/LambdaCentral.png)'
     }
 });
 

@@ -22,11 +22,11 @@ export const dialogue = {
     },
 
     run2: {
-        text: 'Over the next few weeks,I scrounge around my workplace, for I remember a long-forgotten project that will not only help me in my new quest, but also provide a new prosthetic for my arm. After two weeks of scrounging the wreckage and finding just parts, I found it. Junior. Once attached, Junior activates as a hologram and introduces itself. I instruct it to check for the location of where the attacker was, since it has a DNA scanner. It tells me, but it insists I train before heading out. After a month of training nonstop, perfecting my technique and strengthening myself through what I had, Junior confirms I\'m ready and gives me a map. I prepare to leave the city for Frostveil.',
+        text: 'Over the next few weeks,I scrounge around my workplace, for I remember a long-forgotten project that will not only help me in my new quest, but also provide a new prosthetic for my arm. After two weeks of scrounging the wreckage and finding just parts, I found it. Junior. Once attached, Junior activates as a hologram and introduces itself. After figuring out the location of the attacker via a DNA scan, it insists I train before heading out. After a month of training nonstop, perfecting my technique and strengthening myself through what I had, Junior confirms I\'m ready. I prepare to leave the city for Frostveil.',
     },
 
     run3: {
-        text: 'I get to the gates, but just as I’m about to cross them, an old man drops down from what looks like the sky and blocks my path. “Hey sir, i’m going this direction.” I calmly explain, trying to get him to move. “Listen her young man, you’ve done great in your training. I am Roujin and I have been watching since the destruction of your business. The reason I am stopping you here is for you to challenge me, test yourself to see how ready you really are.” states the old man, still holding my path hostage. WIthout another word, I take a swing, only for him to backstep and retaliate with a palm strike to my gut. I had never felt a blow so strong before by an old man. Nonetheless, I must take the fight seriously and I am able to bring my blade close to his neck, stopping before I hit him. I announce myself the victor, and Roujin shakes his head in agreement. “Well, you have beaten me. Yo are indeed ready for Dante’s forces. In case you didn’t know, Wanabo isn’t the main bad guy, he is just the right hand man to Dante, who plans to make a portable fabricator using the computing power of my prosthetic to push his agendas. He has his factory set in a mountain obscured by normal means, but there is a map that Dante his given to his colonels in Frostveil City, Lambda Central, and Grumoda Jungle. Take them down, find the fabricator, take it, and you can use it to restore your business.” Roujin explains, leaving behind no detail. I thank him for the advice, and I begin my journey with Frostveil',
+        text: 'I get to the gates, but just as I’m about to cross them, an old man drops down from what looks like the sky and blocks my path. I politely try to tell him to move, but he follows my every move. “Listen her young man, you’ve done great in your training. I\'m Roujin, and i\'ve been watching for a long time. I am stopping you here is because I am challenging you, test yourself to see how ready you really are.” states the old man, still holding my path hostage. Without another word, I take a swing, only for him to backstep and retaliate with a palm strike to my gut. I had never felt a blow so strong before by an old man. Nonetheless, I must take the fight seriously and I am able to bring my blade close to his neck, stopping before I hit him. I announce myself the victor, and Roujin shakes his head in agreement. "Indeed you are ready, but Wanabo is only a general to Dante, who is creating afabricator to push his ideas. He is located on a mountain normally obscured by normal maps, but there are map pieces given to three of his colonels in three cities, and Grumoda Jungle. Take them down, find the fabricator, take it, and you can use it to restore your business.” Roujin explains, leaving behind no detail. I thank him for the advice, and I begin my journey with Frostveil',
     },
 
     hold: {
@@ -223,7 +223,7 @@ choices: [
     },
 
     finishgrumoda: {
-        text: '',
+        text: 'Both of them fall, and I fnd that the missing map piece',
         choices: [
             ["Frostveil City", "city1"],
             ["Lambda Central", "city2"]
