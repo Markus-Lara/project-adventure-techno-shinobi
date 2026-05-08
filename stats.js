@@ -2,12 +2,12 @@ export const dialogue = {
 
 
     intro: {
-        text: 'So today, I opened a new manager position to work with Benjamin, since he has to watch over so much already. I put up some signs around the city looking for a new manager position, and just as I had hoped, three candidates came into the business. There\'s one Jessie Pinkman, who was so nervous I she was shaking like an active jackhammer, which wasn\'t a great quality for the job here. There was one Rowan Todd, who seemed great at the interview, but looking at his previous applications they usually ended on a sour note, which isn\'t good either. The the last participant James Loplin, however, seemed perfect. He answered every question about the job perfectly, and his qualifications and previous work places spoke highly of him. I decided that he would be the perfect candidate.',
+        text: 'So today, I opened a new manager position to work with Benjamin, since he has to watch over so much already. I put up some signs around the city looking for a new manager position, and just as I had hoped, three candidates came into the business. There\'s one Jessie Pinkman, who was so nervous I she was shaking like an active jackhammer, which wasn\'t a great quality for the job here. There was one Rowan Todd, who seemed great at the interview, but looking at his previous applications they usually ended on a sour note, which isn\'t good either. The the last candidate James Loplin, however, seemed perfect. He answered every question about the job perfectly, and his qualifications and previous work places spoke highly of him. I decided that he would be the perfect candidate.',
     },
 
 
     hiring: {
-        text: 'The three days goes by, and he\'s officially implemented in the job space. Everything was well at first: he\'s getting along with everyone, he is doing a good job managing not only employees but special requests as well, then I notice little inconsistencies. I notice how sometimes he calls off sick for days at a time, or when he thinks he\'s alone I hear him talking to himself. And during one of those sessions I hear the name Wanoba.\n It was the end of the day so I couldn\'t question, and when I got back home I did some research into the name. I couldn\'t find anything, so I had to pick up research tomorrow. Back at the business I\'m in my office, and the lights go out, so I go to investigate.',
+        text: 'The three days goes by, and he\'s officially implemented in the job space. Everything was well at first: he\'s getting along with everyone, he is doing a good job managing not only employees but special requests as well, then I notice little inconsistencies. I notice how sometimes he calls off sick for days at a time, or when he thinks he\'s alone I hear him talking to what seemed like no one, which has me curious to whether or not he was just talking to himself. All doubt of that cleared when during one of those sessions I hear the name Wanoba, not from James, but from another unrecognizable voice.\n It was the end of the day so I couldn\'t question, and when I got back home I did some research into the name. I couldn\'t find anything, so I had to pick up research tomorrow. Back at the business I\'m in my office, and the lights go out, so I go to investigate.',
     },
 
 
@@ -22,17 +22,17 @@ export const dialogue = {
 
 
     run: {
-        text: 'I spot a fully covered figure with a sword and immediately run. The figure chases me, getting closer as everyone else around me ignores the chaos. I reach the exit, hear a shing, and sprint outside. When I look back, the attacker is gone—but my right arm is missing, leaving only a bloody wound. I keep running until I collapse. I wake up later, bandaged, and return to my workplace—only to find it completely destroyed. Devastated, I go home and cry myself to sleep. My dreams replay happier memories, but quickly turn into the same traumatic attack. I wake up shaken and furious, realizing I can\'t ignore what happened.',
+        text: 'I noticed the fully covered figure had a sword and instinct took over for me to immediately run. The figure chases gave chase, getting closer as everyone else around me ignores the chaos. I reach the exit, hear a shing, and sprint outside. When I look back, the attacker is gone—but my right arm is missing, leaving only a bloody wound. I keep running, not even noticing my arm was gone until I geta  second to catch my breath, in which I collapse. I wake up later in the hospital, bandaged, and return to my workplace—only to find it completely destroyed. Devastated, I go home and can only think of all of the years of hard work gone due to that man before I inevitably head to bed. My dreams replay happier memories, but quickly turn into the same traumatic attack. I wake up shaken and furious, realizing I can\'t ignore what happened.',
     },
 
 
     run2: {
-        text: 'Over the next few weeks, I plan and build a high-tech prosthetic arm with an AI named Junior. After gathering parts and working nonstop, I complete it. Once attached, Junior activates as a hologram and introduces itself, insisting I train before heading out. After a month of training, Junior confirms I\'m ready and gives me a map. I prepare to leave the city for Frostveil.',
+        text: 'Over the next few weeks,I scrounge around my workplace, for I remember a long-forgotten project that will not only help me in my new quest, but also provide a new prosthetic for my arm. After two weeks of scrounging the wreckage and finding just parts, I found it. Junior. Once attached, Junior activates as a hologram and introduces itself. After figuring out the location of the attacker via a DNA scan, it insists I train before heading out. After a month of training nonstop, perfecting my technique and strengthening myself through what I had, Junior confirms I\'m ready. I prepare to leave the city for Frostveil.',
     },
 
 
     run3: {
-        text: 'Before leaving, an old man named Roujin stops me. He reveals he\'s been waiting for me and challenges me to a fight. After I win, Roujin confirms I\'m ready and explains the truth: the one who took my arm is Wanabo, a general under Dante, and a major threat. Roujin warns me that I must defeat Wanabo to prevent disaster and tells me about three key locations: Grumoda Jungle, Frostveil City, and Lambda Central. With this knowledge, I set off on my journey alongside Junior.',
+        text: 'I get to the gates, but just as I’m about to cross them, an old man drops down from what looks like the sky and blocks my path. I politely try to tell him to move, but he follows my every move. “Listen her young man, you’ve done great in your training. I\'m Roujin, and i\'ve been watching for a long time. I am stopping you here is because I am challenging you, test yourself to see how ready you really are.” states the old man, still holding my path hostage. Without another word, I take a swing, only for him to backstep and retaliate with a palm strike to my gut. I had never felt a blow so strong before by an old man. Nonetheless, I must take the fight seriously and I am able to bring my blade close to his neck, stopping before I hit him. I announce myself the victor, and Roujin shakes his head in agreement. "Indeed you are ready, but Wanabo is only a general to Dante, who is creating afabricator to push his ideas. He is located on a mountain normally obscured by normal maps, but there are map pieces given to three of his colonels in three cities, and Grumoda Jungle. Take them down, find the fabricator, take it, and you can use it to restore your business.” Roujin explains, leaving behind no detail. I thank him for the advice, and I begin my journey with Frostveil',
     },
 
 
@@ -163,7 +163,6 @@ export const dialogue = {
         text: 'I cross the street and notice a cyborg body lying further down the road. One of its arms is missing, and it looks completely deactivated—harmless, or so I think. Curious, I step closer and pick up the spear beside it. A sudden buzz crackles to life: “YYYYYou touUUUched my prized poSSSSession… You shall diIIIIie!” The corpse jolts, and I\'m already stepping back as it reactivates. Now I\'m in combat with the A.H.G — the Abandoned Spear Ruiner. I go through this process three more times.'
     },
 
-
     bridgette: {
         text: 'Continuing through this desert, I spot a massive figure standing over a pile of other broken robots. Her presence alone is intimidating, and alarms are blaring in my head. What do I do?',
         choices: [
@@ -172,21 +171,17 @@ export const dialogue = {
         ]
     },
 
-
     bridgettejoin: {
 text: 'Despite what my senses tell me, I approach the giant pile of broken parts, curious yet fearful of what may occur now. The huge figure turns her head and notices me, then she slides down. "Hey there! Didn\'t know there was anyone else out here! I\'m Bridgette, always looking for the next battle! From what it looks like, you seems liek you are on a journey. Do tell me, what is it?" I tell Bridgette my story, and who I\'m after, and her face darkens a bit. "Wanoba, huh? I\'ve got some history with him too. I\'ll join you." (New Member Acquired)'
     },
-
 
 bridgettenojoin: {
 text: '"Something tells me that whoever that is, they are dangerous. I should go before they notice me. With that, I push on.'
 },
 
-
 boomera: {
     text: 'I approach what seems to be the end of the ruined city, and as I approach the gate, I notice a figure walking in from the right side of the street in front of the gate. "Halt, who goes there!" says the figure. I  notice that the figure is feminine, and she looks damaged, so maybe if I just pass bye without saying anything..."Hey, you aren\'t getting past this point, and for trying to do so you will face my wrath!"'
 },
-
 
     entergrumoda: {
         text: 'As he travels through this path, he ends up in this serene atmosphere, surrounded by organized plant colonies and beautiful lakes. It\'s almost peaceful…a strikingly different contrast from the previous places. Jason is now in the Grumoda Jungle. Despite the peaceful scenery, it is filled with deadly plant cyborg fighters, willing to defend their colonies to the death! Within this jungle Jason has three paths to choose from, which will he choose?',
@@ -231,12 +226,10 @@ boomera: {
         text: 'I decide not to approach the figure. Something about them feels off, and I don\'t want to get involved in something risky right now.'
     },
 
-
     knucklesandshieva: {
-        text: 'As I continue through the jungle, I arrive at a breathtaking area filled with vibrant flowers, crystal-clear lakes, and the only waterfall I\'ve seen here. It feels like the end of this path. But as I move forward, a sharp war fan suddenly flies toward me. I barely react in time—it grazes my skin, leaving a thin cut. "Hmph… I could have easily taken your head. You\'re luckier than you think." A woman steps forward, the lower half of her face covered by a teal mask, her body suited for swift, precise movement. The war fan returns to her hand—and I realize she has two. Then another voice cuts in, low and husky: "He won\'t be so lucky when I smash his skull!" Looks like I don\'t have a choice—I have to fight',
+        text: 'As Jason progresses through the jungle, he makes it to this beautiful area filled with a dynamic range of flowers and multiple crystal clear lakes with the only waterfall in the jungle. This also seems to be the end of the path of the jungle. However, as he walks towards the end of the path, a war fan with sharp blades seems to charge at him quickly, it grazes his skin, making him slightly bleed. "Hmph...I could have easily gotten your head...the amount of luck you must have." The figure appears to be a woman, covering the bottom of her face with a teal mask. She wears a flexible body suit, fit for assassinating. Her war fan comes back to her, only for it to be revealed that she has two war fans. Another figure with a low and husky voice says back, "He won\'t be so lucky when I smash his skull! It seems I have no other way around, I must fight!',
     },
     //city and their enemy objects end
-
 
 cityprogression: {
     text: 'I continue through the area, looking for the end of this labryinth. Where will I continue now?',
@@ -247,7 +240,6 @@ choices: [
 ]
 },
 
-
     finishfrostveil: {                      //end city objects
         text: '"Phew, that was an intense fight" says I as I go to inspect the now deactivated cyborg body, but as I head over to grab what seems to be a disk in his chest compartment, the ice ends up cracking. I hurredly move past the gates, but I am reminded that I need that map piece to find the fabricator! I am ready to dive back in there, but Junior stops me, saying that he downloaded the copy of the disk, and we can continue on',
         choices: [
@@ -256,29 +248,23 @@ choices: [
         ]
     },
 
-
     finishlambda: {
-        text: 'Phew… that was an intense fight," I mutter as I step over the pile of scrap metal that used to be a fully functioning cyborg. The city around me hums faintly, like it\'s still alive somehow. I kneel down to inspect the body, noticing a faint glow coming from a panel in its chest. As I reach in to pull out what looks like a data disk, the ground beneath me suddenly shifts—metal plates grinding and sinking like the whole street is unstable. I quickly jump back and make it past a nearby structure before anything collapses, but I stop, realizing I still need that map piece to find the fabricator. I\'m about to head back when Junior cuts in, telling me he already copied the disk\'s data. Guess we\'re good to move on.',
+        text: 'The cyborg falls, and I go over to collect',
         choices: [
             ["Frostveil City", "city1"],
             ["Grumoda Jungle", "city3"]
         ]
     },
 
-
     finishgrumoda: {
-        text: 'Phew… that was an intense fight," I say under my breath, wiping sweat off my face as I step toward the fallen enemy. The jungle feels alive again now that it\'s over—leaves rustling, distant sounds echoing all around me. I crouch down and spot something embedded in the creature\'s remains, a small disk partially covered by vines. As I reach for it, the ground suddenly gives slightly beneath me, and I hear a low rumble—like something beneath the soil is waking up. I quickly pull back and move to safer ground, but I hesitate, knowing I need that map piece to reach the fabricator. Just as I\'m about to risk it, Junior stops me, saying he already scanned and downloaded everything from it. That saves me the trouble—we can keep going.',
+        text: 'Both of them fall, and I find that the missing map piece',
         choices: [
             ["Frostveil City", "city1"],
             ["Lambda Central", "city2"]
         ]
     },                                  //end city objects end
     mountainside: {
-        text: 'Through completing the three cities, I finally unlock the pathway to the mountainside on my virtual map. When I arrive at the base of the mountain, I spot an entrance up ahead—it looks like some kind of laboratory. As I step inside, I\'m immediately met by enemies I\'ve faced before, but something\'s different. They\'re grouped together in mixed pairs, combining forces from each of the cities.'
-    },
-
-    toothandnail: {
-        text: 'As I continue down the path through the laboratory, I start to feel a presence—something much stronger than the enemies I\'ve faced before. Suddenly, a man lunges out at me, nearly striking me with his dual-wield tekko-kagi. “Wow… you\'re a swift little one, aren\'t ya? So you\'re the one my boss was telling me about.” I steady myself and respond, “Your boss? Who do you work for?” He grins and says, “The one who made your arm disappear… should ring a bell, hmm?!” I take a step back, studying him more closely. He\'s wearing tight purple pants, a red robe, and black flats, with golden hair braided down his back and a white mask covering his eyes. “Enough talking…” he says, shifting into stance. “It\'s time for you to meet your maker. Come on!'
+        text: 'New'
     },
 
     wanobafight: {
@@ -360,12 +346,6 @@ export const protagonist = {
             { text: 'Hans bicycle kicks the opponent for 30 damage!', damage: 30 }
         ]
     },
-
-
-    clerica: {
-        attacks: [
-            {text: 'Clerica heals the party for 20 hp!', heal: 20}
-    ]}
 };
 
 

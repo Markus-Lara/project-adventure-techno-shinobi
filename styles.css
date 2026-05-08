@@ -2,10 +2,15 @@
     color: white;
 }
 
+
 body {
     background-size: cover;
     height: 100%;
 }
+
+
+
+
 
 
 
@@ -19,6 +24,9 @@ body {
 
 
 
+
+
+
 .start {
     background-image: url("images/augmentationrevelation.png");
     height: 100vh;
@@ -29,6 +37,9 @@ body {
 
 
 
+
+
+
 .title-box {
     position: relative;
     display: inline-block;
@@ -36,6 +47,10 @@ body {
     justify-content: center;
     margin-top: 15vh;
 }
+
+
+
+
 
 
 
@@ -53,6 +68,10 @@ body {
 
 
 
+
+
+
+
 .flower-border {
     position: relative;
     display: inline-block;
@@ -64,9 +83,17 @@ body {
 
 
 
+
+
+
+
 .flower-border:hover {
     transform: scale(1.2);
 }
+
+
+
+
 
 
 
@@ -82,6 +109,7 @@ body {
     cursor: pointer;
 }
 
+
 #enemy1hp,
 #enemy2hp,
 #enemy3hp,
@@ -91,6 +119,7 @@ body {
 #clericahp {
     display: none;
 }
+
 
 .enemysingle,
 .enemydouble,
@@ -111,10 +140,18 @@ body {
 
 
 
+
+
+
+
 .placement {
     display: flex;
     justify-content: center;
 }
+
+
+
+
 
 
 
@@ -127,6 +164,10 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
+
+
+
 
 
 
@@ -153,12 +194,20 @@ body {
 
 
 
+
+
+
+
 .choices {
     display: flex;
     justify-content: space-around;
     margin-bottom: 50px;
     width: 100%
 }
+
+
+
+
 
 
 
@@ -173,6 +222,10 @@ body {
     font-size: x-large;
     display: none;
 }
+
+
+
+
 
 
 
@@ -200,11 +253,13 @@ body {
     left: 40vw;
 }
 
+
 #item2 {
     position: absolute;
     top: 40vh;
     left: 44vw;
 }
+
 
 #item3 {
     position: absolute;
@@ -212,11 +267,13 @@ body {
     left: 64vw;
 }
 
+
 #item4 {
     position: absolute;
     top: 35vh;
     left: 56vw;
 }
+
 
 #item5 {
     position: absolute;
@@ -224,10 +281,13 @@ body {
     left: 50vw;
 }
 
+
 .battles {
     display: flex;
     justify-content: space-between;
 }
+
+
 
 
 .battle {
@@ -242,6 +302,8 @@ body {
     margin-bottom: 10vh;
     display: none;
 }
+
+
 
 
 #slash {
@@ -261,6 +323,7 @@ body {
     background-color: rgba(0, 0, 0, 0.7)
 }
 
+
 #healing,
 #damage {
     position: absolute;
@@ -273,6 +336,7 @@ body {
     z-index: 1;
 }
 
+
 #healing {
     bottom: 312px;
     left: 585px;
@@ -281,6 +345,7 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
 }
+
 
 #damage {
     bottom: 312px;
@@ -336,11 +401,19 @@ body {
 
 
 
+
+
+
+
     #item1 {
         position: absolute;
         top: 70vh;
         left: 14vw;
     }
+
+
+
+
 
 
 
@@ -354,12 +427,20 @@ body {
 
 
 
+
+
+
+
     #item3 {
         position: absolute;
         top: 70vh;
         left: 85vw;
     }
 }
+
+
+
+
 
 
 
@@ -374,11 +455,19 @@ body {
 
 
 
+
+
+
+
     #item2 {
         position: absolute;
         top: 70vh;
         left: 40vw;
     }
+
+
+
+
 
 
 
@@ -389,6 +478,8 @@ body {
         left: 85vw;
     }
 }
+
+
 
 
 @media (max-width: 430px) and (max-height: 932px) {
@@ -402,6 +493,8 @@ body {
     }
 
 
+
+
     #startexpo {
         width: 360px;
         font-size: 11.5px;
@@ -413,11 +506,15 @@ body {
     }
 
 
+
+
     #inventory {
         background-size: 45px;
         width: 55px;
         height: 45px;
     }
+
+
 
 
     #slash {
@@ -427,11 +524,15 @@ body {
     }
 
 
+
+
     #skills {
         background-size: 45px;
         width: 55px;
         height: 45px;
     }
+
+
 
 
     #fabricator {
