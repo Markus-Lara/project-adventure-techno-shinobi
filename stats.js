@@ -223,14 +223,14 @@ choices: [
     },
 
     finishgrumoda: {
-        text: 'Both of them fall, and I fnd that the missing map piece',
+        text: 'Both of them fall, and I find that the missing map piece',
         choices: [
             ["Frostveil City", "city1"],
             ["Lambda Central", "city2"]
         ]
     },                                  //end city objects end
     mountainside: {
-        text: ''
+        text: 'New'
     },
 
     wanobafight: {

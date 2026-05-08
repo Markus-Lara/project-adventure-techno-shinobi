@@ -351,21 +351,161 @@ storyContainer.addEventListener("click", function () {
         battlecount++
         levelcontinue()
         displaythreechoices()
-        console.log("battelcount: " + battlecount)
+        console.log("battlecount: " + battlecount)
     }
 
     if (presentStory === "bridgettejoin" || presentStory === "bridgettenojoin") {
         battlecount++
         levelcontinue()
         displaythreechoices()
-        console.log("battelcount: " + battlecount)
+        console.log("battlecount: " + battlecount)
     }
 
     if (presentStory === "clericatalk" || presentStory === "clericanotalk") {
         battlecount++
         levelcontinue()
         displaythreechoices()
-        console.log("battelcount: " + battlecount)
+        console.log("battlecount: " + battlecount)
+    }
+
+    else if (chapterprogression === 3) {
+        story.push("mountainside")
+        presentStory = story[story.length -1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        scene.src = "images/thegauntlet.png"
+        hidechoices()
+    }
+
+    else if (battlecount === 9 && grumoda && chapterprogression === 2) {
+        battlecount = 0
+        lambda = false
+        finishedlambda = true
+        boomerthrowskill = true
+        story.push("finishlambda")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        storyContainer.disabled = false
+        hidechoices()
+        chapterprogression++
+        console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
+        return
+    }
+
+    else if (battlecount === 9 && frostveil && chapterprogression === 2) {
+        battlecount = 0
+        lambda = false
+        finishedlambda = true
+        boomerthrowskill = true
+        story.push("finishlambda")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        storyContainer.disabled = false
+        hidechoices()
+        chapterprogression++
+        console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
+        return
+    }
+
+    else if (battlecount === 9 && lambda && chapterprogression === 2) {
+        battlecount = 0
+        lambda = false
+        finishedlambda = true
+        boomerthrowskill = true
+        story.push("finishlambda")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        storyContainer.disabled = false
+        hidechoices()
+        chapterprogression++
+        console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
+        return
+    }
+
+    else if (battlecount === 9 && lambda && chapterprogression === 1) {
+        battlecount = 0
+        lambda = false
+        finishedlambda = true
+        boomerthrowskill = true
+        story.push("finishlambda")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        storyContainer.disabled = true
+        chapterprogression++
+        console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
+        if (finishedfrostveil) {
+            choice2.innerHTML = dialogue[presentStory].choices[1][0]
+            choice1.style.display ="none"
+            choice2.style.display ="inline-block"
+            choice3.style.display ="none"
+        }
+
+        else if (finishedgrumoda) {
+            choice1.innerHTML = dialogue[presentStory].choices[0][0]
+            choice1.style.display ="inline-block"
+            choice2.style.display ="none"
+            choice3.style.display ="none"
+        }
+        return
+    }
+
+else if (battlecount === 9 && grumoda && chapterprogression === 1) {
+        battlecount = 0
+        grumoda = false
+        finishedgrumoda = true
+        fanknucklesskill = true
+        story.push("finishgrumoda")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        storyContainer.disabled = true
+        chapterprogression++
+        console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
+        if (finishedfrostveil) {
+            choice2.innerHTML = dialogue[presentStory].choices[1][0]
+            choice1.style.display ="none"
+            choice2.style.display ="inline-block"
+            choice3.style.display ="none"
+        }
+
+        else if (finishedlambda) {
+            choice1.innerHTML = dialogue[presentStory].choices[0][0]
+            choice1.style.display ="inline-block"
+            choice2.style.display ="none"
+            choice3.style.display ="none"
+        }
+        return
+    }
+
+    else if (battlecount === 9 && frostveil && chapterprogression === 1) {
+        battlecount = 0
+        frostveil= false
+        finishedfrostveil= true
+        frostaxeskillskill = true
+        story.push("finishfrostveil")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        storyContainer.disabled = true
+        chapterprogression++
+        console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
+        if (finishedlambda) {
+            choice2.innerHTML = dialogue[presentStory].choices[1][0]
+            choice1.style.display ="none"
+            choice2.style.display ="inline-block"
+            choice3.style.display ="none"
+        }
+
+        else if (finishedgrumoda) {
+            choice1.innerHTML = dialogue[presentStory].choices[0][0]
+            choice1.style.display ="inline-block"
+            choice2.style.display ="none"
+            choice3.style.display ="none"
+        }
+        return
     }
 
     else if (battlecount === 9 && frostveil) {
@@ -381,8 +521,8 @@ storyContainer.addEventListener("click", function () {
         displaytwochoices()
         storyContainer.disabled = true
         chapterprogression++
-        console.log("battlecount: " + battlecount)
         console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
         return
     }
 
@@ -399,8 +539,8 @@ storyContainer.addEventListener("click", function () {
         displaytwochoices()
         storyContainer.disabled = true
         chapterprogression++
-        console.log("battlecount: " + battlecount)
         console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
         return
     }
 
@@ -417,46 +557,11 @@ storyContainer.addEventListener("click", function () {
         displaytwochoices()
         storyContainer.disabled = true
         chapterprogression++
-        console.log("battlecount: " + battlecount)
         console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
         return
     }
 
-    else if (battlecount === 9 && frostveil) {
-        battlecount = 0
-        frostveil = false
-        finishedfrostveil = true
-        frostaxeskill = true
-        story.push("finishfrostveil")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-            choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        displaytwochoices()
-        storyContainer.disabled = true
-        chapterprogression++
-        console.log("battlecount: " + battlecount)
-        console.log("chapterprogression: " + chapterprogression)
-        return
-    }
-
-    else if (battlecount === 9 && grumoda) {
-        battlecount = 0
-        grumoda = false
-        finishedgrumoda = true
-        fanknucklesskill = true
-        story.push("finishgrumoda")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-            choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        displaytwochoices()
-        storyContainer.disabled = true
-        chapterprogression++
-        console.log("battlecount: " + battlecount)
-        console.log("chapterprogression: " + chapterprogression)
-        return
-    }
 
     else if (battlecount === 9 && lambda && chapterprogression == 2) {
         battlecount = 0
@@ -471,26 +576,8 @@ storyContainer.addEventListener("click", function () {
         displaytwochoices()
         storyContainer.disabled = true
         chapterprogression++
-        console.log("battlecount: " + battlecount)
         console.log("chapterprogression: " + chapterprogression)
-        return
-    }
-
-    else if (battlecount === 9 && lambda && chapterprogression == 2) {
-        battlecount = 0
-        lambda = false
-        finishedlambda = true
-        boomerthrowskill = true
-        story.push("finishlambda")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        choice1.innerHTML = dialogue[presentStory].choices[0][0]
-            choice2.innerHTML = dialogue[presentStory].choices[1][0]
-        displaytwochoices()
-        storyContainer.disabled = true
-        chapterprogression++
         console.log("battlecount: " + battlecount)
-        console.log("chapterprogression: " + chapterprogression)
         return
     }
 
@@ -504,8 +591,8 @@ storyContainer.addEventListener("click", function () {
         storyContainer.innerHTML = dialogue[presentStory].text
         storyContainer.disabled = true
         chapterprogression++
-        console.log("battlecount: " + battlecount)
         console.log("chapterprogression: " + chapterprogression)
+        console.log("battlecount: " + battlecount)
         if (finishedfrostveil) {
             choice2.innerHTML = dialogue[presentStory].choices[1][0]
             choice1.style.display ="none"
@@ -520,8 +607,8 @@ storyContainer.addEventListener("click", function () {
             choice3.style.display ="none"
         }
         return
-    } //Continue here
-    
+    }
+
 
     if (victory === true) {
         if (presentStory === "kamiron") {
