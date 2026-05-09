@@ -2,18 +2,10 @@
     color: white;
 }
 
-
 body {
     background-size: cover;
     height: 100%;
 }
-
-
-
-
-
-
-
 
 .title-page {
     display: flex;
@@ -21,11 +13,6 @@ body {
     align-items: center;
     background-image: url("images/start-screen.png");
 }
-
-
-
-
-
 
 .start {
     background-image: url("images/augmentationrevelation.png");
@@ -35,11 +22,6 @@ body {
     background-size: cover;
 }
 
-
-
-
-
-
 .title-box {
     position: relative;
     display: inline-block;
@@ -47,12 +29,6 @@ body {
     justify-content: center;
     margin-top: 15vh;
 }
-
-
-
-
-
-
 
 
 #title {
@@ -65,13 +41,6 @@ body {
     margin: 0;
 }
 
-
-
-
-
-
-
-
 .flower-border {
     position: relative;
     display: inline-block;
@@ -81,22 +50,9 @@ body {
 }
 
 
-
-
-
-
-
-
 .flower-border:hover {
     transform: scale(1.2);
 }
-
-
-
-
-
-
-
 
 #start-option {
     position: absolute;
@@ -109,21 +65,16 @@ body {
     cursor: pointer;
 }
 
-
 #enemy1hp,
-#enemy2hp,
-#enemy3hp,
-#jasonhp,
-#bridgettehp,
-#hanshp,
-#clericahp {
+#jasonhp {
     display: none;
 }
 
+#enemy1hp {
+    color: red;
+}
 
-.enemysingle,
-.enemydouble,
-.enemytriple {
+.enemysingle {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,24 +88,10 @@ body {
     margin-top: 10vh;
 }
 
-
-
-
-
-
-
-
 .placement {
     display: flex;
     justify-content: center;
 }
-
-
-
-
-
-
-
 
 .start {
     display: flex;
@@ -164,12 +101,6 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
 }
-
-
-
-
-
-
 
 
 #startexpo {
@@ -191,26 +122,12 @@ body {
     margin: 0px;
 }
 
-
-
-
-
-
-
-
 .choices {
     display: flex;
     justify-content: space-around;
     margin-bottom: 50px;
     width: 100%
 }
-
-
-
-
-
-
-
 
 #choice1,
 #choice2,
@@ -222,13 +139,6 @@ body {
     font-size: x-large;
     display: none;
 }
-
-
-
-
-
-
-
 
 #item1,
 #item2,
@@ -281,14 +191,10 @@ body {
     left: 50vw;
 }
 
-
 .battles {
     display: flex;
     justify-content: space-between;
 }
-
-
-
 
 .battle {
     width: 200px;
@@ -303,26 +209,25 @@ body {
     display: none;
 }
 
-
-
-
 #slash {
     background-image: url(images/slash.png);
     background-color: rgba(0, 0, 0, 0.7);
 }
+
 #inventory {
     background-image: url(images/inventory.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
+
 #skills {
     background-image: url(images/skills.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
+
 #fabricator {
     background-image: url(images/fabricator.png);
     background-color: rgba(0, 0, 0, 0.7)
 }
-
 
 #healing,
 #damage {
@@ -336,7 +241,6 @@ body {
     z-index: 1;
 }
 
-
 #healing {
     bottom: 312px;
     left: 585px;
@@ -345,7 +249,6 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
 }
-
 
 #damage {
     bottom: 312px;
@@ -356,14 +259,14 @@ body {
     background-size: contain;
 }
 
-.skillgrouping {
-    position: absolute;
+#skillgrouping {
+    display: flex;
+    position: relative;
     height: 180px;
     width: 1300px;
-    display: flex;
-    justify-content: space-around;
     align-items: center;
-    display: none;
+    top: 130px;
+    left: 320px;
 }
 
 .skillset {
@@ -371,7 +274,7 @@ body {
     background: black;
     font-size: large;
     border-color: #48A6F3;
-    color:white;
+    color: white;
     font-family: 'inter', sans-serif;
     margin: 0px;
 }
@@ -398,25 +301,11 @@ body {
 
 @media (max-width: 430px) {
 
-
-
-
-
-
-
-
     #item1 {
         position: absolute;
         top: 70vh;
         left: 14vw;
     }
-
-
-
-
-
-
-
 
     #item2 {
         position: absolute;
@@ -424,26 +313,12 @@ body {
         left: 40vw;
     }
 
-
-
-
-
-
-
-
     #item3 {
         position: absolute;
         top: 70vh;
         left: 85vw;
     }
 }
-
-
-
-
-
-
-
 
 @media (max-width: 430px) {
     #item1 {
@@ -452,25 +327,11 @@ body {
         left: 14vw;
     }
 
-
-
-
-
-
-
-
     #item2 {
         position: absolute;
         top: 70vh;
         left: 40vw;
     }
-
-
-
-
-
-
-
 
     #item3 {
         position: absolute;
@@ -478,9 +339,6 @@ body {
         left: 85vw;
     }
 }
-
-
-
 
 @media (max-width: 430px) and (max-height: 932px) {
     .start {
@@ -492,21 +350,16 @@ body {
         overflow-y: hidden;
     }
 
-
-
-
     #startexpo {
         width: 360px;
         font-size: 11.5px;
     }
+
     .battle {
         width: 100px;
         margin-right: 2vh;
         margin-left: 2vh;
     }
-
-
-
 
     #inventory {
         background-size: 45px;
@@ -514,26 +367,17 @@ body {
         height: 45px;
     }
 
-
-
-
     #slash {
         background-size: 45px;
         width: 55px;
         height: 45px;
     }
 
-
-
-
     #skills {
         background-size: 45px;
         width: 55px;
         height: 45px;
     }
-
-
-
 
     #fabricator {
         background-size: 45px;

@@ -69,6 +69,8 @@ var playerpath = ""
 
 var juniorpath = ""
 
+var skillcooldown = 0
+
 var chapterprogression = 0
 
 var healingpotioncount = 0
@@ -107,13 +109,13 @@ var lambda = false
 
 var grumoda = false
 
+var mountain = false
+
 var finishedfrostveil = false
 
 var finishedlambda = false
 
 var finishedgrumoda = false
-
-var victory = false
 
 var hans = false
 
@@ -144,6 +146,8 @@ var jasonhealth = protagonist["jason"].maxhealth
 
 let story = ["intro"]; //sets a value for the whole array
 
+
+skillgroup.style.display = 'none'
 
 storyContainer.addEventListener("click", function () {
     presentStory = story[story.length - 1]
@@ -414,59 +418,27 @@ storyContainer.addEventListener("click", function () {
         console.log("battlecount: " + battlecount)
     }
 
-    else if (chapterprogression === 3) {
+    else if (battlecount=== 9 && chapterprogression === 2) {
+        battlecount = 0
+        chapterprogression = 0
+        lambda = false
+        finishedlambda = true
+        boomerthrowskill = true
+        frostveil= false
+        finishedfrostveil= true
+        frostaxeskill = true
+        grumoda = false
+        finishedlambda = true
+        fanknucklesskill = true
+        mountain = true
         story.push("mountainside")
         presentStory = story[story.length -1]
         storyContainer.innerHTML = dialogue[presentStory].text
-        scene.src = "images/thegauntlet.png"
+        scene.style.backgroundImage = 'url(images/thegauntlet.png)'
         hidechoices()
-    }
-
-    else if (battlecount === 9 && grumoda && chapterprogression === 2) {
-        battlecount = 0
-        lambda = false
-        finishedlambda = true
-        boomerthrowskill = true
-        story.push("finishlambda")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        storyContainer.disabled = false
-        hidechoices()
-        chapterprogression++
-        console.log("chapterprogression: " + chapterprogression)
         console.log("battlecount: " + battlecount)
-        return
-    }
-
-    else if (battlecount === 9 && frostveil && chapterprogression === 2) {
-        battlecount = 0
-        lambda = false
-        finishedlambda = true
-        boomerthrowskill = true
-        story.push("finishlambda")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        storyContainer.disabled = false
-        hidechoices()
-        chapterprogression++
-        console.log("chapterprogression: " + chapterprogression)
-        console.log("battlecount: " + battlecount)
-        return
-    }
-
-    else if (battlecount === 9 && lambda && chapterprogression === 2) {
-        battlecount = 0
-        lambda = false
-        finishedlambda = true
-        boomerthrowskill = true
-        story.push("finishlambda")
-        presentStory = story[story.length - 1]
-        storyContainer.innerHTML = dialogue[presentStory].text
-        storyContainer.disabled = false
-        hidechoices()
-        chapterprogression++
-        console.log("chapterprogression: " + chapterprogression)
-        console.log("battlecount: " + battlecount)
+        console.log("presentStory: " + presentStory)
+        console.log()
         return
     }
 
@@ -530,7 +502,7 @@ else if (battlecount === 9 && grumoda && chapterprogression === 1) {
         battlecount = 0
         frostveil= false
         finishedfrostveil= true
-        frostaxeskillskill = true
+        frostaxeskill = true
         story.push("finishfrostveil")
         presentStory = story[story.length - 1]
         storyContainer.innerHTML = dialogue[presentStory].text
@@ -655,6 +627,154 @@ else if (battlecount === 9 && grumoda && chapterprogression === 1) {
         return
     }
 
+    else if (battlecount === 0 && presentStory === "mountainside" && mountain) {
+        story.push("asr")
+        presentStory = story[story.length - 1]
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+        console.log("presentStory: " + presentStory)
+        console.log("battlecount: " + battlecount)
+        return
+    }
+
+    else if (battlecount === 1 && presentStory === "mountainpush" && mountain) {
+        story.push("attackerfloresta")
+        presentStory = story[story.length - 1]
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+        console.log("presentStory: " + presentStory)
+        console.log("battlecount: " + battlecount)
+        return
+    }
+
+    else if (battlecount === 2 && presentStory === "mountainpush" && mountain) {
+        story.push("toothandnail")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+         updatesaveenemy()
+        console.log("presentStory: " + presentStory)
+        console.log("battlecount: " + battlecount)
+        return
+    }
+
+    else if (presentStory === "toothandnail") {
+        localStorage.setItem("bookmark", presentStory)
+        presentStory = story[story.length - 1]
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+    else if (battlecount === 3 && presentStory === "mountainpush" && mountain) {
+        story.push("bomberregy")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+        return
+    }
+
+    else if (battlecount === 4 && presentStory === "mountainpush" && mountain) {
+        story.push("sealion")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+        return
+    }
+
+else if (battlecount === 5 && presentStory === "mountainpush" && mountain) {
+        story.push("wanoba")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+         updatesaveenemy()
+        console.log("presentStory: " + presentStory)
+        console.log("battlecount: " + battlecount)
+        scene.style.backgroundImage = 'url(images/lab.png)'
+        return
+    }
+
+    else if (presentStory === "wanoba") {
+        localStorage.setItem("bookmark", presentStory)
+        presentStory = story[story.length - 1]
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+    else if (battlecount === 6 && presentStory === "mountainpush" && mountain) {
+        story.push("returnhome")
+        hasfabricator = true
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        console.log("presentStory: " + presentStory)
+        console.log("battlecount: " + battlecount)
+        return
+    }
+
+    else if (battlecount === 6 && presentStory === "returnhome" && mountain) {
+        story.push("weedwhip")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+        return
+    }
+
+    else if (battlecount === 7 && presentStory === "mountainpush" && mountain) {
+        story.push("penguinja")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+        return
+    }
+
+    else if (battlecount === 8 && presentStory === "mountainpush" && mountain) {
+        story.push("ahg")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+        return
+    }
+    
+        else if (battlecount === 9 && allycount > 0 && presentStory === "mountainpush") {
+story.push("split")
+mountain = false
+        presentStory = story[story.length - 1]
+        storyContainer.innerHMTL = dialogue[presentStory].text
+        console.log("presentStory: " + presentStory)
+        return
+    }
+
+        else if (battlecount === 9 && allycount === 0 && presentStory === "mountainpush") {
+        story.push("returnalone")
+        mountain = false
+        presentStory = story[story.length - 1]
+        storyContainer.innerHMTL = dialogue[presentStory].text
+        console.log("presentStory: " + presentStory)
+        return
+        }
+
+else if (presentStory === "split" || presentStory === "returnalone"){
+story.push("dantechoice")
+presentStory = story[story.length - 1]
+        storyContainer.innerHMTL = dialogue[presentStory].text
+        choice1.innerHTML = dialogue[presentStory].choices[0][0]
+            choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        choice1.style.display = 'inline-block'
+        choice2.style.display = 'inline-block'
+        choice3.style.display = 'none'
+        scene.style.backgroundImage = 'url(images/finalbattle.png)'
+        enemy1.src = 'images/dante.png'
+        enemy1.style.display = 'inline-block'
+        return
+    }
 
     if (victory === true) {
         if (presentStory === "kamiron") {
@@ -705,6 +825,41 @@ else if (presentStory === "knucklesandshieva") {
         return
     }
 
+    else if(mountain === true) {
+        story.push("mountainpush")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
+        hidechoices()
+        return
+    }
+
+else if (presentStory === "split") {
+    presentStory = story[story.length - 1]
+        storyContainer.innerHMTL = dialogue[presentStory].text
+        console.log("presentStory: " + presentStory)
+        return
+}
+
+else if (presentStory === "returnalone") {
+    presentStory = story[story.length - 1]
+        storyContainer.innerHMTL = dialogue[presentStory].text
+        console.log("presentStory: " + presentStory)
+        return
+}
+
+else if (presentStory === "dante") {
+    story.push("endingchoices")
+  presentStory = story[story.length -1]
+  storyContainer.innerHTML = dialogue[presentStory].text
+  choice1.innerHTML = dialogue[presentStory].choices[0][0]
+            choice2.innerHTML = dialogue[presentStory].choices[1][0]
+        choice1.style.display = 'inline-block'
+        choice3.style.display = 'none'
+if (allycount === 3){
+    choice2.style.display = 'inline-bloc'
+}
+}
+
     else {
         victory = false
         story.push("cityprogression")
@@ -719,69 +874,71 @@ else if (presentStory === "knucklesandshieva") {
         fabricator.style.display = 'none'
         jasonhp.style.display = 'none'
     }
+    return
     }
 
-    else if (presentStory === "sealion") {                               ///first battles
+    else if (presentStory === "sealion" && frostveil) {                               ///first battles
         localStorage.setItem("bookmark", presentStory)
         battledisplay()
         enemydisplay()
         beginbattle()
     }
 
-    else if (presentStory === "polarbearer") {
+    else if (presentStory === "polarbearer" && frostveil) {
         localStorage.setItem("bookmark", presentStory)
         battledisplay()
         enemydisplay()
         beginbattle()
     }
 
-    else if (presentStory === "penguinja") {
+    else if (presentStory === "penguinja" && frostveil) {
         localStorage.setItem("bookmark", presentStory)
         battledisplay()
         enemydisplay()
         beginbattle()
     }
 
-    if (presentStory === "mab") {                       
+    if (presentStory === "mab" && lambda) {                       
         battledisplay()
         enemydisplay()
         beginbattle()
     }
 
-    else if (presentStory === "asr") {
+    else if (presentStory === "asr" && lambda) {
         localStorage.setItem("bookmark", presentStory)
         battledisplay()
         enemydisplay()
         beginbattle()
     }
 
-    else if (presentStory === "ahg") {
+    else if (presentStory === "ahg" && lambda) {
        localStorage.setItem("bookmark", presentStory)
         battledisplay()
         enemydisplay()
         beginbattle()
     }
 
-    else if (presentStory === "bomberregy") {
+    else if (presentStory === "bomberregy" && grumoda) {
         localStorage.setItem("bookmark", presentStory)
         battledisplay()
         enemydisplay()
         beginbattle()
     }
 
-    else if (presentStory === "weedwhip") {
+    else if (presentStory === "weedwhip" && grumoda) {
         localStorage.setItem ("bookmark", presentStory)
         battledisplay()
         enemydisplay()
         beginbattle()
     }
 
-    else if (presentStory === "attackerfloresta") {
+    else if (presentStory === "attackerfloresta" && grumoda) {
         localStorage.setItem("bookmark", presentStory)
         battledisplay()
         enemydisplay()
         beginbattle()
     }
+
 
     else if (presentStory === "finishfrostveil") {
         story.push("finishfrostveil")
@@ -1039,159 +1196,19 @@ choice1.addEventListener("click", function () {       //choice 1 function
         beginbattle()
     }
 
-
-    else if (battlecount === 6 && presentStory === "cityprogression" && frostveil) {
-        story.push("penguinja")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
+    else if (presentStory === "dantechoice") {
+        story.push("badending")
+        presentStory = story[story.length - 1]
+        storyContainer.innerHTML = dialogue[presentStory].text
     }
 
-
-    else if (battlecount === 7 && presentStory === "cityprogression" && frostveil) {
-        story.push("sealion")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 8 && presentStory === "cityprogression" && frostveil) {
-        story.push("penguinja")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 1 && presentStory === "cityprogression" && lambda) {
-        story.push("asr")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 2 && presentStory === "cityprogression" && lambda) {
-        story.push("mab")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 3 && presentStory === "cityprogression" && lambda) {
-        story.push("asr")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 5 && presentStory === "cityprogression" && lambda) {
-        story.push("ahg")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 6 && presentStory === "cityprogression" && lambda) {
-        story.push("asr")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 7 && presentStory === "cityprogression" && lambda) {
-        story.push("ahg")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 8 && presentStory === "cityprogression" && lambda) {
-        story.push("ahg")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 1 && presentStory === "cityprogression" && grumoda) {
-        story.push("weedwhip")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 2 && presentStory === "cityprogression" && grumoda) {
-        story.push("bomberregy")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 3 && presentStory === "cityprogression" && grumoda) {
-        story.push("bomberregy")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 5 && presentStory === "cityprogression" && grumoda) {
-        story.push("attackerfloresta")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 6 && presentStory === "cityprogression" && grumoda) {
-        story.push("bomberregy")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 7 && presentStory === "cityprogression" && grumoda) {
-        story.push("weedwhip")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
-
-    else if (battlecount === 8 && presentStory === "cityprogression" && grumoda) {
-        story.push("attackerfloresta")
-        updatesaveenemy()
-        enemydisplay()
-        battledisplay()
-        beginbattle()
-    }
-
+    else if (presentStory === "endingchoices") {
+    story.push("neutralending")
+    presentStory = story[story.length -1]
+    storyContainer.innerHTML = dialogue[presentStory].text
+    storyContainer.disabled = true
+    hidechoices()
+}
 
     else if (presentStory === "junior") {
         story.push("juniornice")
@@ -1617,6 +1634,21 @@ else if (battlecount === 1 && presentStory === "cityprogression" && grumoda) {
         return
     }
 
+    else if (presentStory === "dantechoice") {
+        story.push("dante")
+        updatesaveenemy()
+        enemydisplay()
+        battledisplay()
+        beginbattle()
+    }
+
+else if (presentStory === "endingchoices") {
+    story.push("goodending")
+    presentStory = story[story.length -1]
+    storyContainer.innerHTML = dialogue[presentStory].text
+    storyContainer.disabled = true
+    hidechoices()
+}
 
     else if (presentStory === "enterlambda") {
         story.push("ahg")
@@ -1934,8 +1966,10 @@ function beginbattle() {                            ///battle logic
         battleactive = true
         slash.disabled = false
         inventory.disabled = false
+        fabricator.disabled = false
         enemy1.src = "images/" + enemytype + ".png"
         enemy1.style.height = "300px"
+        skillcooldown = 0
     }
 };
 
@@ -1945,8 +1979,16 @@ slash.addEventListener("click", function () {
     storyContainer.disabled = true
     slash.disabled = true
     inventory.disabled = true
+    skills.disabled = true
+    fabricator.disabled = true
     healitembutton.style.display = 'none'
     damageitembutton.style.display = 'none'
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
     let standardattack = attack.damage
     if (playerturn) {
         if (dmgmodifier === true) {
@@ -2008,12 +2050,21 @@ slash.addEventListener("click", function () {
 });
 
 fabricator.addEventListener("click", function () {
+    if (skillcooldown >= 3) {
     let attack = protagonist["jason"].attacks[6]
     storyContainer.disabled = true
     slash.disabled = true
     inventory.disabled = true
+    skills.disabled = true
+    fabricator.disabled = true
     healitembutton.style.display = 'none'
     damageitembutton.style.display = 'none'
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
     let standardattack = attack.damage
     if (playerturn) {
         if (dmgmodifier === true) {
@@ -2072,6 +2123,481 @@ fabricator.addEventListener("click", function () {
             }
         }
     }
+}
+else {
+storyContainer.disabled = true
+            storyContainer.innerHTML = 'Please wait for cooldown timer: ' + skillcooldown + "/2"
+            playerturn = true
+        }
+});
+
+skills.addEventListener ("click", function() {
+    storyContainer.innerHTML = ""
+    skillgroup.style.display = 'inline-block'
+doubleslash.style.display = 'inline-block'
+healitembutton.style.display = 'none'
+    damageitembutton.style.display = 'none'
+ if(frostaxeskill) {
+    frostaxethrow.style.display = 'inline-block'
+ }
+
+ if (fanknucklesskill) {
+    fanknuckles.style.display = 'inline-block'
+ }
+
+if (boomerthrowskill) {
+    boomerthrow.style.display = 'inline-block'
+ }
+
+ if (toothnailingskill) {
+    toothnailing.style.display = 'inline-block'
+ }
+});
+
+doubleslash.addEventListener("click", function () {
+    if (skillcooldown >= 2) {
+    let attack = protagonist["jason"].attacks[1]
+    storyContainer.disabled = true
+    slash.disabled = true
+    inventory.disabled = true
+    skills.disabled = true
+    fabricator.disabled = true
+    healitembutton.style.display = 'none'
+    damageitembutton.style.display = 'none'
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+    let standardattack = attack.damage
+    skillcooldown = 0
+
+    if (playerturn) {
+        if (dmgmodifier === true) {
+            remainingenemyhp = remainingenemyhp - (standardattack * 2)
+            dmgmodifier = false
+        }
+        else {
+            remainingenemyhp = remainingenemyhp - standardattack
+        }
+
+        enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
+        storyContainer.innerHTML = attack.text
+
+        if (remainingenemyhp <= 0) {
+            remainingenemyhp = 0;
+            enemy1.style.display = 'none'
+            winBattle()
+        }
+
+        else {
+            if (hans && clerica && bridgette) {
+                hansattack()
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans && clerica) {
+                hansattack()
+                clericaheal()
+            }
+
+            else if (hans && bridgette) {
+                hansattack()
+                bridgetteattack()
+            }
+
+            else if (bridgette && clerica) {
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans) {
+                hansattack()
+            }
+
+            else if (clerica) {
+                clericaheal()
+            }
+
+            else if (bridgette) {
+                bridgetteattack()
+            }
+
+            else {
+                enemyattack()
+            }
+        }
+    }
+}
+else {
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+            storyContainer.disabled = true
+            storyContainer.innerHTML = 'Please wait for cooldown timer: ' + skillcooldown + "/2"
+            playerturn = true
+        }
+});
+
+fanknuckles.addEventListener("click", function () {
+    if (skillcooldown >= 2) {
+    let attack = protagonist["jason"].attacks[2]
+    storyContainer.disabled = true
+    slash.disabled = true
+    inventory.disabled = true
+    skills.disabled = true
+    fabricator.disabled = true
+    healitembutton.style.display = 'none'
+    damageitembutton.style.display = 'none'
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+    skillcooldown = 0
+    let standardattack = attack.damage
+    if (playerturn) {
+        if (dmgmodifier === true) {
+            remainingenemyhp = remainingenemyhp - (standardattack * 2)
+            dmgmodifier = false
+        }
+        else {
+            remainingenemyhp = remainingenemyhp - standardattack
+        }
+
+        enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
+        storyContainer.innerHTML = attack.text
+
+        if (remainingenemyhp <= 0) {
+            remainingenemyhp = 0;
+            enemy1.style.display = 'none'
+            winBattle()
+        }
+
+        else {
+            if (hans && clerica && bridgette) {
+                hansattack()
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans && clerica) {
+                hansattack()
+                clericaheal()
+            }
+
+            else if (hans && bridgette) {
+                hansattack()
+                bridgetteattack()
+            }
+
+            else if (bridgette && clerica) {
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans) {
+                hansattack()
+            }
+
+            else if (clerica) {
+                clericaheal()
+            }
+
+            else if (bridgette) {
+                bridgetteattack()
+            }
+
+            else {
+                enemyattack()
+            }
+        }
+    }
+}
+else {
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+            storyContainer.disabled = true
+            storyContainer.innerHTML = 'Please wait for cooldown timer: ' + skillcooldown + "/2"
+            playerturn = true
+        }
+});
+
+frostaxethrow.addEventListener("click", function () {
+    if (skillcooldown >= 2) {
+    let attack = protagonist["jason"].attacks[3]
+    storyContainer.disabled = true
+    slash.disabled = true
+    inventory.disabled = true
+    skills.disabled = true
+    fabricator.disabled = true
+    healitembutton.style.display = 'none'
+    damageitembutton.style.display = 'none'
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+    skillcooldown = 0
+    let standardattack = attack.damage
+    if (playerturn) {
+        if (dmgmodifier === true) {
+            remainingenemyhp = remainingenemyhp - (standardattack * 2)
+            dmgmodifier = false
+        }
+        else {
+            remainingenemyhp = remainingenemyhp - standardattack
+        }
+
+        enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
+        storyContainer.innerHTML = attack.text
+
+        if (remainingenemyhp <= 0) {
+            remainingenemyhp = 0;
+            enemy1.style.display = 'none'
+            winBattle()
+        }
+
+        else {
+            if (hans && clerica && bridgette) {
+                hansattack()
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans && clerica) {
+                hansattack()
+                clericaheal()
+            }
+
+            else if (hans && bridgette) {
+                hansattack()
+                bridgetteattack()
+            }
+
+            else if (bridgette && clerica) {
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans) {
+                hansattack()
+            }
+
+            else if (clerica) {
+                clericaheal()
+            }
+
+            else if (bridgette) {
+                bridgetteattack()
+            }
+
+            else {
+                enemyattack()
+            }
+        }
+    }
+}
+else {
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+            storyContainer.disabled = true
+            storyContainer.innerHTML = 'Please wait for cooldown timer: ' + skillcooldown + "/2"
+            playerturn = true
+        }
+});
+
+boomerthrow.addEventListener("click", function () {
+    if (skillcooldown >= 2) {
+    let attack = protagonist["jason"].attacks[4]
+    storyContainer.disabled = true
+    slash.disabled = true
+    inventory.disabled = true
+    skills.disabled = true
+    fabricator.disabled = true
+    healitembutton.style.display = 'none'
+    damageitembutton.style.display = 'none'
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+    skillcooldown = 0
+    let standardattack = attack.damage
+    if (playerturn) {
+        if (dmgmodifier === true) {
+            remainingenemyhp = remainingenemyhp - (standardattack * 2)
+            dmgmodifier = false
+        }
+        else {
+            remainingenemyhp = remainingenemyhp - standardattack
+        }
+
+        enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
+        storyContainer.innerHTML = attack.text
+
+        if (remainingenemyhp <= 0) {
+            remainingenemyhp = 0;
+            enemy1.style.display = 'none'
+            winBattle()
+        }
+
+        else {
+            if (hans && clerica && bridgette) {
+                hansattack()
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans && clerica) {
+                hansattack()
+                clericaheal()
+            }
+
+            else if (hans && bridgette) {
+                hansattack()
+                bridgetteattack()
+            }
+
+            else if (bridgette && clerica) {
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans) {
+                hansattack()
+            }
+
+            else if (clerica) {
+                clericaheal()
+            }
+
+            else if (bridgette) {
+                bridgetteattack()
+            }
+
+            else {
+                enemyattack()
+            }
+        }
+    }
+    }
+    else {
+        skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+            storyContainer.disabled = true
+            storyContainer.innerHTML = 'Please wait for cooldown timer: ' + skillcooldown + "/2"
+            playerturn = true
+        }
+});
+
+toothnailing.addEventListener("click", function () {
+    if (skillcooldown >= 2) {
+    let attack = protagonist["jason"].attacks[5]
+    storyContainer.disabled = true
+    slash.disabled = true
+    inventory.disabled = true
+    skills.disabled = true
+    fabricator.disabled = true
+    healitembutton.style.display = 'none'
+    damageitembutton.style.display = 'none'
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+    skillcooldown = 0
+    let standardattack = attack.damage
+    if (playerturn) {
+        if (dmgmodifier === true) {
+            remainingenemyhp = remainingenemyhp - (standardattack * 2)
+            dmgmodifier = false
+        }
+        else {
+            remainingenemyhp = remainingenemyhp - standardattack
+        }
+
+        enemy1hp.innerHTML = remainingenemyhp + "/" + enemies[enemytype].maxhealth
+        storyContainer.innerHTML = attack.text
+
+        if (remainingenemyhp <= 0) {
+            remainingenemyhp = 0;
+            enemy1.style.display = 'none'
+            winBattle()
+        }
+
+        else {
+            if (hans && clerica && bridgette) {
+                hansattack()
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans && clerica) {
+                hansattack()
+                clericaheal()
+            }
+
+            else if (hans && bridgette) {
+                hansattack()
+                bridgetteattack()
+            }
+
+            else if (bridgette && clerica) {
+                bridgetteattack()
+                clericaheal()
+            }
+
+            else if (hans) {
+                hansattack()
+            }
+
+            else if (clerica) {
+                clericaheal()
+            }
+
+            else if (bridgette) {
+                bridgetteattack()
+            }
+
+            else {
+                enemyattack()
+            }
+        }
+    }
+}
+else {
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
+            storyContainer.disabled = true
+            storyContainer.innerHTML = 'Please wait for cooldown timer: ' + skillcooldown + "/2"
+            playerturn = true
+        }
 });
 
 
@@ -2156,6 +2682,12 @@ fabricator.addEventListener("click", function () {
 inventory.addEventListener("click", function () {
     storyContainer.innerHTML = ""
     storyContainer.disabled = true
+skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
     healitembutton.style.display = 'inline-block'
     damageitembutton.style.display = 'inline-block'
     healitembutton.innerHTML = 'Healing Potions: ' + healingpotioncount
@@ -2170,6 +2702,7 @@ healitembutton.addEventListener("click", function () {
     slash.disabled = true
     inventory.disabled = true
     skills.disabled = true
+    fabricator.disabled = true
     healing()
 });
 
@@ -2178,6 +2711,10 @@ damageitembutton.addEventListener("click", function () {
     healitembutton.style.display = 'none'
     damageitembutton.style.display = 'none'
     storyContainer.disabled = true
+    slash.disabled = true
+    inventory.disabled = true
+    skills.disabled = true
+    fabricator.disabled = true
     dmgmodify()
 });
 
@@ -2198,11 +2735,13 @@ function enemyattack() {
             slash.disabled = false
             inventory.disabled = false
             skills.disabled = false
+            fabricator.disabled = false
             playerturn = true;
+            skillcooldown++
         }, 1750);
     }
 
-    else if (allycount === 1) {
+    else if (allycount >= 1) {
         setTimeout(function () {
             let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
             let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
@@ -2217,46 +2756,11 @@ function enemyattack() {
             storyContainer.innerHTML = chosenAttack.text
             slash.disabled = false
             inventory.disabled = false
+            skills.disabled = false
+            fabricator.disabled = false
             playerturn = true;
+            skillcooldown++
         }, 1750);
-    }
-
-    else if (allycount === 2) {
-        setTimeout(function () {
-            let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
-            let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
-            jasonhealth = jasonhealth - chosenAttack.damage
-            storyContainer.disabled = true
-            if (jasonhealth <= 0) {
-                scene.style.display = 'none'
-                scene.style.backgroundColor = 'rgba(0, 0, 0)'
-            }
-
-            jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
-            storyContainer.innerHTML = chosenAttack.text
-            slash.disabled = false
-            inventory.disabled = false
-            playerturn = true;
-        }, 3500);
-    }
-
-    else if (allycount === 3) {
-        setTimeout(function () {
-            let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
-            let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
-            jasonhealth = jasonhealth - chosenAttack.damage
-            storyContainer.disabled = true
-            if (jasonhealth <= 0) {
-                scene.style.display = 'none'
-                scene.style.backgroundColor = 'rgba(0, 0, 0)'
-            }
-
-            jasonhp.innerHTML = "JasonHP: " + jasonhealth + "/" + protagonist["jason"].maxhealth
-            storyContainer.innerHTML = chosenAttack.text
-            slash.disabled = false
-            inventory.disabled = false
-            playerturn = true;
-        }, 5250);
     }
 }
 
@@ -2266,6 +2770,13 @@ function healing() {
     slash.disabled = true
     inventory.disabled = true
     skills.disabled = true
+    fabricator.disabled = true
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
     if (playerturn) {
         if (healingpotioncount != 0) {
             healingpotioncount = healingpotioncount - 1
@@ -2328,6 +2839,13 @@ function dmgmodify() {
     slash.disabled = true
     inventory.disabled = true
     skills.disabled = true
+    fabricator.disabled = true
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
     if (playerturn) {
         if (dmgpotioncount != 0) {
             dmgpotioncount = dmgpotioncount - 1
@@ -2390,6 +2908,12 @@ function winBattle() {
     skills.style.display = 'none'
     fabricator.style.display = 'none'
     jasonhp.style.display = 'none'
+    skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
     battleactive = false
     storyContainer.disabled = false
     playerturn = true
@@ -2439,9 +2963,10 @@ function hansattack() {
         let hansAttacks = Math.floor(Math.random() * protagonist.hans.attacks.length)
         let chosenAttack = protagonist.hans.attacks[hansAttacks]
         remainingenemyhp = remainingenemyhp - chosenAttack.damage
-        storyContainer.disabled = true
         slash.disabled = true
         inventory.disabled = true
+        skills.disabled = true
+        fabricator.disabled = true
         if (remainingenemyhp <= 0) {
             winBattle()
         }
@@ -2462,6 +2987,7 @@ function bridgetteattack() {
         slash.disabled = true
         inventory.disabled = true
         skills.disabled = true
+        fabricator.disabled = true
         if (remainingenemyhp <= 0) {
             winBattle()
         }
@@ -2480,9 +3006,10 @@ function clericaheal() {
             jasonhealth = protagonist["jason"].maxhealth;
         }
         storyContainer.disabled = true
-        slash.disabled = true
+       slash.disabled = true
         inventory.disabled = true
         skills.disabled = true
+        fabricator.disabled = true
         if (remainingenemyhp <= 0) {
             winBattle()
         }
