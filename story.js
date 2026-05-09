@@ -1761,6 +1761,7 @@ function beginbattle() {                            ///battle logic
         fabricator.disabled = false
         enemy1.src = "images/" + enemytype + ".png"
         enemy1.style.height = "300px"
+        skillcooldown = 0
     }
 };
 
@@ -2393,6 +2394,12 @@ else {
 inventory.addEventListener("click", function () {
     storyContainer.innerHTML = ""
     storyContainer.disabled = true
+skillgroup.style.display = 'none'
+    doubleslash.style.display = 'none'
+    fanknuckles.style.display = 'none'
+    frostaxethrow.style.display = 'none'
+    boomerthrow.style.display = 'none'
+    toothnailing.style.display = 'none'
     healitembutton.style.display = 'inline-block'
     damageitembutton.style.display = 'inline-block'
     healitembutton.innerHTML = 'Healing Potions: ' + healingpotioncount
@@ -2444,7 +2451,7 @@ function enemyattack() {
         }, 1750);
     }
 
-    else if (allycount === 1) {
+    else if (allycount >= 1) {
         setTimeout(function () {
             let enemyAttacks = Math.floor(Math.random() * enemies[enemytype].attacks.length)
             let chosenAttack = enemies[enemytype].attacks[enemyAttacks]
@@ -2459,6 +2466,8 @@ function enemyattack() {
             storyContainer.innerHTML = chosenAttack.text
             slash.disabled = false
             inventory.disabled = false
+            skills.disabled = false
+            fabricator.disabled = false
             playerturn = true;
             skillcooldown++
         }, 1750);
@@ -2661,9 +2670,10 @@ function hansattack() {
         let hansAttacks = Math.floor(Math.random() * protagonist.hans.attacks.length)
         let chosenAttack = protagonist.hans.attacks[hansAttacks]
         remainingenemyhp = remainingenemyhp - chosenAttack.damage
-        storyContainer.disabled = true
         slash.disabled = true
         inventory.disabled = true
+        skills.disabled = true
+        fabricator.disabled = true
         if (remainingenemyhp <= 0) {
             winBattle()
         }
@@ -2684,6 +2694,7 @@ function bridgetteattack() {
         slash.disabled = true
         inventory.disabled = true
         skills.disabled = true
+        fabricator.disabled = true
         if (remainingenemyhp <= 0) {
             winBattle()
         }
@@ -2702,9 +2713,10 @@ function clericaheal() {
             jasonhealth = protagonist["jason"].maxhealth;
         }
         storyContainer.disabled = true
-        slash.disabled = true
+       slash.disabled = true
         inventory.disabled = true
         skills.disabled = true
+        fabricator.disabled = true
         if (remainingenemyhp <= 0) {
             winBattle()
         }
